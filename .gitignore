@@ -23,6 +23,7 @@ ENV/
 # Agent & documentation
 .agent/
 *.md
+!README.md
 
 # OS & Editor
 .DS_Store
