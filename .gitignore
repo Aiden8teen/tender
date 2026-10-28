@@ -35,6 +35,7 @@ ehthumbs.db
 Thumbs.db
 .vscode/
 .idea/
+.playwright-mcp/
 
 # Temp files & logs
 *.tmp

@@ -18,6 +18,32 @@ An automated public procurement compliance auditing and technical bid preparatio
   - Translation of manufacturer datasheets (PDF/image) into standardized, company-branded French technical fiches with vector wet stamps.
   - Automated compilation of ordered technical dossiers matching the exact tender sequence.
 
+## Screenshots & Workflows
+
+### 1. Pre-Submission Regulatory Audit Matrix (Loi 23-12)
+Validates mandatory administrative documents, highlights eliminatory blockers (expired Extrait de Rôle > 90 days, missing wet stamps), and verifies arithmetic BPU/DQE consistency.
+![Pre-Submission Regulatory Audit Matrix](screenshots/01_compliance_audit_matrix.png)
+
+### 2. Medical Equipment & Fiche Technique Automation (Lot 04)
+Interactive workbench organizing equipment strictly by tender sequence, flagging language/stamp conditions, and managing procurement catalogs.
+![Medical Equipment Workflow](screenshots/02_medical_equipment_workflow.png)
+
+### 3. Multi-Candidate Sweet-Spot Optimizer
+Side-by-side technical specification matching comparing candidate models against tender CPT requirements to balance bonus points vs unit costs.
+![Multi-Candidate Sweet-Spot Optimizer](screenshots/03_sweet_spot_optimizer.png)
+
+### 4. Cross-Tender Resource Overlap Ledger & CNAS Tracker
+Tracks committed personnel across multiple concurrent public bids against CNAS headcount to prevent over-allocation.
+![Cross-Tender Resource Overlap Ledger](screenshots/04_resource_overlap_ledger.png)
+
+### 5. COPEO Evaluation Committee & Scoring Matrix
+Official commission evaluation matrix ranking competing bidders and generating PDF evaluation procès-verbaux.
+![COPEO Evaluation Matrix](screenshots/05_copeo_evaluation_matrix.png)
+
+### 6. Bilingual Vision-OCR & Hybrid RRF Search
+Scans 28 bilingual pages with auto-rotation, layout bounding boxes, and reciprocal rank fusion search across legal articles.
+![Vision-OCR and Hybrid RRF](screenshots/06_vision_ocr_and_hybrid_rag.png)
+
 ## Repository Structure
 
 ```
