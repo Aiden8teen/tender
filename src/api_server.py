@@ -314,6 +314,20 @@ class MithaqHTTPRequestHandler(SimpleHTTPRequestHandler):
     def do_OPTIONS(self) -> None:
         self._send_json({"ok": True})
 
+    def do_HEAD(self) -> None:
+        parsed = urllib.parse.urlparse(self.path)
+        if parsed.path == "/api/v1/health":
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json; charset=utf-8")
+            self.send_header("Access-Control-Allow-Origin", "*")
+            self.send_header("Access-Control-Allow-Methods", "GET, HEAD, OPTIONS")
+            self.send_header("Content-Length", "0")
+            self.end_headers()
+            return
+        if parsed.path in ("/", ""):
+            self.path = "/index.html"
+        return super().do_HEAD()
+
     def do_GET(self) -> None:
         parsed = urllib.parse.urlparse(self.path)
         normalized_path = urllib.parse.unquote(parsed.path)
