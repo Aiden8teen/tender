@@ -366,45 +366,36 @@ const API_BASE = window.location.protocol.startsWith('http')
       } catch (_) {}
     }
 
-    // Sidebar Collapse & Floating Drawer Controller
+    // Sidebar Push / Collapse Controller (Main window adapts to available space)
     function toggleSidebar() {
       const layout = document.querySelector('.app-layout');
       const sidebar = document.getElementById('app-sidebar');
-      const backdrop = document.getElementById('sidebar-backdrop');
       const isMobile = window.innerWidth <= 980;
 
       if (isMobile) {
-        const isOpen = sidebar.classList.contains('open');
-        sidebar.classList.toggle('open', !isOpen);
-        if (backdrop) backdrop.classList.toggle('open', !isOpen);
+        sidebar.classList.toggle('open');
         return;
       }
 
       const isCollapsed = layout.classList.contains('sidebar-collapsed');
-      if (!isCollapsed) {
-        collapseSidebar();
+      if (isCollapsed) {
+        layout.classList.remove('sidebar-collapsed');
+        updateCollapseBtnIcon(false);
+        try { localStorage.setItem('mithaq_sidebar_collapsed', 'false'); } catch(_) {}
       } else {
-        if (sidebar.classList.contains('floating-open')) {
-          closeFloatingSidebar();
-        } else {
-          openFloatingSidebar();
-        }
+        layout.classList.add('sidebar-collapsed');
+        updateCollapseBtnIcon(true);
+        try { localStorage.setItem('mithaq_sidebar_collapsed', 'true'); } catch(_) {}
       }
     }
 
     function toggleSidebarCollapse() {
-      const layout = document.querySelector('.app-layout');
-      if (layout.classList.contains('sidebar-collapsed')) {
-        pinSidebar();
-      } else {
-        collapseSidebar();
-      }
+      toggleSidebar();
     }
 
     function collapseSidebar() {
       const layout = document.querySelector('.app-layout');
       layout.classList.add('sidebar-collapsed');
-      closeFloatingSidebar();
       updateCollapseBtnIcon(true);
       try { localStorage.setItem('mithaq_sidebar_collapsed', 'true'); } catch(_) {}
     }
@@ -412,26 +403,15 @@ const API_BASE = window.location.protocol.startsWith('http')
     function pinSidebar() {
       const layout = document.querySelector('.app-layout');
       layout.classList.remove('sidebar-collapsed');
-      closeFloatingSidebar();
       updateCollapseBtnIcon(false);
       try { localStorage.setItem('mithaq_sidebar_collapsed', 'false'); } catch(_) {}
     }
 
-    function openFloatingSidebar() {
-      const sidebar = document.getElementById('app-sidebar');
-      const backdrop = document.getElementById('sidebar-backdrop');
-      if (sidebar) sidebar.classList.add('floating-open');
-      if (backdrop) backdrop.classList.add('open');
-    }
-
     function closeFloatingSidebar() {
-      const sidebar = document.getElementById('app-sidebar');
-      const backdrop = document.getElementById('sidebar-backdrop');
-      if (sidebar) {
-        sidebar.classList.remove('floating-open');
-        sidebar.classList.remove('open');
+      if (window.innerWidth <= 980) {
+        const sidebar = document.getElementById('app-sidebar');
+        if (sidebar) sidebar.classList.remove('open');
       }
-      if (backdrop) backdrop.classList.remove('open');
     }
 
     function updateCollapseBtnIcon(isCollapsed) {

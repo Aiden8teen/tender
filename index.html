@@ -181,23 +181,16 @@
       margin-right: -268px;
     }
 
-    /* Floating drawer when sidebar is collapsed on desktop */
-    @media (min-width: 981px) {
-      .app-layout.sidebar-collapsed .sidebar.floating-open {
-        position: fixed;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        margin-left: 0 !important;
-        width: 276px;
-        z-index: 100;
-        box-shadow: 8px 0 36px rgba(0, 0, 0, 0.5);
-      }
-      html[dir="rtl"] .app-layout.sidebar-collapsed .sidebar.floating-open {
-        left: auto;
-        right: 0;
-        margin-right: 0 !important;
-      }
+    /* Main stage automatically adapts/collapses to the available space */
+    .main-stage {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      overflow: hidden;
+      background: var(--color-bone);
+      transition: flex-basis 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     /* Mobile Drawer */
@@ -2553,45 +2546,36 @@ Le Président de la Commission COPEO
       } catch (_) {}
     }
 
-    // Sidebar Collapse & Floating Drawer Controller
+    // Sidebar Push / Collapse Controller (Main window adapts to available space)
     function toggleSidebar() {
       const layout = document.querySelector('.app-layout');
       const sidebar = document.getElementById('app-sidebar');
-      const backdrop = document.getElementById('sidebar-backdrop');
       const isMobile = window.innerWidth <= 980;
 
       if (isMobile) {
-        const isOpen = sidebar.classList.contains('open');
-        sidebar.classList.toggle('open', !isOpen);
-        if (backdrop) backdrop.classList.toggle('open', !isOpen);
+        sidebar.classList.toggle('open');
         return;
       }
 
       const isCollapsed = layout.classList.contains('sidebar-collapsed');
-      if (!isCollapsed) {
-        collapseSidebar();
+      if (isCollapsed) {
+        layout.classList.remove('sidebar-collapsed');
+        updateCollapseBtnIcon(false);
+        try { localStorage.setItem('mithaq_sidebar_collapsed', 'false'); } catch(_) {}
       } else {
-        if (sidebar.classList.contains('floating-open')) {
-          closeFloatingSidebar();
-        } else {
-          openFloatingSidebar();
-        }
+        layout.classList.add('sidebar-collapsed');
+        updateCollapseBtnIcon(true);
+        try { localStorage.setItem('mithaq_sidebar_collapsed', 'true'); } catch(_) {}
       }
     }
 
     function toggleSidebarCollapse() {
-      const layout = document.querySelector('.app-layout');
-      if (layout.classList.contains('sidebar-collapsed')) {
-        pinSidebar();
-      } else {
-        collapseSidebar();
-      }
+      toggleSidebar();
     }
 
     function collapseSidebar() {
       const layout = document.querySelector('.app-layout');
       layout.classList.add('sidebar-collapsed');
-      closeFloatingSidebar();
       updateCollapseBtnIcon(true);
       try { localStorage.setItem('mithaq_sidebar_collapsed', 'true'); } catch(_) {}
     }
@@ -2599,26 +2583,15 @@ Le Président de la Commission COPEO
     function pinSidebar() {
       const layout = document.querySelector('.app-layout');
       layout.classList.remove('sidebar-collapsed');
-      closeFloatingSidebar();
       updateCollapseBtnIcon(false);
       try { localStorage.setItem('mithaq_sidebar_collapsed', 'false'); } catch(_) {}
     }
 
-    function openFloatingSidebar() {
-      const sidebar = document.getElementById('app-sidebar');
-      const backdrop = document.getElementById('sidebar-backdrop');
-      if (sidebar) sidebar.classList.add('floating-open');
-      if (backdrop) backdrop.classList.add('open');
-    }
-
     function closeFloatingSidebar() {
-      const sidebar = document.getElementById('app-sidebar');
-      const backdrop = document.getElementById('sidebar-backdrop');
-      if (sidebar) {
-        sidebar.classList.remove('floating-open');
-        sidebar.classList.remove('open');
+      if (window.innerWidth <= 980) {
+        const sidebar = document.getElementById('app-sidebar');
+        if (sidebar) sidebar.classList.remove('open');
       }
-      if (backdrop) backdrop.classList.remove('open');
     }
 
     function updateCollapseBtnIcon(isCollapsed) {
