@@ -626,9 +626,31 @@ const API_BASE = window.location.protocol.startsWith('http')
         statusEl.style.fontWeight = 'normal';
       }
 
+      const uploadBtn = document.getElementById('inspector-upload-btn');
+      if (uploadBtn) {
+        if (item.envelope === 'FINANCIERE') {
+          uploadBtn.textContent = '📤 Uploader Offre Financière (BPU/DQE)';
+        } else if (item.envelope === 'TECHNIQUE') {
+          uploadBtn.textContent = '📤 Uploader Offre Technique';
+        } else {
+          uploadBtn.textContent = '📤 Uploader Pièce Candidature (Extrait/CNAS)';
+        }
+      }
+
       // If mobile, auto-switch to preview tab on selection
       if (window.innerWidth <= 1024) {
         setMobileWorkbenchTab('preview');
+      }
+    }
+
+    function openUploadForCurrentRequirement() {
+      const item = REQUIREMENTS_DATA.find(r => r.id === selectedReqId) || REQUIREMENTS_DATA[0];
+      if (item.envelope === 'FINANCIERE') {
+        openUploadModalFor('FINANCIERE');
+      } else if (item.envelope === 'TECHNIQUE') {
+        openUploadModalFor('TECHNIQUE');
+      } else {
+        openUploadModalFor('CANDIDATURE');
       }
     }
 
@@ -704,11 +726,11 @@ const API_BASE = window.location.protocol.startsWith('http')
                 <span class="mono" style="font-size: 11px; color: var(--color-ash);">${doc.stamp}</span>
               </div>
             </td>
-            <td style="text-align: right;">
+            <td style="text-align: right; white-space: nowrap;">
               ${
                 isOk
-                  ? '<span class="mono" style="color: var(--color-pulse-green); font-weight: 500;">À jour ✓</span>'
-                  : `<button class="btn-acid-lime" style="padding: 4px 10px; font-size: 11.5px;" onclick="renewVaultDocument(${idx})">Renouveler</button>`
+                  ? `<button class="btn-ghost mono" style="padding: 4px 8px; font-size: 11px; background: var(--color-paper);" onclick="openUploadModalFor('CANDIDATURE')">📤 Remplacer</button>`
+                  : `<button class="btn-acid-lime mono" style="padding: 5px 12px; font-size: 11.5px;" onclick="openUploadModalFor('CANDIDATURE')">📤 Uploader la Pièce</button>`
               }
             </td>
           </tr>
@@ -1029,9 +1051,85 @@ const API_BASE = window.location.protocol.startsWith('http')
       showToast("Demande d'éclaircissement officielle enregistrée au PV COPEO.");
     }
 
+    let currentUploadCategory = 'CDC';
+
+    const UPLOAD_DOC_CONFIG = {
+      CDC: {
+        title: "Cahier des Charges (CDC Complet)",
+        desc: "<strong>📑 Cahier des Charges :</strong> Scans bilingues arabe/français et pièces du marché (redressement 180°, extraction des clauses éliminatoires et indexation des articles).",
+        fileLabel: "CDC EPH MOHAMMADIA.pdf (18.8 MB) prêt",
+        accept: ".pdf,.jpg,.jpeg,.png",
+        btnLabel: "Lancer l'Analyse du Cahier des Charges"
+      },
+      CANDIDATURE: {
+        title: "Dossier de Candidature & Pièces Fiscales",
+        desc: "<strong>📋 Dossier de Candidature :</strong> Extrait de rôle (< 90 jours), déclaration de probité (Loi 23-12), déclaration à souscrire, extrait Kbis/CNRC et mise à jour CNAS.",
+        fileLabel: "Dossier_Candidature_Atlas.pdf (Extrait de rôle + Probité) prêt",
+        accept: ".pdf,.jpg,.jpeg,.png",
+        btnLabel: "Vérifier la Candidature & Actualiser le Coffre-Fort"
+      },
+      TECHNIQUE: {
+        title: "Offre Technique & Justificatifs",
+        desc: "<strong>⚙️ Offre Technique :</strong> Mémoire technique justificatif, conformité IP68, planning prévisionnel, diplômes et liste nominative des 20 ingénieurs CNAS.",
+        fileLabel: "Offre_Technique_Atlas.pdf (Mémoire + Pompes IP68) prêt",
+        accept: ".pdf,.docx,.jpg,.jpeg,.png",
+        btnLabel: "Auditer la Conformité de l'Offre Technique"
+      },
+      FINANCIERE: {
+        title: "Offre Financière (BPU & DQE)",
+        desc: "<strong>💰 Offre Financière :</strong> Bordereau des Prix Unitaires (BPU en lettres faisant foi) et Détail Quantitatif et Estimatif (DQE en chiffres) pour contrôle arithmétique.",
+        fileLabel: "Offre_Financiere_Atlas.pdf (BPU vs DQE) prêt",
+        accept: ".pdf,.docx,.jpg,.jpeg,.png",
+        btnLabel: "Lancer le Contrôle Arithmétique BPU / DQE"
+      },
+      EQUIPMENT: {
+        title: "Fiche Technique Fournisseur / Matériel (Lot 04)",
+        desc: "<strong>🏥 Fiche Fournisseur :</strong> Datasheets constructeurs en anglais (PDF, DOCX) ou scans/images PNG à traduire et cacheter au format officiel SARL FLUIDAL.",
+        fileLabel: "docs/lot4-12.6 vidoir.png (Scan Anglais) prêt",
+        accept: ".pdf,.docx,.png,.jpg,.jpeg",
+        btnLabel: "Traduire, Normaliser & Cacheter la Fiche"
+      },
+      PV: {
+        title: "Procès-Verbal de Réception Provisoire (CNAS)",
+        desc: "<strong>📜 Justificatif de Fin de Projet :</strong> PV de réception provisoire/définitive pour libérer les ingénieurs engagés sur un marché précédent.",
+        fileLabel: "PV_Reception_Provisoire_Wilaya16.pdf prêt",
+        accept: ".pdf,.jpg,.jpeg,.png",
+        btnLabel: "Enregistrer le PV & Libérer les 20 Ingénieurs"
+      }
+    };
+
+    function selectUploadDocType(type) {
+      currentUploadCategory = type;
+      const conf = UPLOAD_DOC_CONFIG[type] || UPLOAD_DOC_CONFIG.CDC;
+
+      document.querySelectorAll('#upload-doc-type-pills .pill-filter').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-type') === type);
+      });
+
+      const banner = document.getElementById('upload-type-desc-banner');
+      if (banner) banner.innerHTML = conf.desc;
+
+      const fileLabel = document.getElementById('selected-file-label');
+      if (fileLabel) fileLabel.textContent = conf.fileLabel;
+
+      const input = document.getElementById('file-picker-input');
+      if (input) input.setAttribute('accept', conf.accept);
+
+      const btn = document.getElementById('btn-run-pipeline');
+      if (btn) btn.textContent = conf.btnLabel;
+    }
+
     function openUploadModal() {
       document.getElementById('upload-modal').classList.add('open');
+      selectUploadDocType(currentUploadCategory || 'CDC');
     }
+
+    function openUploadModalFor(type) {
+      currentUploadCategory = type;
+      openUploadModal();
+      selectUploadDocType(type);
+    }
+
     function closeUploadModal() {
       document.getElementById('upload-modal').classList.remove('open');
     }
@@ -1051,8 +1149,92 @@ const API_BASE = window.location.protocol.startsWith('http')
       box.style.display = 'block';
       bar.style.width = '25%';
       pct.textContent = '25%';
-      logs.innerHTML = '✓ [Étape 1/4] Extraction des pages scannées (1248×1760 JPEG)...';
 
+      if (currentUploadCategory === 'CANDIDATURE') {
+        logs.innerHTML = '✓ [Étape 1/3] Lecture de l\'Extrait de Rôle et Déclarations Réglementaires...';
+        setTimeout(() => {
+          bar.style.width = '65%';
+          pct.textContent = '65%';
+          logs.innerHTML += '<br/>✓ [Étape 2/3] Contrôle des dates de validité (< 90 jours) et détection des cachets...';
+        }, 500);
+        setTimeout(() => {
+          bar.style.width = '100%';
+          pct.textContent = '100%';
+          logs.innerHTML += '<br/>✓ [Étape 3/3] Coffre-Fort et Pli de Candidature mis à jour.';
+          setTimeout(() => {
+            renewVaultDocument(0);
+            closeUploadModal();
+            switchView('vault');
+            showToast("Dossier de candidature validé : l'Extrait de Rôle est à jour (< 90 jours).");
+          }, 500);
+        }, 1200);
+        return;
+      }
+
+      if (currentUploadCategory === 'FINANCIERE') {
+        logs.innerHTML = '✓ [Étape 1/3] Extraction des montants unitaires du BPU (en lettres)...';
+        setTimeout(() => {
+          bar.style.width = '65%';
+          pct.textContent = '65%';
+          logs.innerHTML += '<br/>✓ [Étape 2/3] Recalcul automatique des lignes du DQE et détection d\'écarts...';
+        }, 500);
+        setTimeout(() => {
+          bar.style.width = '100%';
+          pct.textContent = '100%';
+          logs.innerHTML += '<br/>✓ [Étape 3/3] Contrôle arithmétique finalisé.';
+          setTimeout(() => {
+            closeUploadModal();
+            switchView('audit');
+            filterRequirements('FINANCIERE');
+            showToast("Offre financière vérifiée : écart BPU/DQE analysé.");
+          }, 500);
+        }, 1200);
+        return;
+      }
+
+      if (currentUploadCategory === 'EQUIPMENT') {
+        logs.innerHTML = '✓ [Étape 1/3] Ingestion du catalogue / fiche technique constructeur...';
+        setTimeout(() => {
+          bar.style.width = '65%';
+          pct.textContent = '65%';
+          logs.innerHTML += '<br/>✓ [Étape 2/3] Traduction en Français médical et génération du cachet vectoriel...';
+        }, 500);
+        setTimeout(() => {
+          bar.style.width = '100%';
+          pct.textContent = '100%';
+          logs.innerHTML += '<br/>✓ [Étape 3/3] Fiche technique normalisée enregistrée dans le Lot 04.';
+          setTimeout(() => {
+            closeUploadModal();
+            switchView('fiches');
+            showToast("Fiche technique constructeur traduite et ajoutée au catalogue.");
+          }, 500);
+        }, 1200);
+        return;
+      }
+
+      if (currentUploadCategory === 'PV') {
+        logs.innerHTML = '✓ [Étape 1/3] Ingestion du PV de Réception Provisoire...';
+        setTimeout(() => {
+          bar.style.width = '65%';
+          pct.textContent = '65%';
+          logs.innerHTML += '<br/>✓ [Étape 2/3] Validation de la libération des 20 ingénieurs sur le marché précédent...';
+        }, 500);
+        setTimeout(() => {
+          bar.style.width = '100%';
+          pct.textContent = '100%';
+          logs.innerHTML += '<br/>✓ [Étape 3/3] Conflit de chevauchement CNAS résolu.';
+          setTimeout(() => {
+            reconcileProject('AOON/11/2025/WILAYA-16');
+            closeUploadModal();
+            switchView('overlap');
+            showToast("PV de réception provisoire validé : 20 ingénieurs libérés.");
+          }, 500);
+        }, 1200);
+        return;
+      }
+
+      // Default: CDC
+      logs.innerHTML = '✓ [Étape 1/4] Extraction des pages scannées du Cahier des Charges...';
       try {
         fetch(`${API_BASE}/api/v1/tenders/upload-and-analyze`, { method: 'POST' }).catch(() => {});
       } catch (_) {}
@@ -1060,24 +1242,24 @@ const API_BASE = window.location.protocol.startsWith('http')
       setTimeout(() => {
         bar.style.width = '55%';
         pct.textContent = '55%';
-        logs.innerHTML += '<br/>✓ [Étape 2/4] OCR Bilingue Gemini 2.5 Flash (FR/AR + Tableaux Markdown + Cachets)...';
+        logs.innerHTML += '<br/>✓ [Étape 2/4] Lecture et extraction des clauses (Français / Arabe)...';
       }, 550);
 
       setTimeout(() => {
         bar.style.width = '85%';
         pct.textContent = '85%';
-        logs.innerHTML += '<br/>✓ [Étape 3/4] Découpage Parent-Child & Indexation Hybride RRF (pgvector + BM25)...';
+        logs.innerHTML += '<br/>✓ [Étape 3/4] Indexation sémantique et contrôle réglementaire...';
       }, 1150);
 
       setTimeout(() => {
         bar.style.width = '100%';
         pct.textContent = '100%';
-        logs.innerHTML += '<br/>✓ [Étape 4/4] Audit LangGraph terminé avec succès.';
+        logs.innerHTML += '<br/>✓ [Étape 4/4] Cahier des Charges analysé avec succès.';
         setTimeout(() => {
           closeUploadModal();
           switchView('eph');
           runLiveRagSearch();
-          showToast('Document analysé et indexé dans le moteur RAG Hybride.');
+          showToast('Cahier des Charges analysé et prêt pour la consultation.');
         }, 550);
       }, 1750);
     }

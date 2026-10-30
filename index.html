@@ -1433,15 +1433,17 @@
       <!-- Bottom Quick Upload Box -->
       <div class="sidebar-upload-card">
         <div style="display: flex; align-items: center; justify-content: space-between;">
-          <span style="color: var(--color-paper); font-size: 12.5px; font-weight: 500;">Nouveau Document PDF</span>
-          <span class="mono" style="color: #38bdf8;">FR / AR</span>
+          <span style="color: var(--color-paper); font-size: 12.5px; font-weight: 500;">Documents du Marché</span>
+          <span class="badge badge-neutral mono" style="font-size: 10px;">6 Types</span>
         </div>
-        <p>Importez un Cahier des Charges ou un dossier scanné pour vérifier sa conformité réglementaire.</p>
-        <button class="btn-ghost" style="width: 100%; justify-content: center; border-color: #334155; color: var(--color-paper);" onclick="openUploadModal()">
+        <p style="margin: 6px 0 10px 0; font-size: 11.5px; color: #94a3b8; line-height: 1.4;">
+          Uploadez vos Cahiers des charges, Extrait de rôle, CNAS, BPU/DQE, Fiches ou PV.
+        </p>
+        <button class="btn-acid-lime mono" style="width: 100%; justify-content: center; font-size: 12px; padding: 6px 10px;" onclick="openUploadModal()">
           <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
-            <path d="M8 11V3m0 0L5 6m3-3l3 3M3 13h10" stroke="#38bdf8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M8 11V3m0 0L5 6m3-3l3 3M3 13h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
-          <span>Importer un PDF</span>
+          <span>📤 Uploader un document</span>
         </button>
       </div>
     </aside>
@@ -1485,11 +1487,11 @@
         </div>
 
         <div class="topbar-controls">
-          <button class="btn-ghost" onclick="openUploadModal()" title="Importer un nouveau document (Cahier des charges ou offre scannée)">
-            <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
-              <path d="M8 11V3m0 0L5 6m3-3l3 3M3 13h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <button class="btn-acid-lime mono" onclick="openUploadModal()" title="Importer un document : CDC, Pli Candidature, Offre Financière, Fiche Constructeur, PV...">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+              <path d="M8 11V3m0 0L5 6m3-3l3 3M3 13h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
-            <span>Importer un document</span>
+            <span>+ Importer un document</span>
           </button>
 
           <button class="btn-ghost" onclick="switchView('eph'); document.getElementById('rag-query-input').focus();" title="Interroger le Cahier des Charges via RAG Hybride">
@@ -1505,7 +1507,7 @@
           </button>
 
           <!-- Primary Action CTA Button -->
-          <button class="btn-acid-lime" id="primary-cta-btn" onclick="triggerPrimaryAction()">
+          <button class="btn-ghost" id="primary-cta-btn" onclick="triggerPrimaryAction()">
             <span id="primary-cta-label">Télécharger le rapport d'audit (PDF)</span>
           </button>
         </div>
@@ -1564,11 +1566,14 @@
           <div class="split-workbench">
             <!-- Left Pane: Requirements Checklist -->
             <div class="panel-card split-pane-col" id="col-requirements-list">
-              <div class="panel-header">
+              <div class="panel-header" style="justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
                 <div class="panel-title">
                   <h2 id="audit-panel-title">Contrôle de Conformité des 3 Plis (Décret 15-247)</h2>
                   <p id="audit-panel-subtitle">Vérification de complétude de la candidature, de l'offre technique et de l'offre financière.</p>
                 </div>
+                <button class="btn-acid-lime mono" onclick="openUploadForCurrentRequirement()" style="font-size: 12px; padding: 6px 12px;" title="Uploader ou remplacer une pièce pour la candidature ou l'offre">
+                  📤 Uploader une Pièce de Pli
+                </button>
               </div>
 
               <div class="filter-toolbar">
@@ -1616,6 +1621,9 @@
                 <p id="inspector-remediation-text"></p>
                 <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap;">
                   <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                    <button class="btn-acid-lime mono" id="inspector-upload-btn" onclick="openUploadForCurrentRequirement()" style="padding: 6px 12px; font-size: 12px;">
+                      📤 Uploader la Pièce Rectifiée
+                    </button>
                     <button class="btn-ghost" onclick="confirmFinding()" style="border-color: var(--color-pulse-green); color: var(--color-pulse-green); background: var(--color-pulse-green-bg);">
                       ✓ Confirmer ce constat
                     </button>
@@ -1658,11 +1666,14 @@
           </div>
 
           <div class="panel-card">
-            <div class="panel-header">
+            <div class="panel-header" style="justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
               <div class="panel-title">
                 <h2>Documents Légaux & Fiscaux de l'Entreprise</h2>
                 <p>Contrôle de validité des pièces administratives et fiscales requises pour la soumission.</p>
               </div>
+              <button class="btn-acid-lime mono" onclick="openUploadModalFor('CANDIDATURE')" style="font-size: 12px; padding: 6px 12px;" title="Uploader ou mettre à jour une pièce légale ou fiscale (Extrait, CNAS, CASNOS, RC...)">
+                📤 Uploader une Pièce Légale / Fiscale
+              </button>
             </div>
             <div class="table-wrap">
               <table class="precision-table">
@@ -1737,9 +1748,14 @@
                   <h2>Catalogue des Équipements Médicaux (Lot 04 — SARL FLUIDAL)</h2>
                   <p>Vérification de la conformité des 17 postes du Lot 04 (Bloc Opératoire & UMC).</p>
                 </div>
-                <button class="btn-acid-lime" onclick="translateAndStampAllFiches()" title="Générer toutes les fiches techniques conformes en Français avec cachet">
-                  Générer toutes les Fiches FR
-                </button>
+                <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                  <button class="btn-ghost mono" onclick="openUploadModalFor('EQUIPMENT')" style="font-size: 12px; padding: 6px 12px;" title="Uploader une fiche constructeur (PDF, image PNG/JPG, Word)">
+                    📤 Uploader Fiche / Catalogue
+                  </button>
+                  <button class="btn-acid-lime" onclick="translateAndStampAllFiches()" title="Générer toutes les fiches techniques conformes en Français avec cachet">
+                    Générer toutes les Fiches FR
+                  </button>
+                </div>
               </div>
 
               <div class="filter-toolbar">
@@ -1915,12 +1931,17 @@
                 <h2>Registre des Moyens Humains & Engagements Simultanés</h2>
                 <p>Contrôle de disponibilité des 20 ingénieurs déclarés sur d'autres marchés publics en cours.</p>
               </div>
-              <button class="btn-acid-lime" onclick="openClarificationModal()">
-                <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
-                  <path d="M2.5 3.5h11M2.5 8h11M2.5 12.5h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-                </svg>
-                <span>Demande d'Éclaircissement</span>
-              </button>
+              <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                <button class="btn-ghost mono" onclick="openUploadModalFor('PV')" style="font-size: 12px; padding: 6px 12px;" title="Uploader un PV de réception pour libérer les ingénieurs d'un projet précédent">
+                  📤 Uploader un PV de Réception
+                </button>
+                <button class="btn-acid-lime" onclick="openClarificationModal()">
+                  <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
+                    <path d="M2.5 3.5h11M2.5 8h11M2.5 12.5h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                  </svg>
+                  <span>Demande d'Éclaircissement</span>
+                </button>
+              </div>
             </div>
             <div class="table-wrap">
               <table class="precision-table">
@@ -1945,11 +1966,14 @@
              ==================================================================== -->
         <section class="view-section" id="view-eph">
           <div class="panel-card" style="margin-bottom: 18px;">
-            <div class="panel-header">
+            <div class="panel-header" style="justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
               <div class="panel-title">
                 <h2>Consultation & Recherche dans le Cahier des Charges</h2>
                 <p>Recherche instantanée dans l'ensemble des clauses, critères d'élimination et spécifications du marché.</p>
               </div>
+              <button class="btn-ghost mono" onclick="openUploadModalFor('CDC')" style="font-size: 12px; padding: 6px 12px;" title="Uploader ou remplacer le fichier Cahier des Charges">
+                📤 Uploader un autre CDC (PDF)
+              </button>
             </div>
             <div style="padding: 16px 20px; display: flex; gap: 10px; flex-wrap: wrap; background: #faf9f8;">
               <input type="text" class="search-input" id="rag-query-input" placeholder="Ex: Quelles sont les pièces éliminatoires du dossier de candidature ?" style="flex: 1; min-width: 280px;" onkeydown="if(event.key==='Enter') runLiveRagSearch()" />
@@ -2048,28 +2072,63 @@ Le Président de la Commission COPEO
        MODAL: UPLOAD & INGESTION PIPELINE
        ========================================================================== -->
   <div class="modal-backdrop" id="upload-modal">
-    <div class="modal-card">
+    <div class="modal-card" style="max-width: 680px;">
       <div class="panel-header">
         <div class="panel-title">
-          <h2>Importer & Analyser un Dossier de Marché Public</h2>
-          <p>Le document sera extrait, analysé par l'OCR multimodal Gemini et découpé en chunks RRF</p>
+          <h2>Importer & Analyser un Document de Marché Public</h2>
+          <p>Sélectionnez la catégorie de document à vérifier (Cahier des charges, candidatures, BPU/DQE, fiches constructeurs)</p>
         </div>
         <button class="btn-ghost" onclick="closeUploadModal()">✕ Fermer</button>
       </div>
       <div style="padding: 24px;">
-        <div style="border: 2px dashed var(--color-hairline); border-radius: var(--radius-wash); padding: 32px 20px; text-align: center; background: #faf9f8; cursor: pointer;" onclick="document.getElementById('file-picker-input').click()">
-          <input type="file" id="file-picker-input" style="display: none;" accept=".pdf,.jpg,.jpeg,.png" onchange="handleFileChosen(this)" />
+        <!-- Document Category Selector -->
+        <div style="margin-bottom: 16px;">
+          <label style="font-size: 12px; font-weight: 600; color: var(--color-ink); display: block; margin-bottom: 8px;">
+            1. Choisissez le type de document à uploader :
+          </label>
+          <div class="pill-group" style="display: flex; flex-wrap: wrap; gap: 6px;" id="upload-doc-type-pills">
+            <button type="button" class="pill-filter active" data-type="CDC" onclick="selectUploadDocType('CDC')">
+              📑 Cahier des Charges (CDC)
+            </button>
+            <button type="button" class="pill-filter" data-type="CANDIDATURE" onclick="selectUploadDocType('CANDIDATURE')">
+              📋 Dossier Candidature / Extrait de Rôle
+            </button>
+            <button type="button" class="pill-filter" data-type="TECHNIQUE" onclick="selectUploadDocType('TECHNIQUE')">
+              ⚙️ Offre Technique (CNAS, Matériel)
+            </button>
+            <button type="button" class="pill-filter" data-type="FINANCIERE" onclick="selectUploadDocType('FINANCIERE')">
+              💰 Offre Financière (BPU / DQE)
+            </button>
+            <button type="button" class="pill-filter" data-type="EQUIPMENT" onclick="selectUploadDocType('EQUIPMENT')">
+              🏥 Fiche Fournisseur (PDF/PNG/Word)
+            </button>
+            <button type="button" class="pill-filter" data-type="PV" onclick="selectUploadDocType('PV')">
+              📜 PV Réception Provisoire
+            </button>
+          </div>
+        </div>
+
+        <!-- Dynamic Category Banner -->
+        <div id="upload-type-desc-banner" style="background: #faf9f7; border: 1px solid var(--color-hairline); border-radius: 6px; padding: 10px 14px; margin-bottom: 16px; font-size: 12px; color: var(--color-ink); line-height: 1.5;">
+          <strong>📑 Cahier des Charges :</strong> Scans bilingues arabe/français et pièces du marché (redressement 180°, extraction des clauses éliminatoires et indexation des articles).
+        </div>
+
+        <label style="font-size: 12px; font-weight: 600; color: var(--color-ink); display: block; margin-bottom: 8px;">
+          2. Fichier source :
+        </label>
+        <div style="border: 2px dashed var(--color-hairline); border-radius: var(--radius-wash); padding: 26px 20px; text-align: center; background: #faf9f8; cursor: pointer;" onclick="document.getElementById('file-picker-input').click()">
+          <input type="file" id="file-picker-input" style="display: none;" accept=".pdf,.jpg,.jpeg,.png,.docx" onchange="handleFileChosen(this)" />
           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" style="margin-bottom: 8px;">
             <path d="M12 16V4m0 0L8 8m4-4l4 4M4 20h16" stroke="var(--color-ink)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
-          <div style="font-weight: 500; font-size: 14px; color: var(--color-ink);">Glissez-déposez votre fichier PDF ou cliquez pour sélectionner</div>
-          <div style="font-size: 12px; color: var(--color-ash); margin-top: 4px;">Prend en charge les scans bilingues arabe/français et pièces scellées</div>
-          <div class="mono" id="selected-file-label" style="margin-top: 10px; color: var(--color-ink); font-weight: 500;">CDC EPH MOHAMMADIA.pdf (18.8 MB) prêt</div>
+          <div style="font-weight: 500; font-size: 14px; color: var(--color-ink);" id="upload-dropzone-title">Glissez-déposez votre fichier ou cliquez pour sélectionner</div>
+          <div style="font-size: 12px; color: var(--color-ash); margin-top: 4px;" id="upload-dropzone-subtitle">Prend en charge les scans bilingues arabe/français et pièces scellées</div>
+          <div class="mono" id="selected-file-label" style="margin-top: 10px; color: var(--color-ink); font-weight: 500; background: #f1f0ee; display: inline-block; padding: 4px 10px; border-radius: 4px;">CDC EPH MOHAMMADIA.pdf (18.8 MB) prêt</div>
         </div>
 
         <div id="pipeline-progress-box" style="display: none; margin-top: 18px; padding: 16px; background: var(--color-bone); border-radius: var(--radius-buttons); border: 1px solid var(--color-hairline);">
           <div style="display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 6px;">
-            <span class="mono">Analyse du dossier en cours...</span>
+            <span class="mono" id="pipeline-status-text">Analyse du dossier en cours...</span>
             <span class="mono" id="pipeline-pct-label">0%</span>
           </div>
           <div style="width: 100%; height: 6px; background: #e0deda; border-radius: 3px; overflow: hidden;">
@@ -2080,7 +2139,7 @@ Le Président de la Commission COPEO
 
         <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px;">
           <button class="btn-ghost" onclick="closeUploadModal()">Annuler</button>
-          <button class="btn-acid-lime" onclick="startBrowserUploadPipeline()">Lancer l'Analyse Complète</button>
+          <button class="btn-acid-lime" id="btn-run-pipeline" onclick="startBrowserUploadPipeline()">Lancer l'Analyse du Cahier des Charges</button>
         </div>
       </div>
     </div>
@@ -2727,9 +2786,31 @@ Le Président de la Commission COPEO
         statusEl.style.fontWeight = 'normal';
       }
 
+      const uploadBtn = document.getElementById('inspector-upload-btn');
+      if (uploadBtn) {
+        if (item.envelope === 'FINANCIERE') {
+          uploadBtn.textContent = '📤 Uploader Offre Financière (BPU/DQE)';
+        } else if (item.envelope === 'TECHNIQUE') {
+          uploadBtn.textContent = '📤 Uploader Offre Technique';
+        } else {
+          uploadBtn.textContent = '📤 Uploader Pièce Candidature (Extrait/CNAS)';
+        }
+      }
+
       // If mobile, auto-switch to preview tab on selection
       if (window.innerWidth <= 1024) {
         setMobileWorkbenchTab('preview');
+      }
+    }
+
+    function openUploadForCurrentRequirement() {
+      const item = REQUIREMENTS_DATA.find(r => r.id === selectedReqId) || REQUIREMENTS_DATA[0];
+      if (item.envelope === 'FINANCIERE') {
+        openUploadModalFor('FINANCIERE');
+      } else if (item.envelope === 'TECHNIQUE') {
+        openUploadModalFor('TECHNIQUE');
+      } else {
+        openUploadModalFor('CANDIDATURE');
       }
     }
 
@@ -2805,11 +2886,11 @@ Le Président de la Commission COPEO
                 <span class="mono" style="font-size: 11px; color: var(--color-ash);">${doc.stamp}</span>
               </div>
             </td>
-            <td style="text-align: right;">
+            <td style="text-align: right; white-space: nowrap;">
               ${
                 isOk
-                  ? '<span class="mono" style="color: var(--color-pulse-green); font-weight: 500;">À jour ✓</span>'
-                  : `<button class="btn-acid-lime" style="padding: 4px 10px; font-size: 11.5px;" onclick="renewVaultDocument(${idx})">Renouveler</button>`
+                  ? `<button class="btn-ghost mono" style="padding: 4px 8px; font-size: 11px; background: var(--color-paper);" onclick="openUploadModalFor('CANDIDATURE')">📤 Remplacer</button>`
+                  : `<button class="btn-acid-lime mono" style="padding: 5px 12px; font-size: 11.5px;" onclick="openUploadModalFor('CANDIDATURE')">📤 Uploader la Pièce</button>`
               }
             </td>
           </tr>
@@ -3130,12 +3211,89 @@ Le Président de la Commission COPEO
       showToast("Demande d'éclaircissement officielle enregistrée au PV COPEO.");
     }
 
+    let currentUploadCategory = 'CDC';
+
+    const UPLOAD_DOC_CONFIG = {
+      CDC: {
+        title: "Cahier des Charges (CDC Complet)",
+        desc: "<strong>📑 Cahier des Charges :</strong> Scans bilingues arabe/français et pièces du marché (redressement 180°, extraction des clauses éliminatoires et indexation des articles).",
+        fileLabel: "CDC EPH MOHAMMADIA.pdf (18.8 MB) prêt",
+        accept: ".pdf,.jpg,.jpeg,.png",
+        btnLabel: "Lancer l'Analyse du Cahier des Charges"
+      },
+      CANDIDATURE: {
+        title: "Dossier de Candidature & Pièces Fiscales",
+        desc: "<strong>📋 Dossier de Candidature :</strong> Extrait de rôle (< 90 jours), déclaration de probité (Loi 23-12), déclaration à souscrire, extrait Kbis/CNRC et mise à jour CNAS.",
+        fileLabel: "Dossier_Candidature_Atlas.pdf (Extrait de rôle + Probité) prêt",
+        accept: ".pdf,.jpg,.jpeg,.png",
+        btnLabel: "Vérifier la Candidature & Actualiser le Coffre-Fort"
+      },
+      TECHNIQUE: {
+        title: "Offre Technique & Justificatifs",
+        desc: "<strong>⚙️ Offre Technique :</strong> Mémoire technique justificatif, conformité IP68, planning prévisionnel, diplômes et liste nominative des 20 ingénieurs CNAS.",
+        fileLabel: "Offre_Technique_Atlas.pdf (Mémoire + Pompes IP68) prêt",
+        accept: ".pdf,.docx,.jpg,.jpeg,.png",
+        btnLabel: "Auditer la Conformité de l'Offre Technique"
+      },
+      FINANCIERE: {
+        title: "Offre Financière (BPU & DQE)",
+        desc: "<strong>💰 Offre Financière :</strong> Bordereau des Prix Unitaires (BPU en lettres faisant foi) et Détail Quantitatif et Estimatif (DQE en chiffres) pour contrôle arithmétique.",
+        fileLabel: "Offre_Financiere_Atlas.pdf (BPU vs DQE) prêt",
+        accept: ".pdf,.docx,.jpg,.jpeg,.png",
+        btnLabel: "Lancer le Contrôle Arithmétique BPU / DQE"
+      },
+      EQUIPMENT: {
+        title: "Fiche Technique Fournisseur / Matériel (Lot 04)",
+        desc: "<strong>🏥 Fiche Fournisseur :</strong> Datasheets constructeurs en anglais (PDF, DOCX) ou scans/images PNG à traduire et cacheter au format officiel SARL FLUIDAL.",
+        fileLabel: "docs/lot4-12.6 vidoir.png (Scan Anglais) prêt",
+        accept: ".pdf,.docx,.png,.jpg,.jpeg",
+        btnLabel: "Traduire, Normaliser & Cacheter la Fiche"
+      },
+      PV: {
+        title: "Procès-Verbal de Réception Provisoire (CNAS)",
+        desc: "<strong>📜 Justificatif de Fin de Projet :</strong> PV de réception provisoire/définitive pour libérer les ingénieurs engagés sur un marché précédent.",
+        fileLabel: "PV_Reception_Provisoire_Wilaya16.pdf prêt",
+        accept: ".pdf,.jpg,.jpeg,.png",
+        btnLabel: "Enregistrer le PV & Libérer les 20 Ingénieurs"
+      }
+    };
+
+    function selectUploadDocType(type) {
+      currentUploadCategory = type;
+      const conf = UPLOAD_DOC_CONFIG[type] || UPLOAD_DOC_CONFIG.CDC;
+
+      document.querySelectorAll('#upload-doc-type-pills .pill-filter').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-type') === type);
+      });
+
+      const banner = document.getElementById('upload-type-desc-banner');
+      if (banner) banner.innerHTML = conf.desc;
+
+      const fileLabel = document.getElementById('selected-file-label');
+      if (fileLabel) fileLabel.textContent = conf.fileLabel;
+
+      const input = document.getElementById('file-picker-input');
+      if (input) input.setAttribute('accept', conf.accept);
+
+      const btn = document.getElementById('btn-run-pipeline');
+      if (btn) btn.textContent = conf.btnLabel;
+    }
+
     function openUploadModal() {
       document.getElementById('upload-modal').classList.add('open');
+      selectUploadDocType(currentUploadCategory || 'CDC');
     }
+
+    function openUploadModalFor(type) {
+      currentUploadCategory = type;
+      openUploadModal();
+      selectUploadDocType(type);
+    }
+
     function closeUploadModal() {
       document.getElementById('upload-modal').classList.remove('open');
     }
+
     function handleFileChosen(inputEl) {
       if (inputEl.files && inputEl.files[0]) {
         document.getElementById('selected-file-label').textContent =
@@ -3152,8 +3310,92 @@ Le Président de la Commission COPEO
       box.style.display = 'block';
       bar.style.width = '25%';
       pct.textContent = '25%';
-      logs.innerHTML = '✓ [Étape 1/4] Extraction des pages scannées (1248×1760 JPEG)...';
 
+      if (currentUploadCategory === 'CANDIDATURE') {
+        logs.innerHTML = '✓ [Étape 1/3] Lecture de l\'Extrait de Rôle et Déclarations Réglementaires...';
+        setTimeout(() => {
+          bar.style.width = '65%';
+          pct.textContent = '65%';
+          logs.innerHTML += '<br/>✓ [Étape 2/3] Contrôle des dates de validité (< 90 jours) et détection des cachets...';
+        }, 500);
+        setTimeout(() => {
+          bar.style.width = '100%';
+          pct.textContent = '100%';
+          logs.innerHTML += '<br/>✓ [Étape 3/3] Coffre-Fort et Pli de Candidature mis à jour.';
+          setTimeout(() => {
+            renewVaultDocument(0);
+            closeUploadModal();
+            switchView('vault');
+            showToast("Dossier de candidature validé : l'Extrait de Rôle est à jour (< 90 jours).");
+          }, 500);
+        }, 1200);
+        return;
+      }
+
+      if (currentUploadCategory === 'FINANCIERE') {
+        logs.innerHTML = '✓ [Étape 1/3] Extraction des montants unitaires du BPU (en lettres)...';
+        setTimeout(() => {
+          bar.style.width = '65%';
+          pct.textContent = '65%';
+          logs.innerHTML += '<br/>✓ [Étape 2/3] Recalcul automatique des lignes du DQE et détection d\'écarts...';
+        }, 500);
+        setTimeout(() => {
+          bar.style.width = '100%';
+          pct.textContent = '100%';
+          logs.innerHTML += '<br/>✓ [Étape 3/3] Contrôle arithmétique finalisé.';
+          setTimeout(() => {
+            closeUploadModal();
+            switchView('audit');
+            filterRequirements('FINANCIERE');
+            showToast("Offre financière vérifiée : écart BPU/DQE analysé.");
+          }, 500);
+        }, 1200);
+        return;
+      }
+
+      if (currentUploadCategory === 'EQUIPMENT') {
+        logs.innerHTML = '✓ [Étape 1/3] Ingestion du catalogue / fiche technique constructeur...';
+        setTimeout(() => {
+          bar.style.width = '65%';
+          pct.textContent = '65%';
+          logs.innerHTML += '<br/>✓ [Étape 2/3] Traduction en Français médical et génération du cachet vectoriel...';
+        }, 500);
+        setTimeout(() => {
+          bar.style.width = '100%';
+          pct.textContent = '100%';
+          logs.innerHTML += '<br/>✓ [Étape 3/3] Fiche technique normalisée enregistrée dans le Lot 04.';
+          setTimeout(() => {
+            closeUploadModal();
+            switchView('fiches');
+            showToast("Fiche technique constructeur traduite et ajoutée au catalogue.");
+          }, 500);
+        }, 1200);
+        return;
+      }
+
+      if (currentUploadCategory === 'PV') {
+        logs.innerHTML = '✓ [Étape 1/3] Ingestion du PV de Réception Provisoire...';
+        setTimeout(() => {
+          bar.style.width = '65%';
+          pct.textContent = '65%';
+          logs.innerHTML += '<br/>✓ [Étape 2/3] Validation de la libération des 20 ingénieurs sur le marché précédent...';
+        }, 500);
+        setTimeout(() => {
+          bar.style.width = '100%';
+          pct.textContent = '100%';
+          logs.innerHTML += '<br/>✓ [Étape 3/3] Conflit de chevauchement CNAS résolu.';
+          setTimeout(() => {
+            reconcileProject('AOON/11/2025/WILAYA-16');
+            closeUploadModal();
+            switchView('overlap');
+            showToast("PV de réception provisoire validé : 20 ingénieurs libérés.");
+          }, 500);
+        }, 1200);
+        return;
+      }
+
+      // Default: CDC
+      logs.innerHTML = '✓ [Étape 1/4] Extraction des pages scannées du Cahier des Charges...';
       try {
         fetch(`${API_BASE}/api/v1/tenders/upload-and-analyze`, { method: 'POST' }).catch(() => {});
       } catch (_) {}
@@ -3161,7 +3403,7 @@ Le Président de la Commission COPEO
       setTimeout(() => {
         bar.style.width = '55%';
         pct.textContent = '55%';
-        logs.innerHTML += '<br/>✓ [Étape 2/4] Lecture et extraction des pièces du dossier (Français / Arabe)...';
+        logs.innerHTML += '<br/>✓ [Étape 2/4] Lecture et extraction des clauses (Français / Arabe)...';
       }, 550);
 
       setTimeout(() => {
@@ -3178,7 +3420,7 @@ Le Président de la Commission COPEO
           closeUploadModal();
           switchView('eph');
           runLiveRagSearch();
-          showToast('Document analysé et prêt pour la consultation.');
+          showToast('Cahier des Charges analysé et prêt pour la consultation.');
         }, 550);
       }, 1750);
     }
