@@ -3,16 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Plateforme IA de conformité réglementaire, RAG hybride, et automatisation des fiches techniques pour les marchés publics algériens (EPH Mohammadia, SARL FLUIDAL)." />
+  <meta name="description" content="Plateforme de conformité réglementaire, analyse documentaire et automatisation des fiches techniques pour les marchés publics algériens (EPH Mohammadia, SARL FLUIDAL)." />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%231a1919%22/><text y=%2268%22 x=%2250%22 text-anchor=%22middle%22 font-size=%2260%22 font-family=%22sans-serif%22 font-weight=%22bold%22 fill=%22%23e4f222%22>M</text></svg>" />
-  <title>Mithaq Tender AI — Conformité des Appels d'Offres & Vérification CNAS (Algérie)</title>
+  <title>Mithaq Tender — Conformité des Appels d'Offres & Vérification CNAS (Algérie)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     /* Editorial Design Theme */
     :root {
-      /* Colors */
+      /* Colors (Original Signature Neo-Brutalist / Editorial Palette) */
+      --color-primary: #e4f222;
+      --color-primary-hover: #d2e016;
       --color-highlighter-yellow: #e4f222;
       --color-ink: #0c0a08;
       --color-obsidian: #1a1919;
@@ -60,17 +62,17 @@
       /* Strict Radius Vocabulary (DESIGN (3).md) */
       --radius-tags: 6px;
       --radius-buttons: 6px;
-      --radius-inputs: 10px;
-      --radius-wash: 12px;
-      --radius-cards: 16px;
+      --radius-inputs: 8px;
+      --radius-wash: 10px;
+      --radius-cards: 12px;
       --radius-badges: 6px;
       --radius-pills: 9999px;
 
       /* Elevation: Hairlines over shadows (Shadows are shadow-free) */
       --shadow-none: none;
       --shadow-subtle: rgba(255, 255, 255, 0.6) 0px 0px 2px 0px inset;
-      --shadow-card: 0 1px 3px 0 rgba(12, 10, 8, 0.04);
-      --shadow-modal: 0 20px 45px -10px rgba(12, 10, 8, 0.18), 0 0 0 1px var(--color-hairline);
+      --shadow-card: 0 1px 3px 0 rgba(15, 23, 42, 0.04), 0 1px 2px -1px rgba(15, 23, 42, 0.04);
+      --shadow-modal: 0 20px 45px -10px rgba(15, 23, 42, 0.18), 0 0 0 1px var(--color-hairline);
     }
 
     * {
@@ -159,10 +161,10 @@
       }
     }
 
-    /* Left Inverted Sidebar (Obsidian #1a1919 Masthead) */
+    /* Left Inverted Sidebar (Obsidian Masthead) */
     .sidebar {
       background: var(--color-obsidian);
-      border-inline-end: 1px solid #2a2929;
+      border-inline-end: 1px solid #1e293b;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -220,8 +222,8 @@
       width: 24px;
       height: 24px;
       border-radius: var(--radius-buttons);
-      background: #252424;
-      border: 1px solid #383737;
+      background: #1e293b;
+      border: 1px solid #334155;
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -232,9 +234,9 @@
       align-items: center;
       gap: 6px;
       font-size: 11px;
-      color: #b5b3af;
+      color: #94a3b8;
       background: rgba(255, 255, 255, 0.05);
-      border: 1px solid #383737;
+      border: 1px solid #334155;
       padding: 4px 10px;
       border-radius: var(--radius-pills);
     }
@@ -243,13 +245,13 @@
       width: 6px;
       height: 6px;
       border-radius: 50%;
-      background: var(--color-highlighter-yellow);
+      background: #10b981;
     }
 
     /* Role Switcher (Obsidian Segmented Control) */
     .role-switcher-box {
-      background: #111010;
-      border: 1px solid #2a2929;
+      background: #090d16;
+      border: 1px solid #1e293b;
       border-radius: var(--radius-buttons);
       padding: 3px;
       display: grid;
@@ -260,7 +262,7 @@
     .role-btn {
       background: transparent;
       border: none;
-      color: #b5b3af;
+      color: #94a3b8;
       padding: 7px 8px;
       border-radius: 4px;
       font-family: inherit;
@@ -276,16 +278,16 @@
     }
 
     .role-btn.active {
-      background: #242323;
+      background: #1e293b;
       color: var(--color-paper);
       font-weight: 500;
-      box-shadow: 0 0 0 1px #3a3939 inset;
+      box-shadow: 0 0 0 1px #334155 inset;
     }
 
     .nav-section-label {
       font-size: 11px;
       font-weight: 500;
-      color: #a8a5a0;
+      color: #64748b;
       text-transform: uppercase;
       letter-spacing: 0.05em;
       padding: 0 8px;
@@ -304,7 +306,7 @@
       border: 1px solid transparent;
       border-radius: var(--radius-buttons);
       padding: 9px 10px;
-      color: #c7c5c2;
+      color: #cbd5e1;
       font-family: inherit;
       font-size: 13px;
       cursor: pointer;
@@ -317,14 +319,14 @@
     }
 
     .nav-item:hover {
-      background: #252424;
+      background: #1e293b;
       color: var(--color-paper);
     }
 
     .nav-item.active {
-      background: #242323;
+      background: #1e293b;
       color: var(--color-paper);
-      border-color: #383737;
+      border-color: #334155;
       font-weight: 500;
     }
 
@@ -338,18 +340,18 @@
     .nav-step-num {
       font-family: var(--font-mono);
       font-size: 11px;
-      color: #a8a5a0;
+      color: #64748b;
       width: 18px;
     }
 
     .nav-item.active .nav-step-num {
-      color: var(--color-highlighter-yellow);
-      font-weight: 500;
+      color: #38bdf8;
+      font-weight: 600;
     }
 
     .sidebar-upload-card {
-      background: #111010;
-      border: 1px solid #2a2929;
+      background: #090d16;
+      border: 1px solid #1e293b;
       border-radius: var(--radius-wash);
       padding: 14px;
       display: flex;
@@ -359,7 +361,7 @@
 
     .sidebar-upload-card p {
       font-size: 12px;
-      color: #b5b3af;
+      color: #94a3b8;
       line-height: 1.45;
     }
 
@@ -388,16 +390,16 @@
       background: var(--color-bone);
     }
 
-    /* Top Live Counter Ticker (Full-width Obsidian band from DESIGN (3).md) */
+    /* Top Live Counter Ticker (Full-width Masthead band) */
     .live-ticker-strip {
-      background: var(--color-obsidian);
-      color: #a3a19e;
-      min-height: 40px;
-      padding: 10px 24px;
+      background: #090d16;
+      color: #94a3b8;
+      min-height: 38px;
+      padding: 8px 24px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-bottom: 1px solid #2a2929;
+      border-bottom: 1px solid #1e293b;
       font-size: 11px;
       flex-shrink: 0;
       overflow-x: auto;
@@ -414,36 +416,36 @@
       width: 6px;
       height: 6px;
       border-radius: 50%;
-      background: var(--color-highlighter-yellow);
+      background: #10b981;
     }
 
     .ticker-tag {
       font-family: var(--font-mono);
       font-size: 11px;
       letter-spacing: 0.04em;
-      color: #b5b3af;
+      color: #94a3b8;
       background: rgba(255, 255, 255, 0.06);
-      padding: 2px 6px;
+      padding: 2px 7px;
       border-radius: 3px;
     }
 
     .ticker-highlight {
-      color: var(--color-highlighter-yellow);
+      color: #f59e0b;
       font-weight: 500;
     }
 
     .ticker-alert {
-      color: #fca5a5;
+      color: #f87171;
       font-weight: 500;
     }
 
     .ticker-sep {
-      color: #4a4846;
+      color: #334155;
     }
 
     /* Sticky Navigation Header (Paper #ffffff, 60px height) */
     .stage-topbar {
-      height: 60px;
+      height: 58px;
       padding: 0 24px;
       border-bottom: 1px solid var(--color-hairline);
       background: var(--color-paper);
@@ -452,7 +454,7 @@
       justify-content: space-between;
       gap: 16px;
       flex-shrink: 0;
-      box-shadow: var(--shadow-subtle);
+      box-shadow: 0 1px 2px rgba(15, 23, 42, 0.03);
     }
 
     .mobile-menu-btn {
@@ -479,16 +481,15 @@
       align-items: center;
       gap: 12px;
       min-width: 0;
+      flex: 1;
     }
 
     .breadcrumb-title {
       color: var(--color-ink);
-      font-size: 20px;
-      font-weight: 500;
-      letter-spacing: -0.02em;
+      font-size: 17.5px;
+      font-weight: 600;
+      letter-spacing: -0.015em;
       white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
     }
 
     .topbar-controls {
@@ -517,7 +518,7 @@
     }
 
     .btn-ghost:hover {
-      background: var(--color-bone);
+      background: #f1f5f9;
       border-color: var(--color-smoke);
     }
 
@@ -543,28 +544,29 @@
       color: var(--color-paper);
     }
 
-    /* Single Highlighter Yellow (#e4f222) CTA Button */
+    /* Signature Electric Highlighter Yellow (#e4f222) CTA Button */
     .btn-acid-lime {
       background: var(--color-highlighter-yellow);
       color: var(--color-ink);
-      border: none;
+      border: 1px solid rgba(12, 10, 8, 0.15);
       border-radius: var(--radius-buttons);
-      padding: 8px 18px;
+      padding: 7px 16px;
       font-family: inherit;
-      font-size: 13px;
-      font-weight: 500;
+      font-size: 12.5px;
+      font-weight: 600;
       letter-spacing: -0.01em;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      box-shadow: none;
-      transition: filter 0.12s ease, transform 0.1s ease;
+      box-shadow: 0 1px 2px rgba(12, 10, 8, 0.08);
+      transition: all 0.12s ease;
       white-space: nowrap;
     }
 
     .btn-acid-lime:hover {
       filter: brightness(0.96);
+      box-shadow: 0 2px 5px rgba(12, 10, 8, 0.14);
     }
 
     .btn-acid-lime:active {
@@ -675,7 +677,19 @@
 
     .kpi-card.active-filter {
       border-color: var(--color-ink);
-      box-shadow: 0 0 0 1px var(--color-ink);
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
+      position: relative;
+    }
+
+    .kpi-card.active-filter::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 16px;
+      right: 16px;
+      height: 2px;
+      background: var(--color-ink);
+      border-radius: 2px 2px 0 0;
     }
 
     .kpi-label {
@@ -741,9 +755,14 @@
 
     .split-workbench {
       display: grid;
-      grid-template-columns: 52% 48%;
+      grid-template-columns: minmax(0, 1.08fr) minmax(0, 1fr);
       gap: 18px;
       align-items: start;
+      width: 100%;
+    }
+
+    .split-pane-col {
+      min-width: 0;
     }
 
     @media (max-width: 1024px) {
@@ -838,7 +857,12 @@
       font-size: 12.5px;
       outline: none;
       transition: border-color 0.14s ease;
-      min-width: 220px;
+      min-width: 0;
+      box-sizing: border-box;
+    }
+
+    #req-search, #ft-search-input {
+      min-width: 200px;
     }
 
     .search-input:focus {
@@ -1023,63 +1047,176 @@
     .table-wrap {
       width: 100%;
       overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
     }
 
     .precision-table {
       width: 100%;
       border-collapse: collapse;
       text-align: start;
-      font-size: 13px;
+      font-size: 12.5px;
+      line-height: 1.4;
     }
 
     .precision-table th {
-      background: #faf9f8;
+      background: #f8fafc;
       color: var(--color-ash);
-      font-weight: 500;
+      font-weight: 600;
       font-size: 11px;
       text-transform: uppercase;
       letter-spacing: 0.04em;
-      padding: 12px 18px;
+      padding: 9px 12px;
       border-bottom: 1px solid var(--color-hairline);
       white-space: nowrap;
     }
 
     .precision-table td {
-      padding: 13px 18px;
+      padding: 9px 12px;
       border-bottom: 1px solid var(--color-hairline);
       color: var(--color-ink);
       vertical-align: middle;
     }
 
     .precision-table tr:hover td {
-      background: #faf9f8;
+      background: #f8fafc;
     }
 
     .score-input {
       background: var(--color-paper);
       border: 1px solid var(--color-hairline);
       color: var(--color-ink);
-      border-radius: var(--radius-inputs);
-      padding: 4px 8px;
-      width: 62px;
+      border-radius: var(--radius-tags);
+      padding: 3px 6px;
+      width: 44px;
       font-family: var(--font-mono);
-      font-size: 12.5px;
+      font-size: 12px;
       text-align: center;
       outline: none;
+      transition: border-color 0.12s ease;
     }
 
     .score-input:focus {
       border-color: var(--color-ink);
+      box-shadow: 0 0 0 1px var(--color-ink);
+    }
+
+    /* Fixed Layout & Exact Proportional Sizing for COPEO Multi-Bidder Table */
+    #view-committee .precision-table {
+      table-layout: fixed;
+      width: 100%;
+    }
+    #view-committee .precision-table th,
+    #view-committee .precision-table td {
+      white-space: normal;
+      word-wrap: break-word;
+      padding: 9px 8px;
+    }
+    #view-committee .precision-table th:nth-child(1),
+    #view-committee .precision-table td:nth-child(1) {
+      width: 28%;
+    }
+    #view-committee .precision-table th:nth-child(2),
+    #view-committee .precision-table td:nth-child(2) {
+      width: 8%;
+      text-align: center;
+    }
+    #view-committee .precision-table th:nth-child(n+3),
+    #view-committee .precision-table td:nth-child(n+3) {
+      width: 16%;
+    }
+    #view-committee .precision-table .badge {
+      white-space: normal;
+      line-height: 1.25;
+      display: inline-block;
+      text-align: center;
+      padding: 3px 6px;
+      font-size: 10.5px;
+    }
+
+    /* Fixed Layout for Coffre-Fort Document Vault Table */
+    #view-vault .precision-table {
+      table-layout: fixed;
+      width: 100%;
+    }
+    #view-vault .precision-table th,
+    #view-vault .precision-table td {
+      white-space: normal;
+      word-wrap: break-word;
+      padding: 10px 10px;
+    }
+    #view-vault .precision-table th:nth-child(1),
+    #view-vault .precision-table td:nth-child(1) { width: 34%; }
+    #view-vault .precision-table th:nth-child(2),
+    #view-vault .precision-table td:nth-child(2) { width: 14%; }
+    #view-vault .precision-table th:nth-child(3),
+    #view-vault .precision-table td:nth-child(3) { width: 18%; }
+    #view-vault .precision-table th:nth-child(4),
+    #view-vault .precision-table td:nth-child(4) { width: 18%; }
+    #view-vault .precision-table th:nth-child(5),
+    #view-vault .precision-table td:nth-child(5) { width: 16%; text-align: right; }
+
+    /* Fixed Layout for Overlap & Resource Commitment Table */
+    #view-overlap .precision-table {
+      table-layout: fixed;
+      width: 100%;
+    }
+    #view-overlap .precision-table th,
+    #view-overlap .precision-table td {
+      white-space: normal;
+      word-wrap: break-word;
+      padding: 9px 8px;
+    }
+    #view-overlap .precision-table th:nth-child(1),
+    #view-overlap .precision-table td:nth-child(1) { width: 25%; }
+    #view-overlap .precision-table th:nth-child(2),
+    #view-overlap .precision-table td:nth-child(2) { width: 14%; }
+    #view-overlap .precision-table th:nth-child(3),
+    #view-overlap .precision-table td:nth-child(3) { width: 10%; }
+    #view-overlap .precision-table th:nth-child(4),
+    #view-overlap .precision-table td:nth-child(4) { width: 24%; }
+    #view-overlap .precision-table th:nth-child(5),
+    #view-overlap .precision-table td:nth-child(5) { width: 13%; }
+    #view-overlap .precision-table th:nth-child(6),
+    #view-overlap .precision-table td:nth-child(6) { width: 14%; text-align: right; }
+
+    /* Fixed Layout for Medical Equipment Specs Comparison Table */
+    #ft-inspector-body .precision-table {
+      table-layout: fixed;
+      width: 100%;
+    }
+    #ft-inspector-body .precision-table th,
+    #ft-inspector-body .precision-table td {
+      white-space: normal;
+      word-wrap: break-word;
+      padding: 8px 8px;
+      font-size: 11.5px;
+    }
+    #ft-inspector-body .precision-table th:nth-child(1),
+    #ft-inspector-body .precision-table td:nth-child(1) { width: 24%; }
+    #ft-inspector-body .precision-table th:nth-child(2),
+    #ft-inspector-body .precision-table td:nth-child(2) { width: 33%; }
+    #ft-inspector-body .precision-table th:nth-child(3),
+    #ft-inspector-body .precision-table td:nth-child(3) { width: 27%; }
+    #ft-inspector-body .precision-table th:nth-child(4),
+    #ft-inspector-body .precision-table td:nth-child(4) { width: 16%; text-align: center; }
+    #ft-inspector-body .precision-table .badge {
+      white-space: normal;
+      line-height: 1.2;
+      display: inline-block;
+      text-align: center;
+      padding: 2px 6px;
+      font-size: 10px;
     }
 
     /* Gantt Commitment Tracks */
     .gantt-track {
-      width: 160px;
+      width: 110px;
       height: 8px;
-      background: #e8e6e3;
+      background: #e2e8f0;
       border-radius: 4px;
       position: relative;
       overflow: hidden;
+      flex-shrink: 0;
     }
 
     .gantt-fill {
@@ -1179,17 +1316,17 @@
                 <path d="M2.5 3.5h11M2.5 8h7.5M2.5 12.5h9.5" stroke="#e4f222" stroke-width="1.8" stroke-linecap="round"/>
               </svg>
             </span>
-            <span>Mithaq Tender AI</span>
+            <span>Mithaq Tender</span>
           </div>
-          <span class="api-status-dot" id="backend-health-pill" title="Statut du moteur RAG & LangGraph">
+          <span class="api-status-dot" id="backend-health-pill" title="Système opérationnel">
             <span class="status-led"></span>
-            <span class="mono" id="backend-health-text">RAG Actif</span>
+            <span class="mono" id="backend-health-text">En ligne</span>
           </span>
         </div>
 
         <!-- Role Switcher: Company vs Evaluation Committee -->
         <div>
-          <div class="nav-section-label" id="lbl-role-mode">Mode Opérationnel</div>
+          <div class="nav-section-label" id="lbl-role-mode">Espace de Travail</div>
           <div class="role-switcher-box">
             <button class="role-btn active" id="role-btn-company" onclick="setRoleMode('COMPANY')">
               Soumissionnaire
@@ -1202,47 +1339,47 @@
 
         <!-- Guided Steps for Bidding Company -->
         <div id="nav-group-company">
-          <div class="nav-section-label">Parcours Entreprise (Soumission)</div>
+          <div class="nav-section-label">Dossier de Soumission</div>
           <div class="nav-list">
             <button class="nav-item active" id="nav-audit" onclick="switchView('audit')">
               <span class="nav-item-left">
                 <span class="nav-step-num">01</span>
-                <span id="nav-text-audit">Audit Pré-Soumission</span>
+                <span id="nav-text-audit">Audit de Conformité</span>
               </span>
               <span class="badge badge-blocker mono" id="nav-badge-audit">4 alertes</span>
             </button>
             <button class="nav-item" id="nav-vault" onclick="switchView('vault')">
               <span class="nav-item-left">
                 <span class="nav-step-num">02</span>
-                <span id="nav-text-vault">Coffre-Fort & CNAS</span>
+                <span id="nav-text-vault">Pièces Légales & CNAS</span>
               </span>
               <span class="badge badge-warning mono" id="nav-badge-vault">1 expiré</span>
             </button>
             <button class="nav-item" id="nav-fiches" onclick="switchView('fiches')">
               <span class="nav-item-left">
                 <span class="nav-step-num">02B</span>
-                <span id="nav-text-fiches">Fiches Techniques (Lot 04)</span>
+                <span id="nav-text-fiches">Fiches Médicales (Lot 04)</span>
               </span>
-              <span class="badge badge-verify mono" id="nav-badge-fiches">17 éq. · 33 fich.</span>
+              <span class="badge badge-verify mono" id="nav-badge-fiches">17 éq.</span>
             </button>
           </div>
         </div>
 
         <!-- Guided Steps for Evaluation Committee (COPEO) -->
         <div id="nav-group-committee">
-          <div class="nav-section-label">Parcours Commission (COPEO)</div>
+          <div class="nav-section-label">Commission des Marchés (COPEO)</div>
           <div class="nav-list">
             <button class="nav-item" id="nav-committee" onclick="switchView('committee')">
               <span class="nav-item-left">
                 <span class="nav-step-num">03</span>
-                <span id="nav-text-committee">Grille Comparative</span>
+                <span id="nav-text-committee">Évaluation des Offres</span>
               </span>
               <span class="badge badge-neutral mono">4 offres</span>
             </button>
             <button class="nav-item" id="nav-overlap" onclick="switchView('overlap')">
               <span class="nav-item-left">
                 <span class="nav-step-num">04</span>
-                <span id="nav-text-overlap">Chevauchement Moyens</span>
+                <span id="nav-text-overlap">Disponibilité du Personnel</span>
               </span>
               <span class="badge badge-blocker mono" id="nav-badge-overlap">600%</span>
             </button>
@@ -1251,12 +1388,12 @@
 
         <!-- Shared Cahier des Charges & Hybrid RAG Inspector -->
         <div>
-          <div class="nav-section-label">Document Source & Recherche IA</div>
+          <div class="nav-section-label">Cahier des Charges</div>
           <div class="nav-list">
             <button class="nav-item" id="nav-eph" onclick="switchView('eph')">
               <span class="nav-item-left">
                 <span class="nav-step-num">05</span>
-                <span id="nav-text-eph">CDC EPH Mohammadia & RAG</span>
+                <span id="nav-text-eph">Consultation du CDC</span>
               </span>
               <span class="badge badge-verified mono">28 p.</span>
             </button>
@@ -1268,12 +1405,12 @@
       <div class="sidebar-upload-card">
         <div style="display: flex; align-items: center; justify-content: space-between;">
           <span style="color: var(--color-paper); font-size: 12.5px; font-weight: 500;">Nouveau Document PDF</span>
-          <span class="mono" style="color: var(--color-highlighter-yellow);">FR / AR</span>
+          <span class="mono" style="color: #38bdf8;">FR / AR</span>
         </div>
-        <p>Importez un Cahier des Charges ou un pli scanné pour lancer l'OCR Gemini 2.5 et l'audit LangGraph.</p>
-        <button class="btn-ghost" style="width: 100%; justify-content: center; border-color: #383737; color: var(--color-paper);" onclick="openUploadModal()">
+        <p>Importez un Cahier des Charges ou un dossier scanné pour vérifier sa conformité réglementaire.</p>
+        <button class="btn-ghost" style="width: 100%; justify-content: center; border-color: #334155; color: var(--color-paper);" onclick="openUploadModal()">
           <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
-            <path d="M8 11V3m0 0L5 6m3-3l3 3M3 13h10" stroke="#e4f222" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M8 11V3m0 0L5 6m3-3l3 3M3 13h10" stroke="#38bdf8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
           <span>Importer un PDF</span>
         </button>
@@ -1285,24 +1422,23 @@
          ======================================================================== -->
     <div class="main-stage">
 
-      <!-- Live Counter Ticker (Full-width Obsidian band from DESIGN (3).md) -->
+      <!-- Live Counter Ticker (Full-width Masthead band) -->
       <div class="live-ticker-strip">
         <div class="ticker-left">
           <span class="ticker-pulse"></span>
-          <span class="ticker-tag">REGISTRE MARCHE</span>
+          <span class="ticker-tag">APPEL D'OFFRES</span>
           <span class="mono" style="color: #ffffff;">AOON/04/2026 · EPH MOHAMMADIA</span>
         </div>
+        <div class="ticker-sep" style="margin: 0 4px; color: #334155;">•</div>
         <div class="ticker-center">
-          <span class="ticker-item mono"><strong class="ticker-highlight">120 / 20 ING. CNAS</strong> CHARGE INTER-MARCHES (600%)</span>
+          <span class="ticker-item mono"><strong class="ticker-alert">2 ANOMALIES</strong> À CORRIGER AVANT DÉPÔT</span>
           <span class="ticker-sep">•</span>
-          <span class="ticker-item mono"><strong class="ticker-alert">2 BLOQUANTS</strong> PRE-SOUMISSION</span>
+          <span class="ticker-item mono"><strong class="ticker-highlight">20 ING. DÉCLARÉS</strong> CAPACITÉ CNAS</span>
           <span class="ticker-sep">•</span>
-          <span class="ticker-item mono"><strong>28 PAGES SCAN</strong> NORMALISEES 180°</span>
-          <span class="ticker-sep">•</span>
-          <span class="ticker-item mono"><strong>43 CHUNKS</strong> HYBRID RRF</span>
+          <span class="ticker-item mono"><strong>28 PAGES</strong> DU DOSSIER</span>
         </div>
         <div class="ticker-right">
-          <span class="ticker-tag" style="color: #9c9a96;">LOI N° 23-12 & DECRET 15-247</span>
+          <span class="ticker-tag" style="color: #94a3b8;">DÉCRET PRÉSIDENTIEL N° 15-247</span>
         </div>
       </div>
 
@@ -1315,7 +1451,7 @@
             </svg>
           </button>
           <span class="badge badge-envelope mono" id="active-role-pill">SOUMISSIONNAIRE</span>
-          <h1 class="breadcrumb-title" id="active-view-heading">01 · Contrôle de Conformité Pré-Soumission</h1>
+          <h1 class="breadcrumb-title" id="active-view-heading">01 · Audit de Conformité du Dossier</h1>
           <span class="badge badge-neutral mono" style="display: none; @media(min-width: 900px){display: inline-flex;}">AOON/04/2026 · EPH Mohammadia</span>
         </div>
 
@@ -1332,7 +1468,7 @@
             <span class="mono" id="lang-indicator">FR · LTR</span>
           </button>
 
-          <!-- Strictly ONE Highlighter Yellow (#e4f222) Primary CTA per View -->
+          <!-- Primary Action CTA Button -->
           <button class="btn-acid-lime" id="primary-cta-btn" onclick="triggerPrimaryAction()">
             <span id="primary-cta-label">Exporter le rapport d'audit</span>
           </button>
@@ -1386,7 +1522,7 @@
           <!-- Mobile Segmented Tabs for Split-Workbench -->
           <div class="mobile-workbench-tabs">
             <button class="mobile-tab-btn active" id="tab-btn-list" onclick="setMobileWorkbenchTab('list')">1. Liste des Exigences</button>
-            <button class="mobile-tab-btn" id="tab-btn-preview" onclick="setMobileWorkbenchTab('preview')">2. Preuve PDF & BBox</button>
+            <button class="mobile-tab-btn" id="tab-btn-preview" onclick="setMobileWorkbenchTab('preview')">2. Document & Extrait</button>
           </div>
 
           <div class="split-workbench">
@@ -1394,8 +1530,8 @@
             <div class="panel-card split-pane-col" id="col-requirements-list">
               <div class="panel-header">
                 <div class="panel-title">
-                  <h2 id="audit-panel-title">Liste de Contrôle des 3 Plis Réglementaires (Loi n° 23-12)</h2>
-                  <p id="audit-panel-subtitle">Sélectionnez une exigence pour inspecter la preuve exacte et l'encadré PDF à droite</p>
+                  <h2 id="audit-panel-title">Contrôle de Conformité des 3 Plis (Décret 15-247)</h2>
+                  <p id="audit-panel-subtitle">Vérification de complétude de la candidature, de l'offre technique et de l'offre financière.</p>
                 </div>
               </div>
 
@@ -1418,11 +1554,11 @@
                 <div style="display: flex; align-items: center; gap: 8px;">
                   <span class="badge badge-neutral mono" id="pdf-doc-filename">Dossier_Candidature_Atlas.pdf</span>
                   <span class="mono" style="color: var(--color-ink); font-weight: 500;" id="pdf-page-indicator">Page 14 / 96</span>
-                  <span class="mono" style="color: var(--color-ash);" id="pdf-bbox-coords">BBox [0.07, 0.18, 0.91, 0.42]</span>
+                  <span class="badge badge-verify mono" id="pdf-bbox-coords">Passage ciblé</span>
                 </div>
                 <div class="pill-group">
-                  <button class="pill-filter active" id="mode-btn-excerpt" onclick="setInspectorMode('EXCERPT')">Extrait & Boîte IA</button>
-                  <button class="pill-filter" id="mode-btn-scan" onclick="setInspectorMode('SCAN')">Scan Original CDC</button>
+                  <button class="pill-filter active" id="mode-btn-excerpt" onclick="setInspectorMode('EXCERPT')">Extrait Vérifié</button>
+                  <button class="pill-filter" id="mode-btn-scan" onclick="setInspectorMode('SCAN')">Page Complète</button>
                 </div>
               </div>
 
@@ -1439,7 +1575,7 @@
                     <circle cx="8" cy="8" r="6.5" stroke="var(--color-ink)" stroke-width="1.5"/>
                     <path d="M8 5v3.5M8 11h.01" stroke="var(--color-ink)" stroke-width="1.5" stroke-linecap="round"/>
                   </svg>
-                  <span id="inspector-action-heading">Diagnostic IA & Action Corrective Recommandée</span>
+                  <span id="inspector-action-heading">Constat & Action Corrective Recommandée</span>
                 </h3>
                 <p id="inspector-remediation-text"></p>
                 <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap;">
@@ -1448,10 +1584,10 @@
                       ✓ Confirmer ce constat
                     </button>
                     <button class="btn-outline" onclick="overrideFinding()">
-                      Forcer la validation humaine (Avec motif)
+                      Valider par dérogation
                     </button>
                   </div>
-                  <span class="mono" style="color: var(--color-ash);" id="inspector-audit-status">En attente de revue humaine</span>
+                  <span class="mono" style="color: var(--color-ash);" id="inspector-audit-status">Action requise avant le dépôt</span>
                 </div>
               </div>
             </div>
@@ -1488,21 +1624,19 @@
           <div class="panel-card">
             <div class="panel-header">
               <div class="panel-title">
-                <h2>Coffre-Fort Administratif & Fiscal — Vérification Automatique de Validité</h2>
-                <p>Simulez le remplacement d'une pièce expirée pour observer la mise à jour instantanée de l'audit</p>
+                <h2>Documents Légaux & Fiscaux de l'Entreprise</h2>
+                <p>Contrôle de validité des pièces administratives et fiscales requises pour la soumission.</p>
               </div>
             </div>
             <div class="table-wrap">
               <table class="precision-table">
                 <thead>
                   <tr>
-                    <th>Pièce Réglementaire</th>
-                    <th>Référence Extraite (OCR)</th>
-                    <th>Date d'Émission</th>
-                    <th>Validité (Ouverture : 22/10/2026)</th>
-                    <th>Cachet Humide & Signature</th>
-                    <th>Statut Conformité</th>
-                    <th>Action 1-Clic</th>
+                    <th>Pièce Réglementaire & Référence</th>
+                    <th>Émission</th>
+                    <th>Validité (22/10/2026)</th>
+                    <th>Cachet & Statut</th>
+                    <th style="text-align: right;">Action</th>
                   </tr>
                 </thead>
                 <tbody id="vault-table-body"></tbody>
@@ -1537,7 +1671,7 @@
             <div class="kpi-card" id="ft-kpi-compare" onclick="filterFichesWorkflow('COMPARE')">
               <div class="kpi-label">
                 <span>Optimisation Barème / Prix</span>
-                <span class="badge badge-verify mono">Pistolet vs Char</span>
+                <span class="badge badge-verify mono">Arbitrage Économique</span>
               </div>
               <div class="kpi-value mono" id="ft-count-compare">1 Arbitrage Actif</div>
               <div class="kpi-sub">Lot 4-5 (MGE-SL1D vs Perlong) : +5 pts pour ~7% écart prix</div>
@@ -1546,7 +1680,7 @@
             <div class="kpi-card" id="ft-kpi-rfq" onclick="filterFichesWorkflow('RFQ')">
               <div class="kpi-label">
                 <span>Fiches Incomplètes / RFQ</span>
-                <span class="badge badge-warning mono">Sourcing IA</span>
+                <span class="badge badge-warning mono">À Contacter</span>
               </div>
               <div class="kpi-value mono" id="ft-count-rfq" style="color: var(--color-amber-warn);">1 Fiche Incomplète</div>
               <div class="kpi-sub">Lot 4-3 (MGE-OT7) : 310 car. & tableau manquant → RFQ Prête</div>
@@ -1565,10 +1699,10 @@
               <div class="panel-header" style="justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
                 <div class="panel-title">
                   <h2>Catalogue des Équipements Médicaux (Lot 04 — SARL FLUIDAL)</h2>
-                  <p>Ordonnancement strict selon le Cahier des Charges de l'EPH Mohammadia (#01 à #17)</p>
+                  <p>Vérification de la conformité des 17 postes du Lot 04 (Bloc Opératoire & UMC).</p>
                 </div>
-                <button class="btn-acid-lime" onclick="translateAndStampAllFiches()" title="Traduire toutes les fiches en Anglais / PNG en Français et apposer le cachet humide">
-                  ⚡ Traduire & Cacheter Tout (1 Clic)
+                <button class="btn-acid-lime" onclick="translateAndStampAllFiches()" title="Générer toutes les fiches techniques conformes en Français avec cachet">
+                  Générer toutes les Fiches FR
                 </button>
               </div>
 
@@ -1576,8 +1710,8 @@
                 <div class="pill-group" id="ft-filter-pills">
                   <button class="pill-filter active" data-ft="ALL" onclick="filterFichesWorkflow('ALL')">Tous (17)</button>
                   <button class="pill-filter" data-ft="TRANSLATE" onclick="filterFichesWorkflow('TRANSLATE')">À Traduire / PNG (4)</button>
-                  <button class="pill-filter" data-ft="COMPARE" onclick="filterFichesWorkflow('COMPARE')">Comparatifs Multi-Modèles (1)</button>
-                  <button class="pill-filter" data-ft="RFQ" onclick="filterFichesWorkflow('RFQ')">Fiche Incomplète / RFQ (1)</button>
+                  <button class="pill-filter" data-ft="COMPARE" onclick="filterFichesWorkflow('COMPARE')">Arbitrage Modèles (1)</button>
+                  <button class="pill-filter" data-ft="RFQ" onclick="filterFichesWorkflow('RFQ')">Devis Requis / RFQ (1)</button>
                 </div>
                 <input type="text" class="search-input" id="ft-search-input" placeholder="Filtrer par code (ex: LOT 4-05), modèle, marque..." oninput="renderFichesList()" />
               </div>
@@ -1603,13 +1737,13 @@
                     <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
                       <path d="M8 3v7m0 0l-3-3m3 3l3-3M3 13h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
-                    Fiche FR Cachetée (PDF)
+                    Fiche FR (PDF)
                   </button>
                   <button class="btn-acid-lime" onclick="downloadCompiledTechnicalDossier()" title="Télécharger le dossier technique complet classé dans l'ordre du CDC">
                     <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
                       <path d="M8 3v7m0 0l-3-3m3 3l3-3M3 13h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
-                    Dossier Lot 04 (PDF)
+                    Dossier Complet (PDF)
                   </button>
                 </div>
               </div>
@@ -1649,8 +1783,8 @@
           <div class="panel-card">
             <div class="panel-header">
               <div class="panel-title">
-                <h2>Grille d'Évaluation Technique Multicritère Comparée (Commission COPEO)</h2>
-                <p>Évaluez et modifiez les notes pour recalculer en temps réel l'admission à l'ouverture financière</p>
+                <h2>Grille d'Évaluation Technique des Soumissionnaires</h2>
+                <p>Évaluation comparative des 4 offres techniques et calcul du seuil d'admissibilité (seuil : 60 points).</p>
               </div>
             </div>
             <div class="table-wrap">
@@ -1658,11 +1792,11 @@
                 <thead>
                   <tr>
                     <th>Critères du Barème (CDC EPH)</th>
-                    <th>Plafond</th>
-                    <th>1. SARL Atlas Constructions</th>
-                    <th>2. EURL HydroTech Algérie</th>
-                    <th>3. SPA Cosider Canalisations</th>
-                    <th>4. SARL Tell Équipements</th>
+                    <th style="text-align: center;">Plafond</th>
+                    <th>1. SARL Atlas<br/><span style="font-size: 10px; font-weight: normal; color: var(--color-ash);">Constructions</span></th>
+                    <th>2. EURL HydroTech<br/><span style="font-size: 10px; font-weight: normal; color: var(--color-ash);">Algérie</span></th>
+                    <th>3. SPA Cosider<br/><span style="font-size: 10px; font-weight: normal; color: var(--color-ash);">Canalisations</span></th>
+                    <th>4. SARL Tell<br/><span style="font-size: 10px; font-weight: normal; color: var(--color-ash);">Équipements</span></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -1742,27 +1876,26 @@
           <div class="panel-card">
             <div class="panel-header">
               <div class="panel-title">
-                <h2>Grand Livre des Engagements de Ressources Humaines & Matérielles (Loi 23-12)</h2>
-                <p>Simulez l'enregistrement d'un PV de réception provisoire pour libérer les 20 ingénieurs de l'un des marchés</p>
+                <h2>Registre des Moyens Humains & Engagements Simultanés</h2>
+                <p>Contrôle de disponibilité des 20 ingénieurs déclarés sur d'autres marchés publics en cours.</p>
               </div>
               <button class="btn-acid-lime" onclick="openClarificationModal()">
                 <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
                   <path d="M2.5 3.5h11M2.5 8h11M2.5 12.5h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
                 </svg>
-                <span>Rédiger Demande d'Éclaircissement</span>
+                <span>Demande d'Éclaircissement</span>
               </button>
             </div>
             <div class="table-wrap">
               <table class="precision-table">
                 <thead>
                   <tr>
-                    <th>Référence Appel d'Offres</th>
-                    <th>Maître de l'Ouvrage (Service Contractant)</th>
+                    <th>Appel d'Offres & Service Contractant</th>
                     <th>Statut d'Engagement</th>
-                    <th>Ingénieurs Affectés</th>
-                    <th>Période d'Exécution & Diagramme</th>
-                    <th>Preuve Documentaire RAG</th>
-                    <th>Réconciliation (PV Réception)</th>
+                    <th>Ingénieurs</th>
+                    <th>Période & Planning</th>
+                    <th>Document Justificatif</th>
+                    <th style="text-align: right;">Action</th>
                   </tr>
                 </thead>
                 <tbody id="overlap-commitments-tbody"></tbody>
@@ -1778,17 +1911,17 @@
           <div class="panel-card" style="margin-bottom: 18px;">
             <div class="panel-header">
               <div class="panel-title">
-                <h2>Recherche Hybride RRF dans le Cahier des Charges Réel (CDC EPH Mohammadia)</h2>
-                <p>Combinaison Reciprocal Rank Fusion : Vecteurs denses (text-embedding-004) + BM25 lexical exact</p>
+                <h2>Consultation & Recherche dans le Cahier des Charges</h2>
+                <p>Recherche instantanée dans l'ensemble des clauses, critères d'élimination et spécifications du marché.</p>
               </div>
             </div>
             <div style="padding: 16px 20px; display: flex; gap: 10px; flex-wrap: wrap; background: #faf9f8;">
               <input type="text" class="search-input" id="rag-query-input" placeholder="Ex: Quelles sont les pièces éliminatoires du dossier de candidature ?" style="flex: 1; min-width: 280px;" onkeydown="if(event.key==='Enter') runLiveRagSearch()" />
               <button class="btn-acid-lime" onclick="runLiveRagSearch()">
-                Rechercher (RRF)
+                Rechercher
               </button>
             </div>
-            <div style="padding: 10px 20px; display: flex; gap: 8px; flex-wrap: wrap; background: #fdfcee; border-top: 1px solid var(--color-hairline);">
+            <div style="padding: 10px 20px; display: flex; gap: 8px; flex-wrap: wrap; background: #f8fafc; border-top: 1px solid var(--color-hairline);">
               <span class="mono" style="color: var(--color-ash); font-size: 11.5px;">Requêtes rapides :</span>
               <button class="pill-filter" onclick="setRagQueryAndRun('Pièces éliminatoires rejet d\'office')">Pièces Éliminatoires</button>
               <button class="pill-filter" onclick="setRagQueryAndRun('Effectif ingénieur Master 02 affiliation CNAS')">Moyens Humains (CNAS)</button>
@@ -1801,8 +1934,8 @@
           <div class="panel-card">
             <div class="panel-header">
               <div class="panel-title">
-                <h2>Visionneuse Haute Résolution des 28 Pages Scannées (1248×1760 JPEG Redressées à 180°)</h2>
-                <p>Toutes les pages ont été normalisées pour une lecture parfaite et indexées par bloc de coordonnées [x0, y0, x1, y1]</p>
+                <h2>Pages Numérisées du Dossier (28 Pages)</h2>
+                <p>Consultation intégrale du Cahier des Charges de l'EPH de Mohammadia.</p>
               </div>
               <div style="display: flex; align-items: center; gap: 10px;">
                 <button class="btn-ghost" onclick="stepEphPage(-1)">← Page précédente</button>
@@ -1900,7 +2033,7 @@ Le Président de la Commission COPEO
 
         <div id="pipeline-progress-box" style="display: none; margin-top: 18px; padding: 16px; background: var(--color-bone); border-radius: var(--radius-buttons); border: 1px solid var(--color-hairline);">
           <div style="display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 6px;">
-            <span class="mono">Traitement du pipeline IA...</span>
+            <span class="mono">Analyse du dossier en cours...</span>
             <span class="mono" id="pipeline-pct-label">0%</span>
           </div>
           <div style="width: 100%; height: 6px; background: #e0deda; border-radius: 3px; overflow: hidden;">
@@ -1978,7 +2111,7 @@ Le Président de la Commission COPEO
         docHeader_fr: 'ANNEXE II — DÉCLARATION DE PROBITÉ (LOI N° 23-12)',
         quote_fr: '« Fait à Alger, le 12/10/2026. Le Gérant [Signature manuscrite détectée — Absence de cachet humide de l’entreprise sur la zone réservée]. »',
         quote_ar: '« حرر بالجزائر في 12/10/2026 [توقيع خطي موجود - غياب الختم الرطب للشركة]. »',
-        stampStatus: 'Vision IA : Signature OUI (96%) · Cachet Humide NON (0.04)',
+        stampStatus: 'Contrôle Visuel : Signature Détectée · Cachet Humide Absent',
         remediation_fr: 'BLOQUANT : La signature du gérant est présente au bas de la page 6, mais le cachet humide de la SARL Atlas Constructions est manquant. Apposez le cachet humide et re-numérisez la page.',
         remediation_ar: 'مانع إقصائي: تم رصد إمضاء المسير ولكن الختم الرطب للشركة مفقود.',
         humanDecision: null
@@ -2182,12 +2315,12 @@ Le Président de la Commission COPEO
         ref: 'AOON/11/2025/WILAYA-16',
         authority: 'Wilaya d’Alger — Direction de l’Hydraulique',
         state: 'AWARDED_ACTIVE',
-        stateLabel: 'Marché Notifié (Actif)',
+        stateLabel: 'Marché Notifié',
         engineers: 20,
         period: 'Nov 2025 – Déc 2026',
         ganttLeft: 0,
         ganttWidth: 70,
-        ganttColor: '#eb5757',
+        ganttColor: '#b91c1c',
         proof: 'ODS_Demarrage_Wilaya16.pdf (p.2)',
         reconciled: false
       },
@@ -2195,7 +2328,7 @@ Le Président de la Commission COPEO
         ref: 'CDC-EPH-MOHAMMADIA-2026',
         authority: 'Établissement Public Hospitalier de Mohammadia',
         state: 'CURRENT_BID',
-        stateLabel: 'Offre Évaluée (Ce dossier)',
+        stateLabel: 'Offre en Cours',
         engineers: 20,
         period: 'Nov 2026 – Oct 2027',
         ganttLeft: 60,
@@ -2208,7 +2341,7 @@ Le Président de la Commission COPEO
         ref: 'AOON/07/2026/ADE-BLIDA',
         authority: 'Algérienne des Eaux — Unité de Blida',
         state: 'PROPOSED_IN_BID',
-        stateLabel: 'Soumission en Attente',
+        stateLabel: 'En Attente',
         engineers: 20,
         period: 'Déc 2026 – Nov 2027',
         ganttLeft: 65,
@@ -2221,7 +2354,7 @@ Le Président de la Commission COPEO
         ref: 'AOON/09/2026/ONA-TIPAZA',
         authority: 'Office National de l’Assainissement',
         state: 'PROPOSED_IN_BID',
-        stateLabel: 'Soumission en Attente',
+        stateLabel: 'En Attente',
         engineers: 20,
         period: 'Jan 2027 – Déc 2027',
         ganttLeft: 70,
@@ -2234,7 +2367,7 @@ Le Président de la Commission COPEO
         ref: 'AOON/12/2026/DHW-BOUIRA',
         authority: 'Direction des Ressources en Eau — Bouira',
         state: 'PROPOSED_IN_BID',
-        stateLabel: 'Soumission en Attente',
+        stateLabel: 'En Attente',
         engineers: 20,
         period: 'Fév 2027 – Jan 2028',
         ganttLeft: 75,
@@ -2247,7 +2380,7 @@ Le Président de la Commission COPEO
         ref: 'AOON/15/2026/ANBT-CHLEF',
         authority: 'Agence Nationale des Barrages et Transferts',
         state: 'PROPOSED_IN_BID',
-        stateLabel: 'Soumission en Attente',
+        stateLabel: 'En Attente',
         engineers: 20,
         period: 'Mar 2027 – Fév 2028',
         ganttLeft: 80,
@@ -2274,11 +2407,10 @@ Le Président de la Commission COPEO
         const res = await fetch(`${API_BASE}/api/v1/health`);
         if (res.ok) {
           const data = await res.json();
-          document.getElementById('backend-health-text').textContent =
-            `API + RAG (${data.indexed_child_chunks} chunks)`;
+          document.getElementById('backend-health-text').textContent = 'Système en Ligne';
         }
       } catch (_) {
-        document.getElementById('backend-health-text').textContent = 'RAG Local Actif';
+        document.getElementById('backend-health-text').textContent = 'Mode Local';
       }
 
       // Sync real-time Lot 04 equipment workflow if API is live
@@ -2367,22 +2499,22 @@ Le Président de la Commission COPEO
       if (navBtn) navBtn.classList.add('active');
 
       const headings = {
-        audit: '01 · Contrôle de Conformité Pré-Soumission (3 Plis)',
-        vault: '02 · Coffre-Fort Administratif & Registre CNAS',
-        committee: '03 · Grille Comparative d’Évaluation (Commission COPEO)',
-        overlap: '04 · Vérification Inter-Marchés & Chevauchement des Moyens (120 / 20 Ing.)',
-        eph: '05 · Cahier des Charges Réel (CDC EPH Mohammadia — 28 Pages) & Recherche RAG',
-        fiches: '02B · Atelier Fiches Techniques & Équipements Médicaux (Lot 04 — 33 Fichiers docs/)'
+        audit: '01 · Audit de Conformité du Dossier',
+        vault: '02 · Pièces Légales & CNAS',
+        committee: '03 · Évaluation des Soumissionnaires (COPEO)',
+        overlap: '04 · Disponibilité du Personnel (CNAS)',
+        eph: '05 · Consultation du Cahier des Charges',
+        fiches: '02B · Fiches Techniques Médicales (Lot 04)'
       };
       document.getElementById('active-view-heading').textContent = headings[viewName] || headings.audit;
 
       const ctaLabel = document.getElementById('primary-cta-label');
-      if (viewName === 'audit') ctaLabel.textContent = "Exporter le rapport d'audit";
-      else if (viewName === 'vault') ctaLabel.textContent = 'Importer une pièce mise à jour';
-      else if (viewName === 'committee') ctaLabel.textContent = "Exporter le PV d'évaluation COPEO";
-      else if (viewName === 'overlap') ctaLabel.textContent = "Générer la Demande d'Éclaircissement";
-      else if (viewName === 'eph') ctaLabel.textContent = 'Analyser un nouveau PDF';
-      else if (viewName === 'fiches') ctaLabel.textContent = 'Assembler Dossier Technique Lot 04';
+      if (viewName === 'audit') ctaLabel.textContent = "Télécharger le rapport d'audit (PDF)";
+      else if (viewName === 'vault') ctaLabel.textContent = 'Mettre à jour une pièce';
+      else if (viewName === 'committee') ctaLabel.textContent = "Télécharger le PV COPEO (PDF)";
+      else if (viewName === 'overlap') ctaLabel.textContent = "Demande d'Éclaircissement";
+      else if (viewName === 'eph') ctaLabel.textContent = 'Analyser un document';
+      else if (viewName === 'fiches') ctaLabel.textContent = 'Télécharger Dossier Lot 04 (PDF)';
 
       // Close mobile drawer on navigation
       const sidebar = document.getElementById('app-sidebar');
@@ -2504,7 +2636,7 @@ Le Président de la Commission COPEO
 
       document.getElementById('pdf-doc-filename').textContent = item.docName;
       document.getElementById('pdf-page-indicator').textContent = item.page;
-      document.getElementById('pdf-bbox-coords').textContent = item.bbox;
+      document.getElementById('pdf-bbox-coords').textContent = 'Passage ciblé';
 
       const padScan = String(item.cdcScanPage || 6).padStart(2, '0');
       document.getElementById('inspector-scan-img').src = `src/extracted_pages/page_${padScan}.jpg`;
@@ -2519,7 +2651,7 @@ Le Président de la Commission COPEO
           <div class="mono" style="margin-top: 4px; color: var(--color-ash);">${item.docHeader_fr}</div>
         </div>
         <div class="bbox-highlight ${item.bboxColor}">
-          <span class="bbox-coord-tag">${item.id} · ${item.bbox}</span>
+          <span class="bbox-coord-tag">Extrait Vérifié · ${item.id}</span>
           <div style="font-size: 13.5px; line-height: 1.55;">
             ${quote}
           </div>
@@ -2537,7 +2669,7 @@ Le Président de la Commission COPEO
         statusEl.style.color = '#15803d';
         statusEl.style.fontWeight = '500';
       } else {
-        statusEl.textContent = 'En attente de revue humaine';
+        statusEl.textContent = 'Action requise avant le dépôt';
         statusEl.style.color = 'var(--color-ash)';
         statusEl.style.fontWeight = 'normal';
       }
@@ -2597,24 +2729,34 @@ Le Président de la Commission COPEO
 
       const expiredCount = VAULT_DOCS.length - validCount;
       const vaultBadge = document.getElementById('nav-badge-vault');
-      vaultBadge.textContent = expiredCount > 0 ? `${expiredCount} à jour` : '100% OK';
+      vaultBadge.textContent = expiredCount > 0 ? `${expiredCount} expiré` : '100% OK';
       vaultBadge.className = expiredCount > 0 ? 'badge badge-warning mono' : 'badge badge-verified mono';
 
       tbody.innerHTML = VAULT_DOCS.map((doc, idx) => {
         const isOk = doc.status === 'VERIFIED';
         return `
           <tr>
-            <td><strong style="color: var(--color-ink);">${doc.name}</strong></td>
-            <td class="mono">${doc.ref}</td>
-            <td class="mono">${doc.issued}</td>
-            <td class="mono" style="color: ${isOk ? 'var(--color-ink)' : 'var(--color-coral-red)'}; font-weight: ${isOk ? 'normal' : '500'};">${doc.validity}</td>
-            <td><span class="badge ${isOk ? 'badge-verified' : 'badge-blocker'} mono">${doc.stamp}</span></td>
-            <td><span class="badge ${isOk ? 'badge-verified' : 'badge-blocker'}">${isOk ? 'Conforme' : 'Bloquant'}</span></td>
             <td>
+              <div style="font-weight: 600; color: var(--color-ink);">${doc.name}</div>
+              <div class="mono" style="font-size: 11px; color: var(--color-ash); margin-top: 2px;">${doc.ref}</div>
+            </td>
+            <td class="mono">${doc.issued}</td>
+            <td>
+              <span class="mono" style="color: ${isOk ? 'var(--color-pulse-green)' : 'var(--color-coral-red)'}; font-weight: 500;">
+                ${doc.validity}
+              </span>
+            </td>
+            <td>
+              <div style="display: flex; gap: 6px; align-items: center; flex-wrap: wrap;">
+                <span class="badge ${isOk ? 'badge-verified' : 'badge-blocker'}">${isOk ? 'Conforme' : 'Bloquant'}</span>
+                <span class="mono" style="font-size: 11px; color: var(--color-ash);">${doc.stamp}</span>
+              </div>
+            </td>
+            <td style="text-align: right;">
               ${
                 isOk
                   ? '<span class="mono" style="color: var(--color-pulse-green); font-weight: 500;">À jour ✓</span>'
-                  : `<button class="btn-ghost" style="padding: 4px 10px; font-size: 11.5px; border-color: var(--color-ink); background: var(--color-highlighter-yellow); color: var(--color-ink); font-weight: 500;" onclick="renewVaultDocument(${idx})">Remplacer par pièce à jour</button>`
+                  : `<button class="btn-acid-lime" style="padding: 4px 10px; font-size: 11.5px;" onclick="renewVaultDocument(${idx})">Renouveler</button>`
               }
             </td>
           </tr>
@@ -2667,17 +2809,17 @@ Le Président de la Commission COPEO
         if (b.key === 'atlas' && OVERLAP_COMMITMENTS.filter(c => !c.reconciled).length > 1) {
           cell.innerHTML = `
             <div class="mono" style="font-size: 15px; color: var(--color-ink); font-weight: 500;">${sum.toFixed(1)} / 100 pts</div>
-            <span class="badge badge-verify" style="margin-top: 4px;">Suspendu : Éclaircissement CNAS requis</span>
+            <span class="badge badge-verify" style="margin-top: 4px;">Suspendu : Requis CNAS</span>
           `;
         } else if (passed) {
           cell.innerHTML = `
             <div class="mono" style="font-size: 15px; color: var(--color-pulse-green); font-weight: 500;">${sum.toFixed(1)} / 100 pts</div>
-            <span class="badge badge-verified" style="margin-top: 4px;">Admis à l'Ouverture Financière</span>
+            <span class="badge badge-verified" style="margin-top: 4px;">Admis (Financière)</span>
           `;
         } else {
           cell.innerHTML = `
             <div class="mono" style="font-size: 15px; color: var(--color-coral-red); font-weight: 500;">${sum.toFixed(1)} / 100 pts</div>
-            <span class="badge badge-blocker" style="margin-top: 4px;">Sous le seuil éliminatoire (< 60 pts)</span>
+            <span class="badge badge-blocker" style="margin-top: 4px;">Éliminé (< 60 pts)</span>
           `;
         }
       });
@@ -2708,26 +2850,28 @@ Le Président de la Commission COPEO
           : (c.state === 'AWARDED_ACTIVE' ? 'badge-blocker' : (c.state === 'CURRENT_BID' ? 'badge-verify' : 'badge-warning'));
         return `
           <tr style="${c.reconciled ? 'opacity: 0.6;' : ''}">
-            <td><span class="mono" style="color: var(--color-ink); font-weight: 500;">${c.ref}</span></td>
-            <td>${c.authority}</td>
-            <td><span class="badge ${badgeClass}">${c.reconciled ? 'LIBÉRÉ (PV DE RÉCEPTION)' : c.stateLabel}</span></td>
-            <td class="mono"><strong>${c.reconciled ? '0 (Libéré)' : c.engineers + ' Ing.'}</strong></td>
             <td>
-              <div style="display: flex; align-items: center; gap: 10px;">
+              <div class="mono" style="color: var(--color-ink); font-weight: 600;">${c.ref}</div>
+              <div style="font-size: 11.5px; color: var(--color-ash); margin-top: 2px;">${c.authority}</div>
+            </td>
+            <td><span class="badge ${badgeClass}">${c.reconciled ? 'LIBÉRÉ (PV)' : c.stateLabel}</span></td>
+            <td class="mono"><strong>${c.reconciled ? '0' : c.engineers + ' Ing.'}</strong></td>
+            <td>
+              <div style="display: flex; align-items: center; gap: 8px;">
                 <div class="gantt-track">
-                  <div class="gantt-fill" style="left: ${c.ganttLeft}%; width: ${c.ganttWidth}%; background: ${c.reconciled ? '#15803d' : c.ganttColor};"></div>
+                  <div class="gantt-fill" style="left: ${c.ganttLeft}%; width: ${c.ganttWidth}%; background: ${c.reconciled ? '#047857' : c.ganttColor};"></div>
                 </div>
-                <span class="mono" style="color: var(--color-ash); font-size: 11px;">${c.period}</span>
+                <span class="mono" style="color: var(--color-ash); font-size: 10.5px;">${c.period}</span>
               </div>
             </td>
-            <td class="mono" style="color: var(--color-signal-teal); font-weight: 500;">${c.proof}</td>
-            <td>
+            <td class="mono" style="color: var(--color-signal-teal); font-weight: 500; font-size: 11.5px;">${c.proof}</td>
+            <td style="text-align: right;">
               ${
                 c.state === 'CURRENT_BID'
                   ? '<span class="mono" style="color: var(--color-ink); font-weight: 500;">Offre évaluée</span>'
                   : c.reconciled
-                  ? '<span class="mono" style="color: var(--color-pulse-green); font-weight: 500;">✓ PV vérifié</span>'
-                  : `<button class="btn-ghost" style="padding: 4px 9px; font-size: 11.5px; border-color: var(--color-ink); font-weight: 500;" onclick="reconcileOverlapProject(${idx})">Joindre PV de Réception</button>`
+                  ? '<span class="mono" style="color: var(--color-pulse-green); font-weight: 500;">✓ Libéré</span>'
+                  : `<button class="btn-acid-lime" style="padding: 4px 10px; font-size: 11px;" onclick="reconcileOverlapProject(${idx})">Joindre PV</button>`
               }
             </td>
           </tr>
@@ -2762,7 +2906,7 @@ Le Président de la Commission COPEO
       const q = (document.getElementById('rag-query-input').value || '').trim() ||
         'Quelles sont les pièces éliminatoires et les moyens humains exigés ?';
       const container = document.getElementById('rag-results-container');
-      container.innerHTML = '<div class="mono" style="color: var(--color-ash);">Exécution de la recherche hybride RRF (pgvector + BM25)...</div>';
+      container.innerHTML = '<div class="mono" style="color: var(--color-ash);">Recherche des clauses pertinentes en cours...</div>';
 
       let results = [];
       try {
@@ -2795,15 +2939,15 @@ Le Président de la Commission COPEO
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
             <div style="display: flex; align-items: center; gap: 8px;">
               <span class="badge badge-envelope mono">${r.doc_name} · Page ${r.page_number}</span>
-              <span style="color: var(--color-ink); font-size: 13px; font-weight: 500;">${r.section_title || 'Clause extraite'}</span>
+              <span style="color: var(--color-ink); font-size: 13px; font-weight: 500;">${r.section_title || 'Clause réglementaire'}</span>
             </div>
-            <span class="mono" style="color: var(--color-ink); font-weight: 500; background: #fdfcee; padding: 2px 6px; border-radius: 4px;">Score RRF : ${r.rrf_score}</span>
+            <span class="badge badge-verified mono">Article du Marché</span>
           </div>
           <div style="color: var(--color-ink); font-size: 13px; line-height: 1.5; margin-bottom: 6px;">
             ${r.child_content}
           </div>
           <div class="mono" style="font-size: 11px; color: var(--color-ash);">
-            Contexte Parent : ${r.parent_content.slice(0, 165)}... [Cliquer pour afficher la page ${r.page_number} à droite →]
+            Extrait du dossier : ${r.parent_content.slice(0, 160)}... <span style="text-decoration: underline; color: var(--color-ink); font-weight: 500;">Consulter la page ${r.page_number} →</span>
           </div>
         </div>
       `).join('');
@@ -2889,24 +3033,24 @@ Le Président de la Commission COPEO
       setTimeout(() => {
         bar.style.width = '55%';
         pct.textContent = '55%';
-        logs.innerHTML += '<br/>✓ [Étape 2/4] OCR Bilingue Gemini 2.5 Flash (FR/AR + Tableaux Markdown + Cachets)...';
+        logs.innerHTML += '<br/>✓ [Étape 2/4] Lecture et extraction des pièces du dossier (Français / Arabe)...';
       }, 550);
 
       setTimeout(() => {
         bar.style.width = '85%';
         pct.textContent = '85%';
-        logs.innerHTML += '<br/>✓ [Étape 3/4] Découpage Parent-Child & Indexation Hybride RRF (pgvector + BM25)...';
+        logs.innerHTML += '<br/>✓ [Étape 3/4] Indexation des clauses réglementaires et critères d\'élimination...';
       }, 1150);
 
       setTimeout(() => {
         bar.style.width = '100%';
         pct.textContent = '100%';
-        logs.innerHTML += '<br/>✓ [Étape 4/4] Audit LangGraph terminé avec succès.';
+        logs.innerHTML += '<br/>✓ [Étape 4/4] Audit de conformité finalisé.';
         setTimeout(() => {
           closeUploadModal();
           switchView('eph');
           runLiveRagSearch();
-          showToast('Document analysé et indexé dans le moteur RAG Hybride.');
+          showToast('Document analysé et prêt pour la consultation.');
         }, 550);
       }, 1750);
     }
@@ -2949,7 +3093,7 @@ Le Président de la Commission COPEO
     // ==========================================================================
     // VIEW 2B: MEDICAL EQUIPMENT & FICHE TECHNIQUE WORKFLOW (SARL FLUIDAL / docs/)
     // ==========================================================================
-    let LOT4_WORKFLOW_STATE = {"company_name": "SARL FLUIDAL — Importation de Dispositifs Médicaux & Fluides Médicaux", "tender_name": "EPH de Mohammadia (Mascara) — Lot 04 : Bloc Opératoire & UMC", "cdc_global_rules": {"mandatory_language": "Français obligatoire (Article 09 & 18 du CDC — Traduction requise pour 4 fiches EN/PNG)", "mandatory_stamp": "Cachet humide SARL FLUIDAL obligatoire sur chaque fiche technique (6 fiches constructeur à cacheter)", "bonus_scoring_rule": "Barème Technique sur 65 pts (Seuil éliminatoire 40/65) : Bonus accordé aux équipements dépassant légèrement les seuils (ex: Ra ≥ 97%, LED 80 000h, Charge 450 kg) tout en préservant la compétitivité prix au BPU/DQE."}, "summary_metrics": {"total_lot_items": 19, "total_files_in_docs_folder": 33, "ready_french_fiches": 12, "needs_translation_or_ocr": 4, "needs_supplier_rfq": 3, "multi_candidate_comparisons": 1, "in_stock_count": 16, "out_of_stock_sourcing_count": 3}, "items": [{"item_code": "LOT 4-01", "seq_order": 1, "cdc_title_fr": "Table d'opération chirurgicale universelle hydro-électrique (Radiotransparente)", "cdc_title_ar": "طاولة عمليات جراحية كهروهيدروليكية متعددة الاختصاصات", "cdc_required_specs": [{"param": "Mécanisme d'actionnement", "required": "Électro-hydraulique avec commande filaire + télécommande sans fil", "actual": "Électro-hydraulique + télécommande + panneau colonne (double contrôle)", "status": "MATCH_BONUS"}, {"param": "Hauteur réglable du plateau", "required": "700 mm à 1000 mm (±50 mm)", "actual": "680 mm à 1080 mm (course verticale 400 mm)", "status": "MATCH_BONUS"}, {"param": "Largeur & Longueur du plateau", "required": "Largeur ≥ 500 mm · Longueur ≥ 2000 mm", "actual": "Largeur 520 mm · Longueur 2080 mm (4 sections modulaires)", "status": "MATCH"}, {"param": "Translation longitudinale (Arceau C-Arm)", "required": "≥ 300 mm pour amplificateur de brillance", "actual": "310 mm (accès C-Arm intégral sans repositionner le patient)", "status": "MATCH_BONUS"}, {"param": "Capacité de charge maximale", "required": "≥ 350 kg", "actual": "450 kg (stabilité bariatrique et chirurgicale lourde)", "status": "MATCH_BONUS"}, {"param": "Autonomie batterie de secours", "required": "Batterie intégrée ≥ 50 opérations", "actual": "Batterie rechargeable haute capacité (80–100 interventions)", "status": "MATCH_BONUS"}], "candidates": [{"model": "MEDIGE MGE-OTK8", "brand": "MEDIGE International Industries (Chine)", "source_file": "lot 4-1.MGE-OTK8.pdf", "docx_file": "lot 4-1.MGE-OTK8.docx", "language": "FR", "file_format": "PDF + DOCX (Standardisé SARL FLUIDAL)", "has_company_branding": true, "needs_translation": false, "compliance_pct": 100, "bonus_points": "+4.5 pts (Charge 450 kg + Translation 310 mm + Double commande)", "sweet_spot_verdict": "OPTIMAL_SWEET_SPOT", "sweet_spot_label": "Choix Optimal (Mieux disant technique + Prix compétitif)", "estimated_unit_cost_dzd": 2450000, "selection_selected": true}], "stock_status": "IN_STOCK_READY", "stock_label": "En stock (Catalogue interne) — Fiche FR prête", "supplier_wholesale_dzd": 1911000, "resale_margin_pct": 22}, {"item_code": "LOT 4-02", "seq_order": 2, "cdc_title_fr": "Table d'opération électrique polyvalente à 5 moteurs", "cdc_title_ar": "طاولة عمليات كهربائية متعددة الوظائف بـ 5 محركات", "cdc_required_specs": [{"param": "Motorisation", "required": "Électrique ≥ 4 moteurs (Hauteur, Trendelenburg, Inclinaison, Dossier)", "actual": "5 moteurs électriques de précision + glissement longitudinal", "status": "MATCH_BONUS"}, {"param": "Matériau châssis & base", "required": "Acier inoxydable médical AISI 304", "actual": "Acier inoxydable 304 antibactérien résistant à la désinfection", "status": "MATCH"}, {"param": "Matelas opératoire", "required": "Antistatique, sans couture, radiotransparent", "actual": "Mousse à mémoire de forme antibactérienne + plateau rayons X bras C", "status": "MATCH_BONUS"}, {"param": "Inclinaison Trendelenburg / Latérale", "required": "≥ ±20° / ≥ ±15°", "actual": "Trendelenburg ±25° · Inclinaison latérale ±20°", "status": "MATCH_BONUS"}], "candidates": [{"model": "MEDIGE MGE-OT5 Electric", "brand": "MEDIGE International Industries (Chine)", "source_file": "lot4-2.MGE-OT5.pdf", "docx_file": "lot4-2.MGE-OT5.docx", "language": "FR", "file_format": "PDF + DOCX (Standardisé SARL FLUIDAL)", "has_company_branding": true, "needs_translation": false, "compliance_pct": 100, "bonus_points": "+3.0 pts (5e moteur de translation + matelas mémoire de forme)", "sweet_spot_verdict": "OPTIMAL_SWEET_SPOT", "sweet_spot_label": "Choix Optimal (5 moteurs au prix d'une 4 moteurs)", "estimated_unit_cost_dzd": 1850000, "selection_selected": true}], "stock_status": "IN_STOCK_READY", "stock_label": "En stock (Catalogue interne) — Fiche FR prête", "supplier_wholesale_dzd": 1443000, "resale_margin_pct": 22}, {"item_code": "LOT 4-03", "seq_order": 3, "cdc_title_fr": "Table d'opération orthopédique avec cadre d'extension et de traction", "cdc_title_ar": "طاولة عمليات جراحة العظام مع إطار الشد والجر", "cdc_required_specs": [{"param": "Table de base compatible", "required": "Table électrique radiotransparente compatible bras C", "actual": "MGE-OT5 Electric (fournie dans lot4-3.MGE-OT5.pdf)", "status": "MATCH"}, {"param": "Cadre de traction orthopédique", "required": "Cadre en acier inoxydable / fibre de carbone avec bottes de traction, contre-extension périnéale et rotules articulées", "actual": "FICHE INCOMPLÈTE dans lot4-3.MGE-OT7.pdf (seulement 310 caractères, tableau technique manquant)", "status": "MISSING_SPEC"}], "candidates": [{"model": "MEDIGE MGE-OT5 + Cadre de Traction MGE-OT7", "brand": "MEDIGE International Industries (Chine)", "source_file": "lot4-3.MGE-OT7.pdf", "docx_file": "lot4-3.MGE-OT7.docx", "language": "FR (Incomplet)", "file_format": "PDF Incomplet (310 caractères — Tableau manquant)", "has_company_branding": true, "needs_translation": false, "needs_supplier_rfq": true, "compliance_pct": 55, "bonus_points": "Attention : Fiche MGE-OT7 vide à compléter ou demander au fournisseur", "sweet_spot_verdict": "INCOMPLETE_FICHE_ALERT", "sweet_spot_label": "Fiche Incomplète Détectée (Générer fiche complète / RFQ Fournisseur)", "estimated_unit_cost_dzd": 2300000, "selection_selected": true}], "stock_status": "OUT_OF_STOCK_INCOMPLETE", "stock_label": "Fiche absente/incomplète en stock — À demander au fournisseur", "supplier_wholesale_dzd": 1650000, "resale_margin_pct": 28}, {"item_code": "LOT 4-04", "seq_order": 4, "cdc_title_fr": "Éclairage opératoire scialytique double coupole LED avec caméra vidéo HD intégrée", "cdc_title_ar": "مصباح جراحي مزدوج بتقنية LED بدون ظل مع كاميرا فيديو عالية الدقة", "cdc_required_specs": [{"param": "Configuration coupole", "required": "Double coupole LED sans ombre compatible flux laminaire", "actual": "Design Papillon (Butterfly Type MGE-SLK3B) aérodynamique flux laminaire", "status": "MATCH_BONUS"}, {"param": "Durée de vie des LED", "required": "≥ 50 000 heures", "actual": "80 000 heures (LED Osram froides basse consommation)", "status": "MATCH_BONUS"}, {"param": "Caméra chirurgicale intégrée", "required": "Caméra Full HD 1080p montée dans la poignée centrale avec zoom optique", "actual": "MEDIGE Surgical Field Camera (4 pages scannées image PDF)", "status": "MATCH"}, {"param": "Langue de la fiche technique", "required": "Français obligatoire (Article 09 du CDC)", "actual": "ANGLAIS (MGE-SLK3B.pdf) + IMAGE SCANNÉE (Surgical Field Camera.pdf)", "status": "TRANSLATION_REQUIRED"}], "candidates": [{"model": "MEDIGE MGE-SLK3B Butterfly + Caméra Chirurgicale MEDIGE", "brand": "MEDIGE International Industries (Chine)", "source_file": "lot4-4.LED-Shadowless-Operating-Light-MGE-SLK3-Butterfly-Type.pdf", "secondary_file": "lot4-4.Surgical Field Camera MEDIGE.pdf", "language": "EN + SCAN IMAGE", "file_format": "PDF Anglais + PDF Scanné (0 texte sélectionnable)", "has_company_branding": false, "needs_translation": true, "compliance_pct": 95, "bonus_points": "+3.5 pts (LED 80 000h + 4 modes d'éclairage + bras équilibré)", "sweet_spot_verdict": "NEEDS_TRANSLATION_AND_STAMP", "sweet_spot_label": "À Traduire EN→FR & Apposer Cachet SARL FLUIDAL (1 Clic Sans Photoshop)", "estimated_unit_cost_dzd": 1950000, "selection_selected": true}], "stock_status": "IN_STOCK_NEEDS_FR_STAMP", "stock_label": "En stock (Catalogue interne) — À traduire EN→FR & cacheter", "supplier_wholesale_dzd": 1482000, "resale_margin_pct": 24}, {"item_code": "LOT 4-05", "seq_order": 5, "cdc_title_fr": "Lampe opératoire scialytique plafonnière double coupole LED 700/500", "cdc_title_ar": "مصباح عمليات جراحي سقفي مزدوج LED 700/500", "cdc_required_specs": [{"param": "Éclairement central à 1m (Lux)", "required": "Coupole 700 : ≥ 160 000 Lux · Coupole 500 : ≥ 140 000 Lux", "actual": "MGE-SL1D : 180 000 / 160 000 Lux vs Perlong : 160 000 / 140 000 Lux", "status": "MATCH_BONUS"}, {"param": "Indice de rendu des couleurs (Ra / CRI)", "required": "Ra ≥ 95%", "actual": "MGE-SL1D : Ra ≥ 97% vs Perlong : Ra = 95%", "status": "MATCH_BONUS"}, {"param": "Élévation de température (tête chirurgien)", "required": "≤ 2 °C", "actual": "MGE-SL1D : ≤ 1 °C (Perles LED Osram importées d'Allemagne)", "status": "MATCH_BONUS"}, {"param": "Mode endoscopie / laparoscopie", "required": "Souhaité (Bonus barème technique)", "actual": "Inclus sur MGE-SL1D + mémoire numérique micro-ordinateur", "status": "MATCH_BONUS"}], "candidates": [{"model": "MEDIGE MGE-SL1D (LED 700/500)", "brand": "MEDIGE International Industries (Chine)", "source_file": "lot4-5.MGE-SL1D.pdf", "docx_file": "lot4-5.MGE-SL1D.docx", "language": "FR", "file_format": "PDF + DOCX (Standardisé SARL FLUIDAL)", "has_company_branding": true, "needs_translation": false, "compliance_pct": 100, "bonus_points": "+5.0 pts (180k Lux + Ra ≥ 97% + Mode Laparoscopie + Déjà siglé SARL FLUIDAL)", "sweet_spot_verdict": "OPTIMAL_SWEET_SPOT", "sweet_spot_label": "★ Recommandé IA (Surpasse le CDC de +12% Lux / Ra 97% sans surcoût excessif)", "estimated_unit_cost_dzd": 1280000, "selection_selected": true}, {"model": "PERLONG LED 700/500", "brand": "Perlong Medical Equipment (Chine)", "source_file": "lot4-5.LED700,500 op lamp.pdf", "docx_file": "lot4-5.LED700,500 op lamp.docx", "language": "FR", "file_format": "PDF + DOCX (Entête Perlong non siglé FLUIDAL)", "has_company_branding": false, "needs_translation": false, "compliance_pct": 100, "bonus_points": "+0.0 pt (Exactement au seuil minimal 160k/140k Lux, Ra 95, 50 000h)", "sweet_spot_verdict": "BASELINE_ALTERNATIVE", "sweet_spot_label": "Alternative Basique (Minimum requis sans bonus technique, non siglé FLUIDAL)", "estimated_unit_cost_dzd": 1190000, "selection_selected": false}], "stock_status": "IN_STOCK_READY", "stock_label": "En stock (Catalogue interne) — Fiche FR prête", "supplier_wholesale_dzd": 998400, "resale_margin_pct": 22}, {"item_code": "LOT 4-06", "seq_order": 6, "cdc_title_fr": "Système d'intégration numérique et de visioconférence pour bloc opératoire", "cdc_title_ar": "نظام الإدماج الرقمي والمحاضرات المرئية لغرفة العمليات", "cdc_required_specs": [{"param": "Architecture d'encastrement mural", "required": "Console murale encastrée faible épaisseur (< 100 mm) norme salle propre", "actual": "Blackfish Digital Operating Room Control System (épaisseur 80 mm, norme GB50333)", "status": "MATCH_BONUS"}, {"param": "Fonctions vidéo & audio", "required": "Routage multi-sources, enregistrement HD, télé-enseignement chirurgical", "actual": "Intégration vidéo/audio complète + télé-enseignement et consultation à distance", "status": "MATCH"}, {"param": "Langue de la fiche technique", "required": "Français obligatoire", "actual": "ANGLAIS (lot4-6.systeme de visioconference et integration blackfish.pdf)", "status": "TRANSLATION_REQUIRED"}], "candidates": [{"model": "BLACKFISH Digital Operating Theatre Integration System", "brand": "Blackfish Industries Shanghai (Chine)", "source_file": "lot4-6.systeme de visioconference et integration blackfish.pdf", "language": "EN", "file_format": "PDF Catalogue Anglais (4 pages — 9.8 MB)", "has_company_branding": false, "needs_translation": true, "compliance_pct": 95, "bonus_points": "+2.5 pts (Épaisseur ultra-fine 80 mm + module télé-chirurgie)", "sweet_spot_verdict": "NEEDS_TRANSLATION_AND_STAMP", "sweet_spot_label": "À Traduire EN→FR & Standardiser au modèle SARL FLUIDAL", "estimated_unit_cost_dzd": 3400000, "selection_selected": true}], "stock_status": "IN_STOCK_NEEDS_FR_STAMP", "stock_label": "En stock (Catalogue interne) — À traduire EN→FR & cacheter", "supplier_wholesale_dzd": 2584000, "resale_margin_pct": 24}, {"item_code": "LOT 4-07", "seq_order": 7, "cdc_title_fr": "Lampe opératoire chirurgicale mobile sur pied roulant avec batterie", "cdc_title_ar": "مصباح جراحي متنقل على عجلات مزود ببطارية", "cdc_required_specs": [{"param": "Mobilité & Statif", "required": "Sur roulettes antistatiques avec freins et bras articulé", "actual": "MGE-SL1C sur pied mobile ergonomique haute stabilité", "status": "MATCH"}, {"param": "Source LED & Durée de vie", "required": "LED Osram ≥ 50 000 heures", "actual": "Ampoules LED Osram > 80 000 heures + mode laparoscopique 1 touche", "status": "MATCH_BONUS"}], "candidates": [{"model": "MEDIGE MGE-SL1C Mobile Surgical Light", "brand": "MEDIGE International Industries (Chine)", "source_file": "lot4-7.MGE-SL1C.pdf", "docx_file": "lot4-7.MGE-SL1C.docx", "language": "FR", "file_format": "PDF + DOCX (Standardisé SARL FLUIDAL)", "has_company_branding": true, "needs_translation": false, "compliance_pct": 100, "bonus_points": "+3.0 pts (LED 80 000h + Mode laparoscopique dédié)", "sweet_spot_verdict": "OPTIMAL_SWEET_SPOT", "sweet_spot_label": "Choix Optimal (Prêt à soumettre)", "estimated_unit_cost_dzd": 680000, "selection_selected": true}], "stock_status": "IN_STOCK_READY", "stock_label": "En stock (Catalogue interne) — Fiche FR prête", "supplier_wholesale_dzd": 530400, "resale_margin_pct": 22}, {"item_code": "LOT 4-08", "seq_order": 8, "cdc_title_fr": "Bistouri électrique haute fréquence (Générateur électrochirurgical monopolaire/bipolaire)", "cdc_title_ar": "مشرط كهربائي عالي التردد أحادي وثنائي القطب", "cdc_required_specs": [{"param": "Puissance HF maximale", "required": "≥ 350 W avec régulation automatique selon l'impédance tissulaire", "actual": "Lamidey Noury OPTIMA II : 370 W avec microprocesseur Power Feedback temps réel", "status": "MATCH_BONUS"}, {"param": "Modes chirurgicaux", "required": "Coupe pure, coagulation, bipolaire, endoscopie", "actual": "Monopolaire, Bipolaire plasma, Endosection, Thermofusion / Scellement vasculaire", "status": "MATCH_BONUS"}, {"param": "Origine & Marquage", "required": "Marquage CE Médical + Fiche en Français cachetée", "actual": "Fabrication Française (Lamidey Noury) en Français — Cachet SARL FLUIDAL à apposer", "status": "STAMP_REQUIRED"}], "candidates": [{"model": "LAMIDEY NOURY OPTIMA II (Réf. V10GOPT4 — 370W)", "brand": "Lamidey Noury Medical (France)", "source_file": "lot4-8.FT-OPTIMA II FR_05-2020.pdf", "language": "FR", "file_format": "PDF Constructeur Français (7 pages)", "has_company_branding": false, "needs_translation": false, "needs_stamp_only": true, "compliance_pct": 100, "bonus_points": "+4.5 pts (Fabrication Française + 370W Power Feedback + Scellement vasculaire)", "sweet_spot_verdict": "OPTIMAL_SWEET_SPOT", "sweet_spot_label": "Excellent (Apposer uniquement le cachet humide SARL FLUIDAL)", "estimated_unit_cost_dzd": 1650000, "selection_selected": true}], "stock_status": "IN_STOCK_READY", "stock_label": "En stock (Catalogue interne) — Fiche FR prête", "supplier_wholesale_dzd": 1287000, "resale_margin_pct": 22}, {"item_code": "LOT 4-09", "seq_order": 9, "cdc_title_fr": "Bras plafonnier de distribution chirurgicale (Pendentif de chirurgie)", "cdc_title_ar": "ذراع سقفي لتوزيع الغازات الطبية والكهرباء خاص بالجراحة", "cdc_required_specs": [{"param": "Rayon d'action & Rotation", "required": "Bras horizontal 700–1000 mm · Rotation ≥ 300°", "actual": "Bras 700–1100 mm (épaisseur >10 mm) · Rotation 0 à 340°", "status": "MATCH_BONUS"}, {"param": "Capacité de charge nette", "required": "≥ 180 kg", "actual": "Charge nette > 220 kg avec plateaux réglables et prises gaz/électriques", "status": "MATCH_BONUS"}], "candidates": [{"model": "MEDIGE MGE-STP3 (Bras de Chirurgie)", "brand": "MEDIGE International Industries (Chine)", "source_file": "lot4-9.MGE-STP3.pdf", "docx_file": "lot4-9.MGE-STP3.docx", "language": "FR", "file_format": "PDF + DOCX (Standardisé SARL FLUIDAL)", "has_company_branding": true, "needs_translation": false, "compliance_pct": 100, "bonus_points": "+3.0 pts (Charge > 220 kg + Rotation 340°)", "sweet_spot_verdict": "OPTIMAL_SWEET_SPOT", "sweet_spot_label": "Choix Optimal (Prêt à soumettre)", "estimated_unit_cost_dzd": 1150000, "selection_selected": true}], "stock_status": "IN_STOCK_READY", "stock_label": "En stock (Catalogue interne) — Fiche FR prête", "supplier_wholesale_dzd": 897000, "resale_margin_pct": 22}, {"item_code": "LOT 4-10", "seq_order": 10, "cdc_title_fr": "Bras plafonnier d'anesthésie et de réanimation (Séparation zone sèche / humide)", "cdc_title_ar": "ذراع سقفي للتخدير والإنعاش بفصل المنطقتين الجافة والرطبة", "cdc_required_specs": [{"param": "Architecture", "required": "Pendentif multi-bras avec séparation colonne sèche et colonne humide + tige porte-sérum", "actual": "MGE-STEP7C avec structure pont sec/humide, prises O2/Vide/Air et bornes RJ45", "status": "MATCH_BONUS"}], "candidates": [{"model": "MEDIGE MGE-STEP7C (Bras d'Anesthésie)", "brand": "MEDIGE International Industries (Chine)", "source_file": "lot4-10.MGE-STEP7C.pdf", "docx_file": "lot4-10.MGE-STEP7C.docx", "language": "FR", "file_format": "PDF + DOCX (Standardisé SARL FLUIDAL)", "has_company_branding": true, "needs_translation": false, "compliance_pct": 100, "bonus_points": "+3.0 pts (Séparation sec/humide complète)", "sweet_spot_verdict": "OPTIMAL_SWEET_SPOT", "sweet_spot_label": "Choix Optimal (Prêt à soumettre)", "estimated_unit_cost_dzd": 1320000, "selection_selected": true}], "stock_status": "IN_STOCK_READY", "stock_label": "En stock (Catalogue interne) — Fiche FR prête", "supplier_wholesale_dzd": 1029600, "resale_margin_pct": 22}, {"item_code": "LOT 4-11", "seq_order": 11, "cdc_title_fr": "Aspirateur chirurgical mobile à vide élevé (Double bocal)", "cdc_title_ar": "جهاز شفط جراحي كهربائي عالي التفريغ ثنائي القارورة", "cdc_required_specs": [{"param": "Débit de pompage & Pompe", "required": "Pompe sans huile sans maintenance · Débit ≥ 60 L/min", "actual": "Perlong YX-980D double piston sans huile · Débit > 80 L/min + protection anti-débordement", "status": "MATCH_BONUS"}], "candidates": [{"model": "PERLONG YX-980D High-Vacuum Suction Unit", "brand": "Perlong Medical Equipment (Chine)", "source_file": "lot4-11 YX-980D.pdf", "docx_file": "lot4-11 YX-980D.docx", "language": "FR", "file_format": "PDF + DOCX (Français)", "has_company_branding": false, "needs_translation": false, "needs_stamp_only": true, "compliance_pct": 100, "bonus_points": "+2.5 pts (Débit > 80 L/min vs 60 L/min exigés)", "sweet_spot_verdict": "OPTIMAL_SWEET_SPOT", "sweet_spot_label": "Choix Optimal (Apposer cachet SARL FLUIDAL)", "estimated_unit_cost_dzd": 285000, "selection_selected": true}], "stock_status": "IN_STOCK_READY", "stock_label": "En stock (Catalogue interne) — Fiche FR prête", "supplier_wholesale_dzd": 222300, "resale_margin_pct": 22}, {"item_code": "LOT 4-12.1", "seq_order": 12, "cdc_title_fr": "Système de réchauffement actif du patient (Couverture chauffante de bloc)", "cdc_title_ar": "نظام تدفئة المريض النشط (بطانية تدفئة لغرفة العمليات)", "cdc_required_specs": [{"param": "Sécurité thermique & Capteurs", "required": "Réchauffeur basse tension réutilisable avec capteurs de sécurité et alarmes", "actual": "GSH-Med France CB48 : 8 capteurs indépendants + alarmes visuelles et sonores", "status": "MATCH_BONUS"}, {"param": "Langue de la fiche technique", "required": "Français obligatoire", "actual": "ANGLAIS (lot4-12. 1 couverture chauffante gsh-med.pdf)", "status": "TRANSLATION_REQUIRED"}], "candidates": [{"model": "GSH-MED CB48 Active Patient Warming Blanket (France)", "brand": "GSH-Med Aix-en-Provence (France)", "source_file": "lot4-12. 1 couverture chauffante gsh-med.pdf", "language": "EN", "file_format": "PDF Anglais (3 pages)", "has_company_branding": false, "needs_translation": true, "compliance_pct": 95, "bonus_points": "+3.0 pts (8 capteurs indépendants + Fabrication Française)", "sweet_spot_verdict": "NEEDS_TRANSLATION_AND_STAMP", "sweet_spot_label": "À Traduire EN→FR & Cacheter (1 Clic Sans Photoshop)", "estimated_unit_cost_dzd": 490000, "selection_selected": true}], "stock_status": "IN_STOCK_NEEDS_FR_STAMP", "stock_label": "En stock (Catalogue interne) — À traduire EN→FR & cacheter", "supplier_wholesale_dzd": 372400, "resale_margin_pct": 24}, {"item_code": "LOT 4-12.2", "seq_order": 13, "cdc_title_fr": "Loupes binoculaires chirurgicales ergonomiques avec éclairage LED frontal", "cdc_title_ar": "مكبرات جراحية ثنائية العينين مريحة مع إضاءة أمامية LED", "cdc_required_specs": [{"param": "Qualité optique & Transmission", "required": "Lentilles asphériques anti-reflet transmission > 95%", "actual": "Perlong H3-ERGO-4in1 : Optique grade A+ transmission > 98% sans distorsion", "status": "MATCH_BONUS"}], "candidates": [{"model": "PERLONG H3-ERGO-4in1 Binocular Loupes", "brand": "Perlong Medical Equipment (Chine)", "source_file": "lot4-12.2H3-ERGO-4IN1.pdf", "docx_file": "lot4-12.2H3-ERGO-4IN1.docx", "language": "FR", "file_format": "PDF + DOCX (Français)", "has_company_branding": false, "needs_translation": false, "needs_stamp_only": true, "compliance_pct": 100, "bonus_points": "+2.0 pts (Transmission > 98% + ergonomie cervicale)", "sweet_spot_verdict": "OPTIMAL_SWEET_SPOT", "sweet_spot_label": "Choix Optimal (Apposer cachet SARL FLUIDAL)", "estimated_unit_cost_dzd": 195000, "selection_selected": true}], "stock_status": "IN_STOCK_READY", "stock_label": "En stock (Catalogue interne) — Fiche FR prête", "supplier_wholesale_dzd": 152100, "resale_margin_pct": 22}, {"item_code": "LOT 4-12.3", "seq_order": 14, "cdc_title_fr": "Horloge digitale multifonction de bloc opératoire (Heure, Chronomètre, Température, Humidité)", "cdc_title_ar": "ساعة رقمية متعددة الوظائف لغرفة العمليات (الوقت، الكرونومتر، الحرارة، الرطوبة)", "cdc_required_specs": [{"param": "Boîtier & Affichage", "required": "Acier inoxydable AISI 304 brossé, affichage heure/chronomètre/température/humidité/pression", "actual": "ECO-SLH-DC (LF-801316.21) : Inox AISI 304, grand angle 160°, chronomètre 24h, NTP", "status": "MATCH_BONUS"}], "candidates": [{"model": "ECO-SLH-DC Digital Operating Room Clock (LF-801316.21)", "brand": "ECO-SLH (Allemagne / Europe)", "source_file": "lot4-12.3-horloge digitale LF-801316.21-ECO-SLH-DC-Digitaluhr_removed.pdf.pdf", "language": "FR", "file_format": "PDF Français (3 pages)", "has_company_branding": false, "needs_translation": false, "needs_stamp_only": true, "compliance_pct": 100, "bonus_points": "+2.0 pts (Affichage pression atmosphérique + capteur luminosité auto)", "sweet_spot_verdict": "OPTIMAL_SWEET_SPOT", "sweet_spot_label": "Choix Optimal (Apposer cachet SARL FLUIDAL)", "estimated_unit_cost_dzd": 240000, "selection_selected": true}], "stock_status": "IN_STOCK_READY", "stock_label": "En stock (Catalogue interne) — Fiche FR prête", "supplier_wholesale_dzd": 187200, "resale_margin_pct": 22}, {"item_code": "LOT 4-12.4", "seq_order": 15, "cdc_title_fr": "Auge / Lave-mains chirurgical aseptique à 2 postes en acier inoxydable", "cdc_title_ar": "مغسلة أيدي جراحية معقمة بمقعدين من الفولاذ المقاوم للصدأ", "cdc_required_specs": [{"param": "Nombre de postes & Matériau", "required": "2 postes opérateurs, acier inoxydable 304 moulé sans angles vifs, déclenchement automatique", "actual": "Blackfish Lave-mains chirurgical 2 postes en inox moulé monobloc sablé anti-traces", "status": "MATCH_BONUS"}], "candidates": [{"model": "BLACKFISH Lave-Mains Chirurgical 2 Postes", "brand": "Blackfish Industries Shanghai (Chine)", "source_file": "lot4-12.4Lave-main.pdf", "docx_file": "lot4-12.4Lave-main.docx", "language": "FR", "file_format": "PDF + DOCX (Français)", "has_company_branding": false, "needs_translation": false, "needs_stamp_only": true, "compliance_pct": 100, "bonus_points": "+1.5 pt (Finition sablée anti-traces d'eau)", "sweet_spot_verdict": "OPTIMAL_SWEET_SPOT", "sweet_spot_label": "Choix Optimal (Apposer cachet SARL FLUIDAL)", "estimated_unit_cost_dzd": 420000, "selection_selected": true}], "stock_status": "IN_STOCK_READY", "stock_label": "En stock (Catalogue interne) — Fiche FR prête", "supplier_wholesale_dzd": 327600, "resale_margin_pct": 22}, {"item_code": "LOT 4-12.5", "seq_order": 16, "cdc_title_fr": "Guichet de transfert stérile inter-verrouillé pour bloc opératoire (Pass-Box)", "cdc_title_ar": "نافذة تمرير معقمة بقفل كهربائي متبادل لغرفة العمليات (Pass-Box)", "cdc_required_specs": [{"param": "Système de verrouillage", "required": "Inter-verrouillage électromagnétique empêchant l'ouverture simultanée des deux portes", "actual": "Blackfish Guichet Électrique (Pass-Box) avec inter-verrouillage et maintien de pression", "status": "MATCH"}], "candidates": [{"model": "BLACKFISH Cleanroom Electric Pass-Box", "brand": "Blackfish Industries Shanghai (Chine)", "source_file": "lot4-12.5 pass box.pdf", "docx_file": "lot4-12.5 pass box.docx", "language": "FR", "file_format": "PDF + DOCX (Français)", "has_company_branding": false, "needs_translation": false, "needs_stamp_only": true, "compliance_pct": 100, "bonus_points": "+1.5 pt (Conforme salle propre ISO)", "sweet_spot_verdict": "OPTIMAL_SWEET_SPOT", "sweet_spot_label": "Choix Optimal (Apposer cachet SARL FLUIDAL)", "estimated_unit_cost_dzd": 310000, "selection_selected": true}], "stock_status": "IN_STOCK_READY", "stock_label": "En stock (Catalogue interne) — Fiche FR prête", "supplier_wholesale_dzd": 241800, "resale_margin_pct": 22}, {"item_code": "LOT 4-12.6", "seq_order": 17, "cdc_title_fr": "Vidoir chirurgical hospitalier en acier inoxydable avec chasse d'eau automatique", "cdc_title_ar": "مفرغ نفايات سائلة جراحي من الفولاذ المقاوم للصدأ مع رش تلقائي", "cdc_required_specs": [{"param": "Dimensions & Épaisseur Inox", "required": "Acier inoxydable 304 brossé ≥ 1.0 mm, système de rinçage automatique", "actual": "WXC0827-00 (Fig 1.019.024) : 500×500×600+100 mm, plateau inox 1.2 mm soudé poli, corps 1.0 mm + spray auto", "status": "MATCH_BONUS"}, {"param": "Format & Langue du document", "required": "Fiche technique PDF en Français cachetée par l'entreprise", "actual": "IMAGE PNG EN ANGLAIS (lot4-12.6 vidoir.png — '04 Invert tank')", "status": "IMAGE_TO_FR_PDF_REQUIRED"}], "candidates": [{"model": "WXC0827-00 Surgical Invert Tank / Vidoir Inox (Fig. 1.019.024)", "brand": "Blackfish / WXC Medical Stainless", "source_file": "lot4-12.6 vidoir.png", "language": "EN (Image PNG)", "file_format": "Image PNG en Anglais (Non éditable sans OCR/IA)", "has_company_branding": false, "needs_translation": true, "is_raw_image": true, "compliance_pct": 95, "bonus_points": "+2.0 pts (Plateau supérieur inox 1.2 mm soudé monobloc)", "sweet_spot_verdict": "NEEDS_TRANSLATION_AND_STAMP", "sweet_spot_label": "Image PNG Anglais → Convertir en Fiche PDF Française Cachetée (Sans Photoshop)", "estimated_unit_cost_dzd": 260000, "selection_selected": true}], "stock_status": "IN_STOCK_NEEDS_FR_STAMP", "stock_label": "En stock (Catalogue interne) — À traduire EN→FR & cacheter", "supplier_wholesale_dzd": 197600, "resale_margin_pct": 24}, {"item_code": "LOT 4-13", "seq_order": 18, "stock_status": "OUT_OF_STOCK_NEEDS_SOURCING", "stock_label": "Non disponible en stock — Contacter fournisseur & uploader fiche pour revente", "supplier_wholesale_dzd": 3100000, "resale_margin_pct": 25, "cdc_title_fr": "Station d'anesthésie-réanimation avec ventilateur intégré et écran tactile couleur ≥ 15 pouces", "cdc_title_ar": "محطة تخدير وإنعاش مع جهاز تنفس مدمج وشاشة لمس ملونة ≥ 15 بوصة", "cdc_required_specs": [{"param": "Modes de ventilation", "required": "VCV, PCV, SIMV, PSV, Manuel + Spontané (Adulte, Pédiatrique, Néonatal)", "actual": "Aucune fiche en stock — En attente d'upload fournisseur", "status": "MISSING_SPEC"}, {"param": "Écran & Monitorage", "required": "Écran tactile couleur ≥ 15 pouces avec spirométrie et capnographie CO2", "actual": "Aucune fiche en stock — En attente d'upload fournisseur", "status": "MISSING_SPEC"}, {"param": "Vaporisateurs d'anesthésie", "required": "Double support Selectatec (Sevoflurane / Isoflurane) avec système anti-hypoxie", "actual": "Aucune fiche en stock — En attente d'upload fournisseur", "status": "MISSING_SPEC"}, {"param": "Autonomie batterie intégrée", "required": "≥ 90 minutes en cas de coupure secteur", "actual": "Aucune fiche en stock — En attente d'upload fournisseur", "status": "MISSING_SPEC"}], "candidates": [{"model": "AUCUNE FICHE EN STOCK (À sourcer : ex. Mindray WATO EX-65 / Perlong A60)", "brand": "Fournisseur à contacter (Mindray / Perlong / Dräger)", "source_file": "Non disponible dans docs/ — Cliquez sur 'Uploader Fiche Reçue'", "language": "MANQUANT", "file_format": "Aucun fichier local", "has_company_branding": false, "needs_translation": false, "needs_supplier_rfq": true, "is_out_of_stock": true, "compliance_pct": 0, "bonus_points": "En attente de réception de la fiche fournisseur et du prix d'achat", "sweet_spot_verdict": "OUT_OF_STOCK_SOURCING", "sweet_spot_label": "Hors Stock : Contacter fournisseur par Email/WhatsApp puis uploader sa fiche ici", "estimated_unit_cost_dzd": 3875000, "selection_selected": true}], "supplier_contacts": [{"name": "Perlong Medical Equipment (Nanjing)", "country": "Chine", "email": "service@perlong.com.cn", "whatsapp": "+86 138 5180 9921", "model_suggested": "Perlong A60 / A80 Anesthesia Workstation"}, {"name": "Mindray Medical International", "country": "Chine", "email": "intl-market@mindray.com", "whatsapp": "+86 755 8188 8998", "model_suggested": "Mindray WATO EX-65 Pro"}, {"name": "MEDIGE International Industries", "country": "Chine", "email": "info@medicalmge.com", "whatsapp": "+86 180 7271 8706", "model_suggested": "MEDIGE MGE-AN5A Anesthesia Machine"}], "rfq_message_fr": "Bonjour l'équipe Export, Nous cherchons à sourcer pour revente (Appel d'Offres EPH Mohammadia — Algérie) une Station d'Anesthésie-Réanimation (Modes VCV/PCV/SIMV/PSV, écran tactile >= 15 pouces, double vaporisateur Selectatec, batterie >= 90 min, CE & ISO 13485). Merci de nous envoyer votre Fiche Technique (PDF/Word) et votre meilleur tarif revendeur FOB/CFR Alger. — SARL FLUIDAL (Algérie)"}, {"item_code": "LOT 4-14", "seq_order": 19, "stock_status": "OUT_OF_STOCK_NEEDS_SOURCING", "stock_label": "Non disponible en stock — Contacter fournisseur & uploader fiche pour revente", "supplier_wholesale_dzd": 620000, "resale_margin_pct": 26, "cdc_title_fr": "Défibrillateur-moniteur multiparamétrique biphasique avec stimulateur cardiaque externe et imprimante", "cdc_title_ar": "جهاز صدمات الكهربائية ومراقبة المريض ثنائي الطور مع منظم ضربات القلب وطابعة", "cdc_required_specs": [{"param": "Onde de défibrillation", "required": "Biphasique tronquée exponentielle (BTE) de 2 à 360 Joules", "actual": "Aucune fiche en stock — En attente d'upload fournisseur", "status": "MISSING_SPEC"}, {"param": "Modes de fonctionnement", "required": "Manuel, DEA (semi-automatique), Stimulateur cardiaque (Pacing) et Moniteur ECG/SpO2", "actual": "Aucune fiche en stock — En attente d'upload fournisseur", "status": "MISSING_SPEC"}, {"param": "Temps de charge à 200J / 360J", "required": "< 5 secondes à 200J · < 8 secondes à 360J", "actual": "Aucune fiche en stock — En attente d'upload fournisseur", "status": "MISSING_SPEC"}], "candidates": [{"model": "AUCUNE FICHE EN STOCK (À sourcer : ex. Mindray BeneHeart D6 / Schiller DEFIGARD)", "brand": "Fournisseur à contacter (Mindray / Schiller / Nihon Kohden)", "source_file": "Non disponible dans docs/ — Cliquez sur 'Uploader Fiche Reçue'", "language": "MANQUANT", "file_format": "Aucun fichier local", "has_company_branding": false, "needs_translation": false, "needs_supplier_rfq": true, "is_out_of_stock": true, "compliance_pct": 0, "bonus_points": "En attente de réception de la fiche fournisseur et du prix d'achat", "sweet_spot_verdict": "OUT_OF_STOCK_SOURCING", "sweet_spot_label": "Hors Stock : Contacter fournisseur par Email/WhatsApp puis uploader sa fiche ici", "estimated_unit_cost_dzd": 781200, "selection_selected": true}], "supplier_contacts": [{"name": "Mindray Medical International", "country": "Chine", "email": "intl-market@mindray.com", "whatsapp": "+86 755 8188 8998", "model_suggested": "Mindray BeneHeart D6 (360J Biphasique)"}, {"name": "Schiller Médical SAS", "country": "France / Suisse", "email": "info@schiller.fr", "whatsapp": "+33 3 88 63 36 00", "model_suggested": "Schiller DEFIGARD Touch 7"}], "rfq_message_fr": "Bonjour l'équipe Export, Nous souhaitons sourcer pour revente (Appel d'Offres EPH Mohammadia — Algérie) un Défibrillateur-Moniteur Biphasique 360J (4-en-1 : Manuel, DEA, Pacing non invasif, Moniteur ECG/SpO2 + Imprimante thermique, CE & ISO 13485). Merci de nous envoyer votre Fiche Technique et votre tarif distributeur FOB/CFR Alger. — SARL FLUIDAL (Algérie)"}], "supplier_rfq_packages": [{"item_code": "LOT 4-03", "equipment_name": "Cadre d'extension et de traction orthopédique (MGE-OT7 / Équivalent)", "reason": "Le fichier `docs/lot4-3.MGE-OT7.pdf` ne contient que l'entête (310 caractères) sans le tableau des caractéristiques géométriques ni la liste des accessoires orthopédiques.", "recommended_suppliers": [{"name": "MEDIGE International Industries Co., Ltd", "country": "Chine", "email": "info@medicalmge.com", "phone": "+86 180 7271 8706", "website": "https://www.medicalmge.com"}, {"name": "Perlong Medical Equipment Co., Ltd", "country": "Chine", "email": "service@perlong.com.cn", "phone": "+86 25 8466 3156", "website": "https://www.perlong.com"}, {"name": "Lamidey Noury / Distri-Chirurgie", "country": "France", "email": "info@lamidey-noury.fr", "phone": "+33 1 69 20 69 69", "website": "https://www.lamidey-noury.com"}], "rfq_subject_fr": "URGENT — Demande de Fiche Technique Complète (FR) & Cotation Prix FOB/CFR Alger : Cadre de Traction Orthopédique MGE-OT7 (Appel d'Offres EPH Mohammadia)", "rfq_body_fr": "Bonjour l'équipe Export MEDIGE / Fournisseur,\\n\\nDans le cadre de notre soumission à l'Appel d'Offres National Ouvert de l'EPH de Mohammadia (Algérie) — Lot 04 (Équipements de Bloc Opératoire), nous disposons de votre fiche pour la table MGE-OT5 mais la fiche technique du Cadre de Traction Orthopédique réf. MGE-OT7 est incomplète.\\n\\nMerci de nous transmettre sous 24h :\\n1. La Fiche Technique complète (de préférence en Français ou Anglais détaillé) mentionnant :\\n   - Matériau de la structure (Acier inoxydable AISI 304 / Fibre de carbone radiotransparente)\\n   - Course d'extension orthopédique (mm), angles d'abduction/adduction et rotation des bottes\\n   - Liste des accessoires inclus (bottes adultes/pédiatriques, contre-appui périnéal, barre de traction)\\n   - Certificats CE Médical et ISO 13485\\n2. Votre meilleure offre de prix unitaire (EXW / CFR Port d'Alger) et délai de disponibilité.\\n\\nCordialement,\\nService Technique & Marchés Publics — SARL FLUIDAL (Algérie)\\nImportation de Dispositifs Médicaux & Réseaux de Fluides Médicaux", "rfq_body_en": "Dear Export Team,\\n\\nWe are preparing our technical bid for the Public Hospital Tender at EPH Mohammadia (Algeria) — Lot 04 (Operating Theatre Equipment). Could you urgently send us within 24 hours the complete Technical Datasheet and Distributor Price (FOB / CFR Algiers) for the Orthopedic Traction Frame (Model MGE-OT7 compatible with MGE-OT5), including:\\n- Full dimensions, traction stroke (mm), abduction/adduction angles, and weight capacity\\n- Standard accessories list (traction boots, perineal post, C-arm radiolucent bars)\\n- CE & ISO 13485 certificates.\\n\\nBest regards,\\nTechnical Tender Department — SARL FLUIDAL (Algeria)"}], "translated_sheets_available": ["LOT 4-12.6", "LOT 4-04", "LOT 4-12.1", "LOT 4-06", "LOT 4-03"]};
+    let LOT4_WORKFLOW_STATE = {"company_name": "SARL FLUIDAL — Importation de Dispositifs Médicaux & Fluides Médicaux", "tender_name": "EPH de Mohammadia (Mascara) — Lot 04 : Bloc Opératoire & UMC", "cdc_global_rules": {"mandatory_language": "Français obligatoire (Article 09 & 18 du CDC — Traduction requise pour 4 fiches EN/PNG)", "mandatory_stamp": "Cachet humide SARL FLUIDAL obligatoire sur chaque fiche technique (6 fiches constructeur à cacheter)", "bonus_scoring_rule": "Barème Technique sur 65 pts (Seuil éliminatoire 40/65) : Bonus accordé aux équipements dépassant légèrement les seuils (ex: Ra ≥ 97%, LED 80 000h, Charge 450 kg) tout en préservant la compétitivité prix au BPU/DQE."}, "summary_metrics": {"total_lot_items": 19, "total_files_in_docs_folder": 33, "ready_french_fiches": 12, "needs_translation_or_ocr": 4, "needs_supplier_rfq": 3, "multi_candidate_comparisons": 1, "in_stock_count": 16, "out_of_stock_sourcing_count": 3}, "items": [{"item_code": "LOT 4-01", "seq_order": 1, "cdc_title_fr": "Table d'opération chirurgicale universelle hydro-électrique (Radiotransparente)", "cdc_title_ar": "طاولة عمليات جراحية كهروهيدروليكية متعددة الاختصاصات", "cdc_required_specs": [{"param": "Mécanisme d'actionnement", "required": "Électro-hydraulique avec commande filaire + télécommande sans fil", "actual": "Électro-hydraulique + télécommande + panneau colonne (double contrôle)", "status": "MATCH_BONUS"}, {"param": "Hauteur réglable du plateau", "required": "700 mm à 1000 mm (±50 mm)", "actual": "680 mm à 1080 mm (course verticale 400 mm)", "status": "MATCH_BONUS"}, {"param": "Largeur & Longueur du plateau", "required": "Largeur ≥ 500 mm · Longueur ≥ 2000 mm", "actual": "Largeur 520 mm · Longueur 2080 mm (4 sections modulaires)", "status": "MATCH"}, {"param": "Translation longitudinale (Arceau C-Arm)", "required": "≥ 300 mm pour amplificateur de brillance", "actual": "310 mm (accès C-Arm intégral sans repositionner le patient)", "status": "MATCH_BONUS"}, {"param": "Capacité de charge maximale", "required": "≥ 350 kg", "actual": "450 kg (stabilité bariatrique et chirurgicale lourde)", "status": "MATCH_BONUS"}, {"param": "Autonomie batterie de secours", "required": "Batterie intégrée ≥ 50 opérations", "actual": "Batterie rechargeable haute capacité (80–100 interventions)", "status": "MATCH_BONUS"}], "candidates": [{"model": "MEDIGE MGE-OTK8", "brand": "MEDIGE International Industries (Chine)", "source_file": "lot 4-1.MGE-OTK8.pdf", "docx_file": "lot 4-1.MGE-OTK8.docx", "language": "FR", "file_format": "PDF + DOCX (Standardisé SARL FLUIDAL)", "has_company_branding": true, "needs_translation": false, "compliance_pct": 100, "bonus_points": "+4.5 pts (Charge 450 kg + Translation 310 mm + Double commande)", "sweet_spot_verdict": "OPTIMAL_SWEET_SPOT", "sweet_spot_label": "Choix Optimal (Mieux disant technique + Prix compétitif)", "estimated_unit_cost_dzd": 2450000, "selection_selected": true}], "stock_status": "IN_STOCK_READY", "stock_label": "En stock (Catalogue interne) — Fiche FR prête", "supplier_wholesale_dzd": 1911000, "resale_margin_pct": 22}, {"item_code": "LOT 4-02", "seq_order": 2, "cdc_title_fr": "Table d'opération électrique polyvalente à 5 moteurs", "cdc_title_ar": "طاولة عمليات كهربائية متعددة الوظائف بـ 5 محركات", "cdc_required_specs": [{"param": "Motorisation", "required": "Électrique ≥ 4 moteurs (Hauteur, Trendelenburg, Inclinaison, Dossier)", "actual": "5 moteurs électriques de précision + glissement longitudinal", "status": "MATCH_BONUS"}, {"param": "Matériau châssis & base", "required": "Acier inoxydable médical AISI 304", "actual": "Acier inoxydable 304 antibactérien résistant à la désinfection", "status": "MATCH"}, {"param": "Matelas opératoire", "required": "Antistatique, sans couture, radiotransparent", "actual": "Mousse à mémoire de forme antibactérienne + plateau rayons X bras C", "status": "MATCH_BONUS"}, {"param": "Inclinaison Trendelenburg / Latérale", "required": "≥ ±20° / ≥ ±15°", "actual": "Trendelenburg ±25° · Inclinaison latérale ±20°", "status": "MATCH_BONUS"}], "candidates": [{"model": "MEDIGE MGE-OT5 Electric", "brand": "MEDIGE International Industries (Chine)", "source_file": "lot4-2.MGE-OT5.pdf", "docx_file": "lot4-2.MGE-OT5.docx", "language": "FR", "file_format": "PDF + DOCX (Standardisé SARL FLUIDAL)", "has_company_branding": true, "needs_translation": false, "compliance_pct": 100, "bonus_points": "+3.0 pts (5e moteur de translation + matelas mémoire de forme)", "sweet_spot_verdict": "OPTIMAL_SWEET_SPOT", "sweet_spot_label": "Choix Optimal (5 moteurs au prix d'une 4 moteurs)", "estimated_unit_cost_dzd": 1850000, "selection_selected": true}], "stock_status": "IN_STOCK_READY", "stock_label": "En stock (Catalogue interne) — Fiche FR prête", "supplier_wholesale_dzd": 1443000, "resale_margin_pct": 22}, {"item_code": "LOT 4-03", "seq_order": 3, "cdc_title_fr": "Table d'opération orthopédique avec cadre d'extension et de traction", "cdc_title_ar": "طاولة عمليات جراحة العظام مع إطار الشد والجر", "cdc_required_specs": [{"param": "Table de base compatible", "required": "Table électrique radiotransparente compatible bras C", "actual": "MGE-OT5 Electric (fournie dans lot4-3.MGE-OT5.pdf)", "status": "MATCH"}, {"param": "Cadre de traction orthopédique", "required": "Cadre en acier inoxydable / fibre de carbone avec bottes de traction, contre-extension périnéale et rotules articulées", "actual": "FICHE INCOMPLÈTE dans lot4-3.MGE-OT7.pdf (seulement 310 caractères, tableau technique manquant)", "status": "MISSING_SPEC"}], "candidates": [{"model": "MEDIGE MGE-OT5 + Cadre de Traction MGE-OT7", "brand": "MEDIGE International Industries (Chine)", "source_file": "lot4-3.MGE-OT7.pdf", "docx_file": "lot4-3.MGE-OT7.docx", "language": "FR (Incomplet)", "file_format": "PDF Incomplet (310 caractères — Tableau manquant)", "has_company_branding": true, "needs_translation": false, "needs_supplier_rfq": true, "compliance_pct": 55, "bonus_points": "Attention : Fiche MGE-OT7 vide à compléter ou demander au fournisseur", "sweet_spot_verdict": "INCOMPLETE_FICHE_ALERT", "sweet_spot_label": "Fiche Incomplète Détectée (Générer fiche complète / RFQ Fournisseur)", "estimated_unit_cost_dzd": 2300000, "selection_selected": true}], "stock_status": "OUT_OF_STOCK_INCOMPLETE", "stock_label": "Fiche absente/incomplète en stock — À demander au fournisseur", "supplier_wholesale_dzd": 1650000, "resale_margin_pct": 28}, {"item_code": "LOT 4-04", "seq_order": 4, "cdc_title_fr": "Éclairage opératoire scialytique double coupole LED avec caméra vidéo HD intégrée", "cdc_title_ar": "مصباح جراحي مزدوج بتقنية LED بدون ظل مع كاميرا فيديو عالية الدقة", "cdc_required_specs": [{"param": "Configuration coupole", "required": "Double coupole LED sans ombre compatible flux laminaire", "actual": "Design Papillon (Butterfly Type MGE-SLK3B) aérodynamique flux laminaire", "status": "MATCH_BONUS"}, {"param": "Durée de vie des LED", "required": "≥ 50 000 heures", "actual": "80 000 heures (LED Osram froides basse consommation)", "status": "MATCH_BONUS"}, {"param": "Caméra chirurgicale intégrée", "required": "Caméra Full HD 1080p montée dans la poignée centrale avec zoom optique", "actual": "MEDIGE Surgical Field Camera (4 pages scannées image PDF)", "status": "MATCH"}, {"param": "Langue de la fiche technique", "required": "Français obligatoire (Article 09 du CDC)", "actual": "ANGLAIS (MGE-SLK3B.pdf) + IMAGE SCANNÉE (Surgical Field Camera.pdf)", "status": "TRANSLATION_REQUIRED"}], "candidates": [{"model": "MEDIGE MGE-SLK3B Butterfly + Caméra Chirurgicale MEDIGE", "brand": "MEDIGE International Industries (Chine)", "source_file": "lot4-4.LED-Shadowless-Operating-Light-MGE-SLK3-Butterfly-Type.pdf", "secondary_file": "lot4-4.Surgical Field Camera MEDIGE.pdf", "language": "EN + SCAN IMAGE", "file_format": "PDF Anglais + PDF Scanné (0 texte sélectionnable)", "has_company_branding": false, "needs_translation": true, "compliance_pct": 95, "bonus_points": "+3.5 pts (LED 80 000h + 4 modes d'éclairage + bras équilibré)", "sweet_spot_verdict": "NEEDS_TRANSLATION_AND_STAMP", "sweet_spot_label": "À Traduire EN→FR & Apposer Cachet SARL FLUIDAL (1 Clic Sans Photoshop)", "estimated_unit_cost_dzd": 1950000, "selection_selected": true}], "stock_status": "IN_STOCK_NEEDS_FR_STAMP", "stock_label": "En stock (Catalogue interne) — À traduire EN→FR & cacheter", "supplier_wholesale_dzd": 1482000, "resale_margin_pct": 24}, {"item_code": "LOT 4-05", "seq_order": 5, "cdc_title_fr": "Lampe opératoire scialytique plafonnière double coupole LED 700/500", "cdc_title_ar": "مصباح عمليات جراحي سقفي مزدوج LED 700/500", "cdc_required_specs": [{"param": "Éclairement central à 1m (Lux)", "required": "Coupole 700 : ≥ 160 000 Lux · Coupole 500 : ≥ 140 000 Lux", "actual": "MGE-SL1D : 180 000 / 160 000 Lux vs Perlong : 160 000 / 140 000 Lux", "status": "MATCH_BONUS"}, {"param": "Indice de rendu des couleurs (Ra / CRI)", "required": "Ra ≥ 95%", "actual": "MGE-SL1D : Ra ≥ 97% vs Perlong : Ra = 95%", "status": "MATCH_BONUS"}, {"param": "Élévation de température (tête chirurgien)", "required": "≤ 2 °C", "actual": "MGE-SL1D : ≤ 1 °C (Perles LED Osram importées d'Allemagne)", "status": "MATCH_BONUS"}, {"param": "Mode endoscopie / laparoscopie", "required": "Souhaité (Bonus barème technique)", "actual": "Inclus sur MGE-SL1D + mémoire numérique micro-ordinateur", "status": "MATCH_BONUS"}], "candidates": [{"model": "MEDIGE MGE-SL1D (LED 700/500)", "brand": "MEDIGE International Industries (Chine)", "source_file": "lot4-5.MGE-SL1D.pdf", "docx_file": "lot4-5.MGE-SL1D.docx", "language": "FR", "file_format": "PDF + DOCX (Standardisé SARL FLUIDAL)", "has_company_branding": true, "needs_translation": false, "compliance_pct": 100, "bonus_points": "+5.0 pts (180k Lux + Ra ≥ 97% + Mode Laparoscopie + Déjà siglé SARL FLUIDAL)", "sweet_spot_verdict": "OPTIMAL_SWEET_SPOT", "sweet_spot_label": "★ Choix Recommandé (Surpasse le CDC de +12% Lux / Ra 97% sans surcoût excessif)", "estimated_unit_cost_dzd": 1280000, "selection_selected": true}, {"model": "PERLONG LED 700/500", "brand": "Perlong Medical Equipment (Chine)", "source_file": "lot4-5.LED700,500 op lamp.pdf", "docx_file": "lot4-5.LED700,500 op lamp.docx", "language": "FR", "file_format": "PDF + DOCX (Entête Perlong non siglé FLUIDAL)", "has_company_branding": false, "needs_translation": false, "compliance_pct": 100, "bonus_points": "+0.0 pt (Exactement au seuil minimal 160k/140k Lux, Ra 95, 50 000h)", "sweet_spot_verdict": "BASELINE_ALTERNATIVE", "sweet_spot_label": "Alternative Basique (Minimum requis sans bonus technique, non siglé FLUIDAL)", "estimated_unit_cost_dzd": 1190000, "selection_selected": false}], "stock_status": "IN_STOCK_READY", "stock_label": "En stock (Catalogue interne) — Fiche FR prête", "supplier_wholesale_dzd": 998400, "resale_margin_pct": 22}, {"item_code": "LOT 4-06", "seq_order": 6, "cdc_title_fr": "Système d'intégration numérique et de visioconférence pour bloc opératoire", "cdc_title_ar": "نظام الإدماج الرقمي والمحاضرات المرئية لغرفة العمليات", "cdc_required_specs": [{"param": "Architecture d'encastrement mural", "required": "Console murale encastrée faible épaisseur (< 100 mm) norme salle propre", "actual": "Blackfish Digital Operating Room Control System (épaisseur 80 mm, norme GB50333)", "status": "MATCH_BONUS"}, {"param": "Fonctions vidéo & audio", "required": "Routage multi-sources, enregistrement HD, télé-enseignement chirurgical", "actual": "Intégration vidéo/audio complète + télé-enseignement et consultation à distance", "status": "MATCH"}, {"param": "Langue de la fiche technique", "required": "Français obligatoire", "actual": "ANGLAIS (lot4-6.systeme de visioconference et integration blackfish.pdf)", "status": "TRANSLATION_REQUIRED"}], "candidates": [{"model": "BLACKFISH Digital Operating Theatre Integration System", "brand": "Blackfish Industries Shanghai (Chine)", "source_file": "lot4-6.systeme de visioconference et integration blackfish.pdf", "language": "EN", "file_format": "PDF Catalogue Anglais (4 pages — 9.8 MB)", "has_company_branding": false, "needs_translation": true, "compliance_pct": 95, "bonus_points": "+2.5 pts (Épaisseur ultra-fine 80 mm + module télé-chirurgie)", "sweet_spot_verdict": "NEEDS_TRANSLATION_AND_STAMP", "sweet_spot_label": "À Traduire EN→FR & Standardiser au modèle SARL FLUIDAL", "estimated_unit_cost_dzd": 3400000, "selection_selected": true}], "stock_status": "IN_STOCK_NEEDS_FR_STAMP", "stock_label": "En stock (Catalogue interne) — À traduire EN→FR & cacheter", "supplier_wholesale_dzd": 2584000, "resale_margin_pct": 24}, {"item_code": "LOT 4-07", "seq_order": 7, "cdc_title_fr": "Lampe opératoire chirurgicale mobile sur pied roulant avec batterie", "cdc_title_ar": "مصباح جراحي متنقل على عجلات مزود ببطارية", "cdc_required_specs": [{"param": "Mobilité & Statif", "required": "Sur roulettes antistatiques avec freins et bras articulé", "actual": "MGE-SL1C sur pied mobile ergonomique haute stabilité", "status": "MATCH"}, {"param": "Source LED & Durée de vie", "required": "LED Osram ≥ 50 000 heures", "actual": "Ampoules LED Osram > 80 000 heures + mode laparoscopique 1 touche", "status": "MATCH_BONUS"}], "candidates": [{"model": "MEDIGE MGE-SL1C Mobile Surgical Light", "brand": "MEDIGE International Industries (Chine)", "source_file": "lot4-7.MGE-SL1C.pdf", "docx_file": "lot4-7.MGE-SL1C.docx", "language": "FR", "file_format": "PDF + DOCX (Standardisé SARL FLUIDAL)", "has_company_branding": true, "needs_translation": false, "compliance_pct": 100, "bonus_points": "+3.0 pts (LED 80 000h + Mode laparoscopique dédié)", "sweet_spot_verdict": "OPTIMAL_SWEET_SPOT", "sweet_spot_label": "Choix Optimal (Prêt à soumettre)", "estimated_unit_cost_dzd": 680000, "selection_selected": true}], "stock_status": "IN_STOCK_READY", "stock_label": "En stock (Catalogue interne) — Fiche FR prête", "supplier_wholesale_dzd": 530400, "resale_margin_pct": 22}, {"item_code": "LOT 4-08", "seq_order": 8, "cdc_title_fr": "Bistouri électrique haute fréquence (Générateur électrochirurgical monopolaire/bipolaire)", "cdc_title_ar": "مشرط كهربائي عالي التردد أحادي وثنائي القطب", "cdc_required_specs": [{"param": "Puissance HF maximale", "required": "≥ 350 W avec régulation automatique selon l'impédance tissulaire", "actual": "Lamidey Noury OPTIMA II : 370 W avec microprocesseur Power Feedback temps réel", "status": "MATCH_BONUS"}, {"param": "Modes chirurgicaux", "required": "Coupe pure, coagulation, bipolaire, endoscopie", "actual": "Monopolaire, Bipolaire plasma, Endosection, Thermofusion / Scellement vasculaire", "status": "MATCH_BONUS"}, {"param": "Origine & Marquage", "required": "Marquage CE Médical + Fiche en Français cachetée", "actual": "Fabrication Française (Lamidey Noury) en Français — Cachet SARL FLUIDAL à apposer", "status": "STAMP_REQUIRED"}], "candidates": [{"model": "LAMIDEY NOURY OPTIMA II (Réf. V10GOPT4 — 370W)", "brand": "Lamidey Noury Medical (France)", "source_file": "lot4-8.FT-OPTIMA II FR_05-2020.pdf", "language": "FR", "file_format": "PDF Constructeur Français (7 pages)", "has_company_branding": false, "needs_translation": false, "needs_stamp_only": true, "compliance_pct": 100, "bonus_points": "+4.5 pts (Fabrication Française + 370W Power Feedback + Scellement vasculaire)", "sweet_spot_verdict": "OPTIMAL_SWEET_SPOT", "sweet_spot_label": "Excellent (Apposer uniquement le cachet humide SARL FLUIDAL)", "estimated_unit_cost_dzd": 1650000, "selection_selected": true}], "stock_status": "IN_STOCK_READY", "stock_label": "En stock (Catalogue interne) — Fiche FR prête", "supplier_wholesale_dzd": 1287000, "resale_margin_pct": 22}, {"item_code": "LOT 4-09", "seq_order": 9, "cdc_title_fr": "Bras plafonnier de distribution chirurgicale (Pendentif de chirurgie)", "cdc_title_ar": "ذراع سقفي لتوزيع الغازات الطبية والكهرباء خاص بالجراحة", "cdc_required_specs": [{"param": "Rayon d'action & Rotation", "required": "Bras horizontal 700–1000 mm · Rotation ≥ 300°", "actual": "Bras 700–1100 mm (épaisseur >10 mm) · Rotation 0 à 340°", "status": "MATCH_BONUS"}, {"param": "Capacité de charge nette", "required": "≥ 180 kg", "actual": "Charge nette > 220 kg avec plateaux réglables et prises gaz/électriques", "status": "MATCH_BONUS"}], "candidates": [{"model": "MEDIGE MGE-STP3 (Bras de Chirurgie)", "brand": "MEDIGE International Industries (Chine)", "source_file": "lot4-9.MGE-STP3.pdf", "docx_file": "lot4-9.MGE-STP3.docx", "language": "FR", "file_format": "PDF + DOCX (Standardisé SARL FLUIDAL)", "has_company_branding": true, "needs_translation": false, "compliance_pct": 100, "bonus_points": "+3.0 pts (Charge > 220 kg + Rotation 340°)", "sweet_spot_verdict": "OPTIMAL_SWEET_SPOT", "sweet_spot_label": "Choix Optimal (Prêt à soumettre)", "estimated_unit_cost_dzd": 1150000, "selection_selected": true}], "stock_status": "IN_STOCK_READY", "stock_label": "En stock (Catalogue interne) — Fiche FR prête", "supplier_wholesale_dzd": 897000, "resale_margin_pct": 22}, {"item_code": "LOT 4-10", "seq_order": 10, "cdc_title_fr": "Bras plafonnier d'anesthésie et de réanimation (Séparation zone sèche / humide)", "cdc_title_ar": "ذراع سقفي للتخدير والإنعاش بفصل المنطقتين الجافة والرطبة", "cdc_required_specs": [{"param": "Architecture", "required": "Pendentif multi-bras avec séparation colonne sèche et colonne humide + tige porte-sérum", "actual": "MGE-STEP7C avec structure pont sec/humide, prises O2/Vide/Air et bornes RJ45", "status": "MATCH_BONUS"}], "candidates": [{"model": "MEDIGE MGE-STEP7C (Bras d'Anesthésie)", "brand": "MEDIGE International Industries (Chine)", "source_file": "lot4-10.MGE-STEP7C.pdf", "docx_file": "lot4-10.MGE-STEP7C.docx", "language": "FR", "file_format": "PDF + DOCX (Standardisé SARL FLUIDAL)", "has_company_branding": true, "needs_translation": false, "compliance_pct": 100, "bonus_points": "+3.0 pts (Séparation sec/humide complète)", "sweet_spot_verdict": "OPTIMAL_SWEET_SPOT", "sweet_spot_label": "Choix Optimal (Prêt à soumettre)", "estimated_unit_cost_dzd": 1320000, "selection_selected": true}], "stock_status": "IN_STOCK_READY", "stock_label": "En stock (Catalogue interne) — Fiche FR prête", "supplier_wholesale_dzd": 1029600, "resale_margin_pct": 22}, {"item_code": "LOT 4-11", "seq_order": 11, "cdc_title_fr": "Aspirateur chirurgical mobile à vide élevé (Double bocal)", "cdc_title_ar": "جهاز شفط جراحي كهربائي عالي التفريغ ثنائي القارورة", "cdc_required_specs": [{"param": "Débit de pompage & Pompe", "required": "Pompe sans huile sans maintenance · Débit ≥ 60 L/min", "actual": "Perlong YX-980D double piston sans huile · Débit > 80 L/min + protection anti-débordement", "status": "MATCH_BONUS"}], "candidates": [{"model": "PERLONG YX-980D High-Vacuum Suction Unit", "brand": "Perlong Medical Equipment (Chine)", "source_file": "lot4-11 YX-980D.pdf", "docx_file": "lot4-11 YX-980D.docx", "language": "FR", "file_format": "PDF + DOCX (Français)", "has_company_branding": false, "needs_translation": false, "needs_stamp_only": true, "compliance_pct": 100, "bonus_points": "+2.5 pts (Débit > 80 L/min vs 60 L/min exigés)", "sweet_spot_verdict": "OPTIMAL_SWEET_SPOT", "sweet_spot_label": "Choix Optimal (Apposer cachet SARL FLUIDAL)", "estimated_unit_cost_dzd": 285000, "selection_selected": true}], "stock_status": "IN_STOCK_READY", "stock_label": "En stock (Catalogue interne) — Fiche FR prête", "supplier_wholesale_dzd": 222300, "resale_margin_pct": 22}, {"item_code": "LOT 4-12.1", "seq_order": 12, "cdc_title_fr": "Système de réchauffement actif du patient (Couverture chauffante de bloc)", "cdc_title_ar": "نظام تدفئة المريض النشط (بطانية تدفئة لغرفة العمليات)", "cdc_required_specs": [{"param": "Sécurité thermique & Capteurs", "required": "Réchauffeur basse tension réutilisable avec capteurs de sécurité et alarmes", "actual": "GSH-Med France CB48 : 8 capteurs indépendants + alarmes visuelles et sonores", "status": "MATCH_BONUS"}, {"param": "Langue de la fiche technique", "required": "Français obligatoire", "actual": "ANGLAIS (lot4-12. 1 couverture chauffante gsh-med.pdf)", "status": "TRANSLATION_REQUIRED"}], "candidates": [{"model": "GSH-MED CB48 Active Patient Warming Blanket (France)", "brand": "GSH-Med Aix-en-Provence (France)", "source_file": "lot4-12. 1 couverture chauffante gsh-med.pdf", "language": "EN", "file_format": "PDF Anglais (3 pages)", "has_company_branding": false, "needs_translation": true, "compliance_pct": 95, "bonus_points": "+3.0 pts (8 capteurs indépendants + Fabrication Française)", "sweet_spot_verdict": "NEEDS_TRANSLATION_AND_STAMP", "sweet_spot_label": "À Traduire EN→FR & Cacheter (1 Clic Sans Photoshop)", "estimated_unit_cost_dzd": 490000, "selection_selected": true}], "stock_status": "IN_STOCK_NEEDS_FR_STAMP", "stock_label": "En stock (Catalogue interne) — À traduire EN→FR & cacheter", "supplier_wholesale_dzd": 372400, "resale_margin_pct": 24}, {"item_code": "LOT 4-12.2", "seq_order": 13, "cdc_title_fr": "Loupes binoculaires chirurgicales ergonomiques avec éclairage LED frontal", "cdc_title_ar": "مكبرات جراحية ثنائية العينين مريحة مع إضاءة أمامية LED", "cdc_required_specs": [{"param": "Qualité optique & Transmission", "required": "Lentilles asphériques anti-reflet transmission > 95%", "actual": "Perlong H3-ERGO-4in1 : Optique grade A+ transmission > 98% sans distorsion", "status": "MATCH_BONUS"}], "candidates": [{"model": "PERLONG H3-ERGO-4in1 Binocular Loupes", "brand": "Perlong Medical Equipment (Chine)", "source_file": "lot4-12.2H3-ERGO-4IN1.pdf", "docx_file": "lot4-12.2H3-ERGO-4IN1.docx", "language": "FR", "file_format": "PDF + DOCX (Français)", "has_company_branding": false, "needs_translation": false, "needs_stamp_only": true, "compliance_pct": 100, "bonus_points": "+2.0 pts (Transmission > 98% + ergonomie cervicale)", "sweet_spot_verdict": "OPTIMAL_SWEET_SPOT", "sweet_spot_label": "Choix Optimal (Apposer cachet SARL FLUIDAL)", "estimated_unit_cost_dzd": 195000, "selection_selected": true}], "stock_status": "IN_STOCK_READY", "stock_label": "En stock (Catalogue interne) — Fiche FR prête", "supplier_wholesale_dzd": 152100, "resale_margin_pct": 22}, {"item_code": "LOT 4-12.3", "seq_order": 14, "cdc_title_fr": "Horloge digitale multifonction de bloc opératoire (Heure, Chronomètre, Température, Humidité)", "cdc_title_ar": "ساعة رقمية متعددة الوظائف لغرفة العمليات (الوقت، الكرونومتر، الحرارة، الرطوبة)", "cdc_required_specs": [{"param": "Boîtier & Affichage", "required": "Acier inoxydable AISI 304 brossé, affichage heure/chronomètre/température/humidité/pression", "actual": "ECO-SLH-DC (LF-801316.21) : Inox AISI 304, grand angle 160°, chronomètre 24h, NTP", "status": "MATCH_BONUS"}], "candidates": [{"model": "ECO-SLH-DC Digital Operating Room Clock (LF-801316.21)", "brand": "ECO-SLH (Allemagne / Europe)", "source_file": "lot4-12.3-horloge digitale LF-801316.21-ECO-SLH-DC-Digitaluhr_removed.pdf.pdf", "language": "FR", "file_format": "PDF Français (3 pages)", "has_company_branding": false, "needs_translation": false, "needs_stamp_only": true, "compliance_pct": 100, "bonus_points": "+2.0 pts (Affichage pression atmosphérique + capteur luminosité auto)", "sweet_spot_verdict": "OPTIMAL_SWEET_SPOT", "sweet_spot_label": "Choix Optimal (Apposer cachet SARL FLUIDAL)", "estimated_unit_cost_dzd": 240000, "selection_selected": true}], "stock_status": "IN_STOCK_READY", "stock_label": "En stock (Catalogue interne) — Fiche FR prête", "supplier_wholesale_dzd": 187200, "resale_margin_pct": 22}, {"item_code": "LOT 4-12.4", "seq_order": 15, "cdc_title_fr": "Auge / Lave-mains chirurgical aseptique à 2 postes en acier inoxydable", "cdc_title_ar": "مغسلة أيدي جراحية معقمة بمقعدين من الفولاذ المقاوم للصدأ", "cdc_required_specs": [{"param": "Nombre de postes & Matériau", "required": "2 postes opérateurs, acier inoxydable 304 moulé sans angles vifs, déclenchement automatique", "actual": "Blackfish Lave-mains chirurgical 2 postes en inox moulé monobloc sablé anti-traces", "status": "MATCH_BONUS"}], "candidates": [{"model": "BLACKFISH Lave-Mains Chirurgical 2 Postes", "brand": "Blackfish Industries Shanghai (Chine)", "source_file": "lot4-12.4Lave-main.pdf", "docx_file": "lot4-12.4Lave-main.docx", "language": "FR", "file_format": "PDF + DOCX (Français)", "has_company_branding": false, "needs_translation": false, "needs_stamp_only": true, "compliance_pct": 100, "bonus_points": "+1.5 pt (Finition sablée anti-traces d'eau)", "sweet_spot_verdict": "OPTIMAL_SWEET_SPOT", "sweet_spot_label": "Choix Optimal (Apposer cachet SARL FLUIDAL)", "estimated_unit_cost_dzd": 420000, "selection_selected": true}], "stock_status": "IN_STOCK_READY", "stock_label": "En stock (Catalogue interne) — Fiche FR prête", "supplier_wholesale_dzd": 327600, "resale_margin_pct": 22}, {"item_code": "LOT 4-12.5", "seq_order": 16, "cdc_title_fr": "Guichet de transfert stérile inter-verrouillé pour bloc opératoire (Pass-Box)", "cdc_title_ar": "نافذة تمرير معقمة بقفل كهربائي متبادل لغرفة العمليات (Pass-Box)", "cdc_required_specs": [{"param": "Système de verrouillage", "required": "Inter-verrouillage électromagnétique empêchant l'ouverture simultanée des deux portes", "actual": "Blackfish Guichet Électrique (Pass-Box) avec inter-verrouillage et maintien de pression", "status": "MATCH"}], "candidates": [{"model": "BLACKFISH Cleanroom Electric Pass-Box", "brand": "Blackfish Industries Shanghai (Chine)", "source_file": "lot4-12.5 pass box.pdf", "docx_file": "lot4-12.5 pass box.docx", "language": "FR", "file_format": "PDF + DOCX (Français)", "has_company_branding": false, "needs_translation": false, "needs_stamp_only": true, "compliance_pct": 100, "bonus_points": "+1.5 pt (Conforme salle propre ISO)", "sweet_spot_verdict": "OPTIMAL_SWEET_SPOT", "sweet_spot_label": "Choix Optimal (Apposer cachet SARL FLUIDAL)", "estimated_unit_cost_dzd": 310000, "selection_selected": true}], "stock_status": "IN_STOCK_READY", "stock_label": "En stock (Catalogue interne) — Fiche FR prête", "supplier_wholesale_dzd": 241800, "resale_margin_pct": 22}, {"item_code": "LOT 4-12.6", "seq_order": 17, "cdc_title_fr": "Vidoir chirurgical hospitalier en acier inoxydable avec chasse d'eau automatique", "cdc_title_ar": "مفرغ نفايات سائلة جراحي من الفولاذ المقاوم للصدأ مع رش تلقائي", "cdc_required_specs": [{"param": "Dimensions & Épaisseur Inox", "required": "Acier inoxydable 304 brossé ≥ 1.0 mm, système de rinçage automatique", "actual": "WXC0827-00 (Fig 1.019.024) : 500×500×600+100 mm, plateau inox 1.2 mm soudé poli, corps 1.0 mm + spray auto", "status": "MATCH_BONUS"}, {"param": "Format & Langue du document", "required": "Fiche technique PDF en Français cachetée par l'entreprise", "actual": "IMAGE PNG EN ANGLAIS (lot4-12.6 vidoir.png — '04 Invert tank')", "status": "IMAGE_TO_FR_PDF_REQUIRED"}], "candidates": [{"model": "WXC0827-00 Surgical Invert Tank / Vidoir Inox (Fig. 1.019.024)", "brand": "Blackfish / WXC Medical Stainless", "source_file": "lot4-12.6 vidoir.png", "language": "EN (Image PNG)", "file_format": "Image PNG en Anglais (Non éditable sans OCR/IA)", "has_company_branding": false, "needs_translation": true, "is_raw_image": true, "compliance_pct": 95, "bonus_points": "+2.0 pts (Plateau supérieur inox 1.2 mm soudé monobloc)", "sweet_spot_verdict": "NEEDS_TRANSLATION_AND_STAMP", "sweet_spot_label": "Image PNG Anglais → Convertir en Fiche PDF Française Cachetée (Sans Photoshop)", "estimated_unit_cost_dzd": 260000, "selection_selected": true}], "stock_status": "IN_STOCK_NEEDS_FR_STAMP", "stock_label": "En stock (Catalogue interne) — À traduire EN→FR & cacheter", "supplier_wholesale_dzd": 197600, "resale_margin_pct": 24}, {"item_code": "LOT 4-13", "seq_order": 18, "stock_status": "OUT_OF_STOCK_NEEDS_SOURCING", "stock_label": "Non disponible en stock — Contacter fournisseur & uploader fiche pour revente", "supplier_wholesale_dzd": 3100000, "resale_margin_pct": 25, "cdc_title_fr": "Station d'anesthésie-réanimation avec ventilateur intégré et écran tactile couleur ≥ 15 pouces", "cdc_title_ar": "محطة تخدير وإنعاش مع جهاز تنفس مدمج وشاشة لمس ملونة ≥ 15 بوصة", "cdc_required_specs": [{"param": "Modes de ventilation", "required": "VCV, PCV, SIMV, PSV, Manuel + Spontané (Adulte, Pédiatrique, Néonatal)", "actual": "Aucune fiche en stock — En attente d'upload fournisseur", "status": "MISSING_SPEC"}, {"param": "Écran & Monitorage", "required": "Écran tactile couleur ≥ 15 pouces avec spirométrie et capnographie CO2", "actual": "Aucune fiche en stock — En attente d'upload fournisseur", "status": "MISSING_SPEC"}, {"param": "Vaporisateurs d'anesthésie", "required": "Double support Selectatec (Sevoflurane / Isoflurane) avec système anti-hypoxie", "actual": "Aucune fiche en stock — En attente d'upload fournisseur", "status": "MISSING_SPEC"}, {"param": "Autonomie batterie intégrée", "required": "≥ 90 minutes en cas de coupure secteur", "actual": "Aucune fiche en stock — En attente d'upload fournisseur", "status": "MISSING_SPEC"}], "candidates": [{"model": "AUCUNE FICHE EN STOCK (À sourcer : ex. Mindray WATO EX-65 / Perlong A60)", "brand": "Fournisseur à contacter (Mindray / Perlong / Dräger)", "source_file": "Non disponible dans docs/ — Cliquez sur 'Uploader Fiche Reçue'", "language": "MANQUANT", "file_format": "Aucun fichier local", "has_company_branding": false, "needs_translation": false, "needs_supplier_rfq": true, "is_out_of_stock": true, "compliance_pct": 0, "bonus_points": "En attente de réception de la fiche fournisseur et du prix d'achat", "sweet_spot_verdict": "OUT_OF_STOCK_SOURCING", "sweet_spot_label": "Hors Stock : Contacter fournisseur par Email/WhatsApp puis uploader sa fiche ici", "estimated_unit_cost_dzd": 3875000, "selection_selected": true}], "supplier_contacts": [{"name": "Perlong Medical Equipment (Nanjing)", "country": "Chine", "email": "service@perlong.com.cn", "whatsapp": "+86 138 5180 9921", "model_suggested": "Perlong A60 / A80 Anesthesia Workstation"}, {"name": "Mindray Medical International", "country": "Chine", "email": "intl-market@mindray.com", "whatsapp": "+86 755 8188 8998", "model_suggested": "Mindray WATO EX-65 Pro"}, {"name": "MEDIGE International Industries", "country": "Chine", "email": "info@medicalmge.com", "whatsapp": "+86 180 7271 8706", "model_suggested": "MEDIGE MGE-AN5A Anesthesia Machine"}], "rfq_message_fr": "Bonjour l'équipe Export, Nous cherchons à sourcer pour revente (Appel d'Offres EPH Mohammadia — Algérie) une Station d'Anesthésie-Réanimation (Modes VCV/PCV/SIMV/PSV, écran tactile >= 15 pouces, double vaporisateur Selectatec, batterie >= 90 min, CE & ISO 13485). Merci de nous envoyer votre Fiche Technique (PDF/Word) et votre meilleur tarif revendeur FOB/CFR Alger. — SARL FLUIDAL (Algérie)"}, {"item_code": "LOT 4-14", "seq_order": 19, "stock_status": "OUT_OF_STOCK_NEEDS_SOURCING", "stock_label": "Non disponible en stock — Contacter fournisseur & uploader fiche pour revente", "supplier_wholesale_dzd": 620000, "resale_margin_pct": 26, "cdc_title_fr": "Défibrillateur-moniteur multiparamétrique biphasique avec stimulateur cardiaque externe et imprimante", "cdc_title_ar": "جهاز صدمات الكهربائية ومراقبة المريض ثنائي الطور مع منظم ضربات القلب وطابعة", "cdc_required_specs": [{"param": "Onde de défibrillation", "required": "Biphasique tronquée exponentielle (BTE) de 2 à 360 Joules", "actual": "Aucune fiche en stock — En attente d'upload fournisseur", "status": "MISSING_SPEC"}, {"param": "Modes de fonctionnement", "required": "Manuel, DEA (semi-automatique), Stimulateur cardiaque (Pacing) et Moniteur ECG/SpO2", "actual": "Aucune fiche en stock — En attente d'upload fournisseur", "status": "MISSING_SPEC"}, {"param": "Temps de charge à 200J / 360J", "required": "< 5 secondes à 200J · < 8 secondes à 360J", "actual": "Aucune fiche en stock — En attente d'upload fournisseur", "status": "MISSING_SPEC"}], "candidates": [{"model": "AUCUNE FICHE EN STOCK (À sourcer : ex. Mindray BeneHeart D6 / Schiller DEFIGARD)", "brand": "Fournisseur à contacter (Mindray / Schiller / Nihon Kohden)", "source_file": "Non disponible dans docs/ — Cliquez sur 'Uploader Fiche Reçue'", "language": "MANQUANT", "file_format": "Aucun fichier local", "has_company_branding": false, "needs_translation": false, "needs_supplier_rfq": true, "is_out_of_stock": true, "compliance_pct": 0, "bonus_points": "En attente de réception de la fiche fournisseur et du prix d'achat", "sweet_spot_verdict": "OUT_OF_STOCK_SOURCING", "sweet_spot_label": "Hors Stock : Contacter fournisseur par Email/WhatsApp puis uploader sa fiche ici", "estimated_unit_cost_dzd": 781200, "selection_selected": true}], "supplier_contacts": [{"name": "Mindray Medical International", "country": "Chine", "email": "intl-market@mindray.com", "whatsapp": "+86 755 8188 8998", "model_suggested": "Mindray BeneHeart D6 (360J Biphasique)"}, {"name": "Schiller Médical SAS", "country": "France / Suisse", "email": "info@schiller.fr", "whatsapp": "+33 3 88 63 36 00", "model_suggested": "Schiller DEFIGARD Touch 7"}], "rfq_message_fr": "Bonjour l'équipe Export, Nous souhaitons sourcer pour revente (Appel d'Offres EPH Mohammadia — Algérie) un Défibrillateur-Moniteur Biphasique 360J (4-en-1 : Manuel, DEA, Pacing non invasif, Moniteur ECG/SpO2 + Imprimante thermique, CE & ISO 13485). Merci de nous envoyer votre Fiche Technique et votre tarif distributeur FOB/CFR Alger. — SARL FLUIDAL (Algérie)"}], "supplier_rfq_packages": [{"item_code": "LOT 4-03", "equipment_name": "Cadre d'extension et de traction orthopédique (MGE-OT7 / Équivalent)", "reason": "Le fichier `docs/lot4-3.MGE-OT7.pdf` ne contient que l'entête (310 caractères) sans le tableau des caractéristiques géométriques ni la liste des accessoires orthopédiques.", "recommended_suppliers": [{"name": "MEDIGE International Industries Co., Ltd", "country": "Chine", "email": "info@medicalmge.com", "phone": "+86 180 7271 8706", "website": "https://www.medicalmge.com"}, {"name": "Perlong Medical Equipment Co., Ltd", "country": "Chine", "email": "service@perlong.com.cn", "phone": "+86 25 8466 3156", "website": "https://www.perlong.com"}, {"name": "Lamidey Noury / Distri-Chirurgie", "country": "France", "email": "info@lamidey-noury.fr", "phone": "+33 1 69 20 69 69", "website": "https://www.lamidey-noury.com"}], "rfq_subject_fr": "URGENT — Demande de Fiche Technique Complète (FR) & Cotation Prix FOB/CFR Alger : Cadre de Traction Orthopédique MGE-OT7 (Appel d'Offres EPH Mohammadia)", "rfq_body_fr": "Bonjour l'équipe Export MEDIGE / Fournisseur,\\n\\nDans le cadre de notre soumission à l'Appel d'Offres National Ouvert de l'EPH de Mohammadia (Algérie) — Lot 04 (Équipements de Bloc Opératoire), nous disposons de votre fiche pour la table MGE-OT5 mais la fiche technique du Cadre de Traction Orthopédique réf. MGE-OT7 est incomplète.\\n\\nMerci de nous transmettre sous 24h :\\n1. La Fiche Technique complète (de préférence en Français ou Anglais détaillé) mentionnant :\\n   - Matériau de la structure (Acier inoxydable AISI 304 / Fibre de carbone radiotransparente)\\n   - Course d'extension orthopédique (mm), angles d'abduction/adduction et rotation des bottes\\n   - Liste des accessoires inclus (bottes adultes/pédiatriques, contre-appui périnéal, barre de traction)\\n   - Certificats CE Médical et ISO 13485\\n2. Votre meilleure offre de prix unitaire (EXW / CFR Port d'Alger) et délai de disponibilité.\\n\\nCordialement,\\nService Technique & Marchés Publics — SARL FLUIDAL (Algérie)\\nImportation de Dispositifs Médicaux & Réseaux de Fluides Médicaux", "rfq_body_en": "Dear Export Team,\\n\\nWe are preparing our technical bid for the Public Hospital Tender at EPH Mohammadia (Algeria) — Lot 04 (Operating Theatre Equipment). Could you urgently send us within 24 hours the complete Technical Datasheet and Distributor Price (FOB / CFR Algiers) for the Orthopedic Traction Frame (Model MGE-OT7 compatible with MGE-OT5), including:\\n- Full dimensions, traction stroke (mm), abduction/adduction angles, and weight capacity\\n- Standard accessories list (traction boots, perineal post, C-arm radiolucent bars)\\n- CE & ISO 13485 certificates.\\n\\nBest regards,\\nTechnical Tender Department — SARL FLUIDAL (Algeria)"}], "translated_sheets_available": ["LOT 4-12.6", "LOT 4-04", "LOT 4-12.1", "LOT 4-06", "LOT 4-03"]};
     let currentFtFilter = 'ALL';
     let selectedFtCode = 'LOT 4-01';
 
@@ -2998,16 +3142,16 @@ Le Président de la Commission COPEO
         const isSel = it.item_code === selectedFtCode;
         const c0 = it.candidates.find(c => c.selection_selected) || it.candidates[0];
         let badgeClass = 'badge-verified';
-        let badgeText = 'FR · Prêt & Conforme';
+        let badgeText = 'Prêt & Conforme';
         if (c0.needs_supplier_rfq) {
           badgeClass = 'badge-warning';
-          badgeText = 'Fiche Incomplète → RFQ';
+          badgeText = 'RFQ Requis';
         } else if (c0.needs_translation) {
           badgeClass = 'badge-blocker';
-          badgeText = c0.is_raw_image ? 'Image PNG EN → PDF FR' : 'Anglais → Traduire FR';
+          badgeText = c0.is_raw_image ? 'PNG → PDF FR' : 'À Traduire';
         } else if (!c0.has_company_branding) {
           badgeClass = 'badge-verify';
-          badgeText = 'FR · Cachet FLUIDAL requis';
+          badgeText = 'À Cacheter';
         }
 
         return `
@@ -3015,8 +3159,8 @@ Le Président de la Commission COPEO
             <div class="req-row-top">
               <div style="display: flex; align-items: center; gap: 7px; flex-wrap: wrap;">
                 <span class="mono" style="font-weight: 600;">#${String(it.seq_order).padStart(2, '0')} · ${it.item_code}</span>
-                <span class="badge badge-envelope mono">${c0.model}</span>
-                ${it.candidates.length > 1 ? '<span class="badge badge-verify mono">2 Modèles comparés</span>' : ''}
+                <span class="badge badge-envelope mono" style="max-width: 140px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="${c0.model}">${c0.model}</span>
+                ${it.candidates.length > 1 ? '<span class="badge badge-verify mono">2 Modèles</span>' : ''}
               </div>
               <span class="badge ${badgeClass}">${badgeText}</span>
             </div>
@@ -3044,7 +3188,9 @@ Le Président de la Commission COPEO
 
       // 1. Multi-candidate selector ("Pistol vs Tank" sweet-spot rule)
       const candidatesHtml = item.candidates.map(c => {
-        const activeBorder = c.selection_selected ? 'border: 2px solid var(--color-ink); background: #fefce8;' : 'border: 1px solid var(--color-hairline); background: var(--color-paper);';
+        const activeBorder = c.selection_selected
+          ? 'border: 1.5px solid var(--color-ink); background: #f8fafc; box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06);'
+          : 'border: 1px solid var(--color-hairline); background: var(--color-paper);';
         return `
           <div style="padding: 12px 14px; border-radius: 8px; margin-bottom: 8px; ${activeBorder} cursor: pointer;" onclick="selectEquipmentCandidate('${item.item_code}', '${c.model}')">
             <div style="display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap;">
@@ -3057,7 +3203,7 @@ Le Président de la Commission COPEO
               </span>
             </div>
             <div style="font-size: 12.5px; color: var(--color-ink); margin-top: 4px;">${c.sweet_spot_label}</div>
-            <div class="mono" style="font-size: 11.5px; color: #15803d; margin-top: 3px;">Impact Barème : ${c.bonus_points}</div>
+            <div class="mono" style="font-size: 11.5px; color: var(--color-pulse-green); margin-top: 3px;">Impact Barème : ${c.bonus_points}</div>
           </div>
         `;
       }).join('');
@@ -3065,9 +3211,9 @@ Le Président de la Commission COPEO
       // 2. Spec-by-Spec comparison matrix (CDC required vs Datasheet actual)
       const specsRowsHtml = item.cdc_required_specs.map(s => {
         let stBadge = '<span class="badge badge-verified mono">Conforme</span>';
-        if (s.status === 'MATCH_BONUS') stBadge = '<span class="badge badge-verified mono">Mieux-Disant (+Bonus)</span>';
-        else if (s.status === 'MISSING_SPEC') stBadge = '<span class="badge badge-blocker mono">Manquant → RFQ</span>';
-        else if (s.status === 'TRANSLATION_REQUIRED' || s.status === 'IMAGE_TO_FR_PDF_REQUIRED') stBadge = '<span class="badge badge-warning mono">À Traduire FR</span>';
+        if (s.status === 'MATCH_BONUS') stBadge = '<span class="badge badge-verified mono">+Bonus</span>';
+        else if (s.status === 'MISSING_SPEC') stBadge = '<span class="badge badge-blocker mono">Manquant</span>';
+        else if (s.status === 'TRANSLATION_REQUIRED' || s.status === 'IMAGE_TO_FR_PDF_REQUIRED') stBadge = '<span class="badge badge-warning mono">À Traduire</span>';
         else if (s.status === 'STAMP_REQUIRED') stBadge = '<span class="badge badge-verify mono">À Cacheter</span>';
         return `
           <tr>
@@ -3167,7 +3313,7 @@ Le Président de la Commission COPEO
           ${supplierContactsListHtml ? `<div style="display: grid; gap: 6px; margin-bottom: 10px;">${supplierContactsListHtml}</div>` : ''}
           ${rfqTextToUse && selectedCand.is_out_of_stock ? `<pre id="item-rfq-box" class="mono" style="background: var(--color-paper); padding: 10px; border-radius: 6px; border: 1px solid var(--color-hairline); font-size: 11px; white-space: pre-wrap; max-height: 130px; overflow-y: auto; margin-bottom: 12px;">${rfqTextToUse}</pre>` : ''}
 
-          <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 10px;">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; margin-bottom: 10px;">
             <div>
               <label style="font-size: 11.5px; color: var(--color-ash); display: block; margin-bottom: 3px;">Fichier Fiche Technique reçu (.pdf, .docx, .png) :</label>
               <input type="file" id="inline-fiche-file" accept=".pdf,.docx,.png,.jpg" class="search-input" style="width: 100%; background: var(--color-paper);" onchange="if(this.files[0]) document.getElementById('inline-fiche-filename').value = this.files[0].name;" />
@@ -3180,18 +3326,18 @@ Le Président de la Commission COPEO
             </div>
           </div>
 
-          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; align-items: end; margin-bottom: 12px;">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; align-items: end; margin-bottom: 12px;">
             <div>
-              <label style="font-size: 11.5px; color: var(--color-ash); display: block; margin-bottom: 3px;">Prix d'achat fournisseur (DZD HT) :</label>
+              <label style="font-size: 11px; color: var(--color-ash); display: block; margin-bottom: 3px;">Prix d'achat (DZD HT) :</label>
               <input type="number" id="inline-wholesale-price" class="search-input mono" style="width: 100%; background: var(--color-paper);" value="${defaultWholesale}" oninput="recalcInlineResalePrice()" />
             </div>
             <div>
-              <label style="font-size: 11.5px; color: var(--color-ash); display: block; margin-bottom: 3px;">Marge de revente (%) :</label>
+              <label style="font-size: 11px; color: var(--color-ash); display: block; margin-bottom: 3px;">Marge revente (%) :</label>
               <input type="number" id="inline-resale-margin" class="search-input mono" style="width: 100%; background: var(--color-paper);" value="${defaultMargin}" min="0" max="200" oninput="recalcInlineResalePrice()" />
             </div>
             <div>
-              <label style="font-size: 11.5px; color: var(--color-ash); display: block; margin-bottom: 3px;">Prix de Revente BPU calculé :</label>
-              <div id="inline-calculated-bpu" class="mono" style="padding: 7px 10px; background: #fefce8; border: 1px solid var(--color-ink); border-radius: 6px; font-weight: 600; color: var(--color-ink);">
+              <label style="font-size: 11px; color: var(--color-ash); display: block; margin-bottom: 3px;">Prix Revente BPU calculé :</label>
+              <div id="inline-calculated-bpu" class="mono" style="padding: 7px 10px; background: #f1f5f9; border: 1px solid var(--color-hairline); border-radius: 6px; font-weight: 600; color: var(--color-ink); font-size: 11.5px; white-space: nowrap;">
                 ${defaultResale.toLocaleString('fr-FR')} DZD HT
               </div>
             </div>
@@ -3199,7 +3345,7 @@ Le Président de la Commission COPEO
 
           <div style="display: flex; justify-content: flex-end;">
             <button class="btn-acid-lime" onclick="submitUploadedSupplierFiche('${item.item_code}')">
-              ✓ Uploader la Fiche Reçue, Vérifier les Critères CDC & Ajouter au Stock
+              ✓ Enregistrer la fiche & Valider les critères
             </button>
           </div>
         </div>
@@ -3208,23 +3354,23 @@ Le Président de la Commission COPEO
       document.getElementById('ft-inspector-body').innerHTML = `
         <div style="margin-bottom: 14px;">
           <div style="font-size: 11.5px; font-weight: 600; color: var(--color-ash); text-transform: uppercase; margin-bottom: 6px;">
-            1. Sélection du Modèle & Optimisation Barème / Prix (${item.candidates.length} candidat(s) dans docs/)
+            1. Équipement Proposé & Barème Technique (${item.candidates.length} modèle(s) évalué(s))
           </div>
           ${candidatesHtml}
         </div>
 
         <div>
           <div style="font-size: 11.5px; font-weight: 600; color: var(--color-ash); text-transform: uppercase; margin-bottom: 6px;">
-            2. Comparaison Critère par Critère (Cahier des Charges vs. Fiche Technique)
+            2. Grille de Conformité aux Spécifications du Marché
           </div>
           <div class="table-wrap" style="border: 1px solid var(--color-hairline); border-radius: 8px;">
             <table class="precision-table">
               <thead>
                 <tr>
                   <th>Paramètre Technique</th>
-                  <th>Exigence du Cahier des Charges (CDC)</th>
-                  <th>Valeur Extraite de la Fiche (<code>docs/</code>)</th>
-                  <th>Statut</th>
+                  <th>Exigence Demandée</th>
+                  <th>Spécification Proposée</th>
+                  <th>Conformité</th>
                 </tr>
               </thead>
               <tbody>

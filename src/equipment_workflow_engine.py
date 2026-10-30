@@ -167,7 +167,7 @@ LOT4_TENDER_ITEMS: List[Dict[str, Any]] = [
                 "compliance_pct": 100,
                 "bonus_points": "+5.0 pts (180k Lux + Ra ≥ 97% + Mode Laparoscopie + Déjà siglé SARL FLUIDAL)",
                 "sweet_spot_verdict": "OPTIMAL_SWEET_SPOT",
-                "sweet_spot_label": "★ Recommandé IA (Surpasse le CDC de +12% Lux / Ra 97% sans surcoût excessif)",
+                "sweet_spot_label": "★ Choix Recommandé (Surpasse le CDC de +12% Lux / Ra 97% sans surcoût excessif)",
                 "estimated_unit_cost_dzd": 1280000,
                 "selection_selected": True,
             },
