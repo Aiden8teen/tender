@@ -397,18 +397,9 @@
       line-height: 1.45;
     }
 
-    /* Backdrop for Mobile Sidebar */
+    /* Sidebar Backdrop: completely non-blocking, no blur, allows full app usage */
     .sidebar-backdrop {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(12, 10, 8, 0.45);
-      backdrop-filter: blur(2px);
-      z-index: 95;
-    }
-
-    .sidebar-backdrop.open {
-      display: block;
+      display: none !important;
     }
 
     /* ==========================================================================
@@ -4024,6 +4015,17 @@ Le Président de la Commission COPEO
       }
       if (e.key === 'Escape') {
         closeFloatingSidebar();
+      }
+    });
+
+    // Close floating drawer when user interacts with the main app (without blocking the click or blurring)
+    document.addEventListener('pointerdown', (e) => {
+      const sidebar = document.getElementById('app-sidebar');
+      const toggleBtn = document.querySelector('.sidebar-toggle-btn');
+      if (sidebar && sidebar.classList.contains('floating-open')) {
+        if (!sidebar.contains(e.target) && (!toggleBtn || !toggleBtn.contains(e.target))) {
+          closeFloatingSidebar();
+        }
       }
     });
 

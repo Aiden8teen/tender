@@ -1828,6 +1828,17 @@ const API_BASE = window.location.protocol.startsWith('http')
       }
     });
 
+    // Close floating drawer when user interacts with the main app (without blocking the click or blurring)
+    document.addEventListener('pointerdown', (e) => {
+      const sidebar = document.getElementById('app-sidebar');
+      const toggleBtn = document.querySelector('.sidebar-toggle-btn');
+      if (sidebar && sidebar.classList.contains('floating-open')) {
+        if (!sidebar.contains(e.target) && (!toggleBtn || !toggleBtn.contains(e.target))) {
+          closeFloatingSidebar();
+        }
+      }
+    });
+
     window.addEventListener('DOMContentLoaded', () => {
       // Check saved sidebar preference
       try {
