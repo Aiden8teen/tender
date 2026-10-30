@@ -549,11 +549,28 @@ const API_BASE = window.location.protocol.startsWith('http')
             <div class="req-desc">${desc}</div>
             <div class="req-footer">
               <span class="mono">${item.docName} · ${item.page}</span>
-              <span class="mono" style="color: var(--color-ink); font-weight: 500;">Voir preuve PDF →</span>
+              <span class="mono" style="color: var(--color-ink); font-weight: 500; cursor: pointer; text-decoration: underline;" onclick="event.stopPropagation(); jumpToInspectorScan('${item.id}')">Voir preuve PDF →</span>
             </div>
           </div>
         `;
       }).join('');
+    }
+
+    function jumpToInspectorScan(reqId) {
+      selectRequirement(reqId);
+      setInspectorMode('SCAN');
+      if (window.innerWidth <= 1024) {
+        setMobileWorkbenchTab('preview');
+      } else {
+        const inspector = document.getElementById('col-pdf-inspector');
+        if (inspector) {
+          inspector.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          inspector.classList.remove('flash-highlight');
+          void inspector.offsetWidth;
+          inspector.classList.add('flash-highlight');
+          setTimeout(() => inspector.classList.remove('flash-highlight'), 1800);
+        }
+      }
     }
 
     function setInspectorMode(mode) {
@@ -869,26 +886,101 @@ const API_BASE = window.location.protocol.startsWith('http')
         }));
       }
 
-      container.innerHTML = results.map(r => `
-        <div style="background: var(--color-paper); border: 1px solid var(--color-hairline); border-radius: var(--radius-wash); padding: 14px 16px; cursor: pointer; transition: border-color 0.12s ease;" onclick="selectEphPage(${r.page_number})" onmouseover="this.style.borderColor='var(--color-ink)'" onmouseout="this.style.borderColor='var(--color-hairline)'">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+      container.innerHTML = results.map((r, idx) => {
+        const pad = String(r.page_number).padStart(2, '0');
+        return `
+        <div class="rag-rule-card" id="rag-rule-${idx}" style="background: var(--color-paper); border: 1px solid var(--color-hairline); border-radius: var(--radius-wash); padding: 16px; cursor: pointer; transition: all 0.15s ease;" onclick="handleRagCardClick(event, ${idx}, ${r.page_number})" onmouseover="this.style.borderColor='var(--color-ink)'" onmouseout="if(!document.getElementById('eph-slide-${idx}')?.classList.contains('open')) this.style.borderColor='var(--color-hairline)'">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
             <div style="display: flex; align-items: center; gap: 8px;">
               <span class="badge badge-envelope mono">${r.doc_name} · Page ${r.page_number}</span>
-              <span style="color: var(--color-ink); font-size: 13px; font-weight: 500;">${r.section_title || 'Clause réglementaire'}</span>
+              <span style="color: var(--color-ink); font-size: 13.5px; font-weight: 600;">${r.section_title || 'Clause réglementaire'}</span>
             </div>
             <span class="badge badge-verified mono">Article du Marché</span>
           </div>
-          <div style="color: var(--color-ink); font-size: 13px; line-height: 1.5; margin-bottom: 6px;">
+          <div style="color: var(--color-ink); font-size: 13px; line-height: 1.55; margin-bottom: 8px;">
             ${r.child_content}
           </div>
-          <div class="mono" style="font-size: 11px; color: var(--color-ash);">
-            Extrait du dossier : ${r.parent_content.slice(0, 160)}... <span style="text-decoration: underline; color: var(--color-ink); font-weight: 500;">Consulter la page ${r.page_number} →</span>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px; flex-wrap: wrap; gap: 10px; border-top: 1px dashed var(--color-hairline); padding-top: 10px;">
+            <div class="mono" style="font-size: 11px; color: var(--color-ash); flex: 1; min-width: 200px;">
+              Extrait : ${r.parent_content.slice(0, 130)}...
+            </div>
+            <div style="display: flex; gap: 8px; align-items: center;">
+              <button class="btn-ghost mono" id="slide-btn-${idx}" style="font-size: 11.5px; padding: 5px 12px; background: var(--color-bone);" onclick="event.stopPropagation(); toggleEphCardSlide(${idx}, ${r.page_number})">
+                <span id="slide-btn-text-${idx}">📄 Déplier l'aperçu (Page ${r.page_number}) ▾</span>
+              </button>
+              <button class="btn-acid-lime mono" style="font-size: 11.5px; padding: 5px 12px;" onclick="event.stopPropagation(); jumpToEphScanPage(${r.page_number})" title="Naviguer directement vers le visualiseur de documents">
+                Aller à la page ${r.page_number} ↓
+              </button>
+            </div>
+          </div>
+
+          <!-- POP-OUT CARD SLIDE UNDERNEATH THE RULE -->
+          <div class="eph-card-slide" id="eph-slide-${idx}">
+            <div style="margin-top: 14px; padding: 14px; background: #faf9f7; border: 1px solid var(--color-hairline); border-radius: var(--radius-buttons);">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; padding-bottom: 8px; border-bottom: 1px solid var(--color-hairline);">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <span class="badge badge-neutral mono" style="font-weight: 600;">Page ${pad} / 28</span>
+                  <span style="font-size: 12px; font-weight: 500; color: var(--color-ink);">Scan Numérisé du Cahier des Charges</span>
+                </div>
+                <div style="display: flex; gap: 6px;">
+                  <button class="btn-acid-lime mono" style="font-size: 11px; padding: 3px 8px;" onclick="event.stopPropagation(); jumpToEphScanPage(${r.page_number})">
+                    Ouvrir dans le grand visualiseur ↓
+                  </button>
+                  <button class="btn-ghost mono" style="font-size: 11px; padding: 3px 8px;" onclick="event.stopPropagation(); toggleEphCardSlide(${idx}, ${r.page_number})">
+                    ✕ Réduire
+                  </button>
+                </div>
+              </div>
+              <div style="text-align: center; background: #e5e3df; border-radius: 6px; padding: 12px; border: 1px solid #dcdad5;">
+                <img src="src/extracted_pages/page_${pad}.jpg" alt="Scan Page ${r.page_number}" style="max-width: 100%; max-height: 520px; object-fit: contain; border-radius: 4px; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12); border: 1px solid rgba(0,0,0,0.1);" loading="lazy" />
+              </div>
+            </div>
           </div>
         </div>
-      `).join('');
+        `;
+      }).join('');
 
       if (results[0] && results[0].page_number) {
         selectEphPage(results[0].page_number);
+      }
+    }
+
+    function handleRagCardClick(event, idx, pageNumber) {
+      if (event.target.closest('button') || event.target.closest('a') || event.target.closest('input')) {
+        return;
+      }
+      toggleEphCardSlide(idx, pageNumber);
+    }
+
+    function toggleEphCardSlide(idx, pageNumber) {
+      const slide = document.getElementById(`eph-slide-${idx}`);
+      const btnText = document.getElementById(`slide-btn-text-${idx}`);
+      if (!slide) return;
+
+      const isOpen = slide.classList.contains('open');
+
+      if (isOpen) {
+        slide.classList.remove('open');
+        if (btnText) btnText.textContent = `📄 Déplier l'aperçu (Page ${pageNumber}) ▾`;
+      } else {
+        slide.classList.add('open');
+        if (btnText) btnText.textContent = `▲ Réduire l'aperçu (Page ${pageNumber})`;
+        selectEphPage(pageNumber);
+        setTimeout(() => {
+          slide.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, 100);
+      }
+    }
+
+    function jumpToEphScanPage(pageNumber) {
+      selectEphPage(pageNumber);
+      const panel = document.getElementById('eph-scan-panel');
+      if (panel) {
+        panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        panel.classList.remove('flash-highlight');
+        void panel.offsetWidth;
+        panel.classList.add('flash-highlight');
+        setTimeout(() => panel.classList.remove('flash-highlight'), 1800);
       }
     }
 
