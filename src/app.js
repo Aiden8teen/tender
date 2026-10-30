@@ -448,7 +448,7 @@ const API_BASE = window.location.protocol.startsWith('http')
       else if (viewName === 'vault') ctaLabel.textContent = 'Mettre à jour une pièce';
       else if (viewName === 'committee') ctaLabel.textContent = "Télécharger le PV COPEO (PDF)";
       else if (viewName === 'overlap') ctaLabel.textContent = "Demande d'Éclaircissement";
-      else if (viewName === 'eph') ctaLabel.textContent = 'Analyser un document';
+      else if (viewName === 'eph') ctaLabel.textContent = 'Importer un document (PDF)';
       else if (viewName === 'fiches') ctaLabel.textContent = 'Télécharger Dossier Lot 04 (PDF)';
 
       // Close mobile drawer on navigation

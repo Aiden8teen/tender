@@ -1485,6 +1485,13 @@
         </div>
 
         <div class="topbar-controls">
+          <button class="btn-ghost" onclick="openUploadModal()" title="Importer un nouveau document (Cahier des charges ou offre scannée)">
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
+              <path d="M8 11V3m0 0L5 6m3-3l3 3M3 13h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>Importer un document</span>
+          </button>
+
           <button class="btn-ghost" onclick="switchView('eph'); document.getElementById('rag-query-input').focus();" title="Interroger le Cahier des Charges via RAG Hybride">
             <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
               <circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.5"/>
@@ -1499,7 +1506,7 @@
 
           <!-- Primary Action CTA Button -->
           <button class="btn-acid-lime" id="primary-cta-btn" onclick="triggerPrimaryAction()">
-            <span id="primary-cta-label">Exporter le rapport d'audit</span>
+            <span id="primary-cta-label">Télécharger le rapport d'audit (PDF)</span>
           </button>
         </div>
       </header>
@@ -2542,7 +2549,7 @@ Le Président de la Commission COPEO
       else if (viewName === 'vault') ctaLabel.textContent = 'Mettre à jour une pièce';
       else if (viewName === 'committee') ctaLabel.textContent = "Télécharger le PV COPEO (PDF)";
       else if (viewName === 'overlap') ctaLabel.textContent = "Demande d'Éclaircissement";
-      else if (viewName === 'eph') ctaLabel.textContent = 'Analyser un document';
+      else if (viewName === 'eph') ctaLabel.textContent = 'Importer un document (PDF)';
       else if (viewName === 'fiches') ctaLabel.textContent = 'Télécharger Dossier Lot 04 (PDF)';
 
       // Close mobile drawer on navigation
