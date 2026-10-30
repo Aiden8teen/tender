@@ -342,10 +342,12 @@ const API_BASE = window.location.protocol.startsWith('http')
         const res = await fetch(`${API_BASE}/api/v1/health`);
         if (res.ok) {
           const data = await res.json();
-          document.getElementById('backend-health-text').textContent = 'Système en Ligne';
+          const el = document.getElementById('backend-health-text');
+          if (el) el.textContent = 'En Ligne';
         }
       } catch (_) {
-        document.getElementById('backend-health-text').textContent = 'Mode Local';
+        const el = document.getElementById('backend-health-text');
+        if (el) el.textContent = 'Mode Local';
       }
 
       // Sync real-time Lot 04 equipment workflow if API is live
@@ -364,13 +366,90 @@ const API_BASE = window.location.protocol.startsWith('http')
       } catch (_) {}
     }
 
-    // Mobile Sidebar Drawer Toggle
-    function toggleMobileSidebar() {
+    // Sidebar Collapse & Floating Drawer Controller
+    function toggleSidebar() {
+      const layout = document.querySelector('.app-layout');
       const sidebar = document.getElementById('app-sidebar');
       const backdrop = document.getElementById('sidebar-backdrop');
-      const isOpen = sidebar.classList.contains('open');
-      sidebar.classList.toggle('open', !isOpen);
-      backdrop.classList.toggle('open', !isOpen);
+      const isMobile = window.innerWidth <= 980;
+
+      if (isMobile) {
+        const isOpen = sidebar.classList.contains('open');
+        sidebar.classList.toggle('open', !isOpen);
+        if (backdrop) backdrop.classList.toggle('open', !isOpen);
+        return;
+      }
+
+      const isCollapsed = layout.classList.contains('sidebar-collapsed');
+      if (!isCollapsed) {
+        collapseSidebar();
+      } else {
+        if (sidebar.classList.contains('floating-open')) {
+          closeFloatingSidebar();
+        } else {
+          openFloatingSidebar();
+        }
+      }
+    }
+
+    function toggleSidebarCollapse() {
+      const layout = document.querySelector('.app-layout');
+      if (layout.classList.contains('sidebar-collapsed')) {
+        pinSidebar();
+      } else {
+        collapseSidebar();
+      }
+    }
+
+    function collapseSidebar() {
+      const layout = document.querySelector('.app-layout');
+      layout.classList.add('sidebar-collapsed');
+      closeFloatingSidebar();
+      updateCollapseBtnIcon(true);
+      try { localStorage.setItem('mithaq_sidebar_collapsed', 'true'); } catch(_) {}
+    }
+
+    function pinSidebar() {
+      const layout = document.querySelector('.app-layout');
+      layout.classList.remove('sidebar-collapsed');
+      closeFloatingSidebar();
+      updateCollapseBtnIcon(false);
+      try { localStorage.setItem('mithaq_sidebar_collapsed', 'false'); } catch(_) {}
+    }
+
+    function openFloatingSidebar() {
+      const sidebar = document.getElementById('app-sidebar');
+      const backdrop = document.getElementById('sidebar-backdrop');
+      if (sidebar) sidebar.classList.add('floating-open');
+      if (backdrop) backdrop.classList.add('open');
+    }
+
+    function closeFloatingSidebar() {
+      const sidebar = document.getElementById('app-sidebar');
+      const backdrop = document.getElementById('sidebar-backdrop');
+      if (sidebar) {
+        sidebar.classList.remove('floating-open');
+        sidebar.classList.remove('open');
+      }
+      if (backdrop) backdrop.classList.remove('open');
+    }
+
+    function updateCollapseBtnIcon(isCollapsed) {
+      const btn = document.getElementById('sidebar-collapse-toggle-btn');
+      if (!btn) return;
+      if (isCollapsed) {
+        btn.setAttribute('title', 'Ancrer le menu latéral');
+        btn.setAttribute('aria-label', 'Ancrer le menu latéral');
+        btn.innerHTML = `<svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M5 3l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+      } else {
+        btn.setAttribute('title', 'Réduire le menu latéral (Ctrl+B)');
+        btn.setAttribute('aria-label', 'Réduire le menu latéral');
+        btn.innerHTML = `<svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M11 3L6 8l5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+      }
+    }
+
+    function toggleMobileSidebar() {
+      toggleSidebar();
     }
 
     // Mobile Workbench Tabs: List vs Preview
@@ -451,13 +530,8 @@ const API_BASE = window.location.protocol.startsWith('http')
       else if (viewName === 'eph') ctaLabel.textContent = 'Importer un document (PDF)';
       else if (viewName === 'fiches') ctaLabel.textContent = 'Télécharger Dossier Lot 04 (PDF)';
 
-      // Close mobile drawer on navigation
-      const sidebar = document.getElementById('app-sidebar');
-      const backdrop = document.getElementById('sidebar-backdrop');
-      if (sidebar.classList.contains('open')) {
-        sidebar.classList.remove('open');
-        backdrop.classList.remove('open');
-      }
+      // Close floating sidebar drawer on navigation so it goes back to its place
+      closeFloatingSidebar();
     }
 
     function triggerPrimaryAction() {
@@ -1745,9 +1819,23 @@ const API_BASE = window.location.protocol.startsWith('http')
         switchView('eph');
         document.getElementById('rag-query-input').focus();
       }
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'b') {
+        e.preventDefault();
+        toggleSidebar();
+      }
+      if (e.key === 'Escape') {
+        closeFloatingSidebar();
+      }
     });
 
     window.addEventListener('DOMContentLoaded', () => {
+      // Check saved sidebar preference
+      try {
+        if (localStorage.getItem('mithaq_sidebar_collapsed') === 'true' && window.innerWidth > 980) {
+          collapseSidebar();
+        }
+      } catch (_) {}
+
       checkBackendConnection();
       renderRequirementsList();
       selectRequirement('REQ-CAND-04');

@@ -148,17 +148,11 @@
        APP SHELL: 2-COLUMN DESKTOP + RESPONSIVE MOBILE DRAWER
        ========================================================================== */
     .app-layout {
-      display: grid;
-      grid-template-columns: 268px 1fr;
+      display: flex;
       height: 100vh;
       width: 100vw;
+      overflow: hidden;
       background: var(--color-bone);
-    }
-
-    @media (max-width: 980px) {
-      .app-layout {
-        grid-template-columns: 1fr;
-      }
     }
 
     /* Left Inverted Sidebar (Obsidian Masthead) */
@@ -171,10 +165,42 @@
       padding: 18px 14px;
       user-select: none;
       overflow-y: auto;
+      overflow-x: hidden;
       z-index: 50;
-      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      width: 268px;
+      min-width: 268px;
+      flex-shrink: 0;
+      transition: margin-left 0.25s cubic-bezier(0.16, 1, 0.3, 1), margin-right 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
     }
 
+    .app-layout.sidebar-collapsed .sidebar {
+      margin-left: -268px;
+    }
+    html[dir="rtl"] .app-layout.sidebar-collapsed .sidebar {
+      margin-left: 0;
+      margin-right: -268px;
+    }
+
+    /* Floating drawer when sidebar is collapsed on desktop */
+    @media (min-width: 981px) {
+      .app-layout.sidebar-collapsed .sidebar.floating-open {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        margin-left: 0 !important;
+        width: 276px;
+        z-index: 100;
+        box-shadow: 8px 0 36px rgba(0, 0, 0, 0.5);
+      }
+      html[dir="rtl"] .app-layout.sidebar-collapsed .sidebar.floating-open {
+        left: auto;
+        right: 0;
+        margin-right: 0 !important;
+      }
+    }
+
+    /* Mobile Drawer */
     @media (max-width: 980px) {
       .sidebar {
         position: fixed;
@@ -182,15 +208,20 @@
         bottom: 0;
         left: 0;
         width: 280px;
+        min-width: 280px;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
         transform: translateX(-100%);
         box-shadow: 4px 0 24px rgba(0, 0, 0, 0.4);
+        z-index: 100;
       }
       html[dir="rtl"] .sidebar {
         left: auto;
         right: 0;
         transform: translateX(100%);
       }
-      .sidebar.open {
+      .sidebar.open,
+      .sidebar.floating-open {
         transform: translateX(0);
       }
     }
@@ -229,23 +260,24 @@
       justify-content: center;
     }
 
-    .api-status-dot {
+    .sidebar-collapse-btn {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      font-size: 11px;
-      color: #94a3b8;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid #334155;
-      padding: 4px 10px;
-      border-radius: var(--radius-pills);
+      border-radius: var(--radius-buttons);
+      color: #94a3b8;
+      cursor: pointer;
+      transition: all 0.15s ease;
     }
 
-    .status-led {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: #10b981;
+    .sidebar-collapse-btn:hover {
+      background: #1e293b;
+      color: #ffffff;
+      border-color: #475569;
     }
 
     /* Role Switcher (Obsidian Segmented Control) */
@@ -370,9 +402,9 @@
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(12, 10, 8, 0.6);
-      backdrop-filter: blur(4px);
-      z-index: 45;
+      background: rgba(12, 10, 8, 0.45);
+      backdrop-filter: blur(2px);
+      z-index: 95;
     }
 
     .sidebar-backdrop.open {
@@ -383,6 +415,8 @@
        MAIN STAGE: EDITORIAL HEADER + CANVAS
        ========================================================================== */
     .main-stage {
+      flex: 1;
+      min-width: 0;
       display: flex;
       flex-direction: column;
       height: 100vh;
@@ -457,23 +491,24 @@
       box-shadow: 0 1px 2px rgba(15, 23, 42, 0.03);
     }
 
-    .mobile-menu-btn {
-      display: none;
+    .sidebar-toggle-btn {
+      display: inline-flex;
       background: transparent;
       border: 1px solid var(--color-hairline);
       border-radius: var(--radius-buttons);
-      width: 36px;
-      height: 36px;
+      width: 34px;
+      height: 34px;
       align-items: center;
       justify-content: center;
       cursor: pointer;
       color: var(--color-ink);
+      flex-shrink: 0;
+      transition: all 0.15s ease;
     }
 
-    @media (max-width: 980px) {
-      .mobile-menu-btn {
-        display: inline-flex;
-      }
+    .sidebar-toggle-btn:hover {
+      background: var(--color-wash);
+      border-color: #cbd5e1;
     }
 
     .breadcrumb-group {
@@ -1329,8 +1364,8 @@
 </head>
 <body>
 
-  <!-- Backdrop for mobile drawer navigation -->
-  <div class="sidebar-backdrop" id="sidebar-backdrop" onclick="toggleMobileSidebar()"></div>
+  <!-- Backdrop for drawer navigation (desktop collapsed & mobile) -->
+  <div class="sidebar-backdrop" id="sidebar-backdrop" onclick="closeFloatingSidebar()"></div>
 
   <div class="app-layout">
     <!-- ========================================================================
@@ -1347,10 +1382,11 @@
             </span>
             <span>Mithaq Tender</span>
           </div>
-          <span class="api-status-dot" id="backend-health-pill" title="Système opérationnel">
-            <span class="status-led"></span>
-            <span class="mono" id="backend-health-text">En ligne</span>
-          </span>
+          <button class="sidebar-collapse-btn" id="sidebar-collapse-toggle-btn" onclick="toggleSidebarCollapse()" title="Réduire le menu latéral (Ctrl+B)" aria-label="Réduire le menu latéral">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+              <path d="M11 3L6 8l5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
         </div>
 
         <!-- Role Switcher: Company vs Evaluation Committee -->
@@ -1476,7 +1512,7 @@
       <!-- Sticky Editorial Topbar -->
       <header class="stage-topbar">
         <div class="breadcrumb-group">
-          <button class="mobile-menu-btn" onclick="toggleMobileSidebar()" aria-label="Menu de navigation">
+          <button class="sidebar-toggle-btn" onclick="toggleSidebar()" aria-label="Afficher ou masquer le menu latéral" title="Menu latéral (Ctrl+B)">
             <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
               <path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
             </svg>
@@ -2502,10 +2538,12 @@ Le Président de la Commission COPEO
         const res = await fetch(`${API_BASE}/api/v1/health`);
         if (res.ok) {
           const data = await res.json();
-          document.getElementById('backend-health-text').textContent = 'Système en Ligne';
+          const el = document.getElementById('backend-health-text');
+          if (el) el.textContent = 'En Ligne';
         }
       } catch (_) {
-        document.getElementById('backend-health-text').textContent = 'Mode Local';
+        const el = document.getElementById('backend-health-text');
+        if (el) el.textContent = 'Mode Local';
       }
 
       // Sync real-time Lot 04 equipment workflow if API is live
@@ -2524,13 +2562,90 @@ Le Président de la Commission COPEO
       } catch (_) {}
     }
 
-    // Mobile Sidebar Drawer Toggle
-    function toggleMobileSidebar() {
+    // Sidebar Collapse & Floating Drawer Controller
+    function toggleSidebar() {
+      const layout = document.querySelector('.app-layout');
       const sidebar = document.getElementById('app-sidebar');
       const backdrop = document.getElementById('sidebar-backdrop');
-      const isOpen = sidebar.classList.contains('open');
-      sidebar.classList.toggle('open', !isOpen);
-      backdrop.classList.toggle('open', !isOpen);
+      const isMobile = window.innerWidth <= 980;
+
+      if (isMobile) {
+        const isOpen = sidebar.classList.contains('open');
+        sidebar.classList.toggle('open', !isOpen);
+        if (backdrop) backdrop.classList.toggle('open', !isOpen);
+        return;
+      }
+
+      const isCollapsed = layout.classList.contains('sidebar-collapsed');
+      if (!isCollapsed) {
+        collapseSidebar();
+      } else {
+        if (sidebar.classList.contains('floating-open')) {
+          closeFloatingSidebar();
+        } else {
+          openFloatingSidebar();
+        }
+      }
+    }
+
+    function toggleSidebarCollapse() {
+      const layout = document.querySelector('.app-layout');
+      if (layout.classList.contains('sidebar-collapsed')) {
+        pinSidebar();
+      } else {
+        collapseSidebar();
+      }
+    }
+
+    function collapseSidebar() {
+      const layout = document.querySelector('.app-layout');
+      layout.classList.add('sidebar-collapsed');
+      closeFloatingSidebar();
+      updateCollapseBtnIcon(true);
+      try { localStorage.setItem('mithaq_sidebar_collapsed', 'true'); } catch(_) {}
+    }
+
+    function pinSidebar() {
+      const layout = document.querySelector('.app-layout');
+      layout.classList.remove('sidebar-collapsed');
+      closeFloatingSidebar();
+      updateCollapseBtnIcon(false);
+      try { localStorage.setItem('mithaq_sidebar_collapsed', 'false'); } catch(_) {}
+    }
+
+    function openFloatingSidebar() {
+      const sidebar = document.getElementById('app-sidebar');
+      const backdrop = document.getElementById('sidebar-backdrop');
+      if (sidebar) sidebar.classList.add('floating-open');
+      if (backdrop) backdrop.classList.add('open');
+    }
+
+    function closeFloatingSidebar() {
+      const sidebar = document.getElementById('app-sidebar');
+      const backdrop = document.getElementById('sidebar-backdrop');
+      if (sidebar) {
+        sidebar.classList.remove('floating-open');
+        sidebar.classList.remove('open');
+      }
+      if (backdrop) backdrop.classList.remove('open');
+    }
+
+    function updateCollapseBtnIcon(isCollapsed) {
+      const btn = document.getElementById('sidebar-collapse-toggle-btn');
+      if (!btn) return;
+      if (isCollapsed) {
+        btn.setAttribute('title', 'Ancrer le menu latéral');
+        btn.setAttribute('aria-label', 'Ancrer le menu latéral');
+        btn.innerHTML = `<svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M5 3l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+      } else {
+        btn.setAttribute('title', 'Réduire le menu latéral (Ctrl+B)');
+        btn.setAttribute('aria-label', 'Réduire le menu latéral');
+        btn.innerHTML = `<svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M11 3L6 8l5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+      }
+    }
+
+    function toggleMobileSidebar() {
+      toggleSidebar();
     }
 
     // Mobile Workbench Tabs: List vs Preview
@@ -2611,13 +2726,8 @@ Le Président de la Commission COPEO
       else if (viewName === 'eph') ctaLabel.textContent = 'Importer un document (PDF)';
       else if (viewName === 'fiches') ctaLabel.textContent = 'Télécharger Dossier Lot 04 (PDF)';
 
-      // Close mobile drawer on navigation
-      const sidebar = document.getElementById('app-sidebar');
-      const backdrop = document.getElementById('sidebar-backdrop');
-      if (sidebar.classList.contains('open')) {
-        sidebar.classList.remove('open');
-        backdrop.classList.remove('open');
-      }
+      // Close floating sidebar drawer on navigation so it goes back to its place
+      closeFloatingSidebar();
     }
 
     function triggerPrimaryAction() {
@@ -3908,9 +4018,23 @@ Le Président de la Commission COPEO
         switchView('eph');
         document.getElementById('rag-query-input').focus();
       }
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'b') {
+        e.preventDefault();
+        toggleSidebar();
+      }
+      if (e.key === 'Escape') {
+        closeFloatingSidebar();
+      }
     });
 
     window.addEventListener('DOMContentLoaded', () => {
+      // Check saved sidebar preference
+      try {
+        if (localStorage.getItem('mithaq_sidebar_collapsed') === 'true' && window.innerWidth > 980) {
+          collapseSidebar();
+        }
+      } catch (_) {}
+
       checkBackendConnection();
       renderRequirementsList();
       selectRequirement('REQ-CAND-04');
